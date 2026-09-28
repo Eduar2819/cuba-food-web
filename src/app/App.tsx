@@ -1,7 +1,11 @@
+import { RouterProvider } from 'react-router'
+import { AppProviders } from '@/app/providers/AppProviders'
+import { router } from '@/app/router/router'
+
 export function App() {
   return (
-    <main>
-      <h1>Sabor Cubano en Yucatán</h1>
-    </main>
+    <AppProviders>
+      <RouterProvider router={router} />
+    </AppProviders>
   )
 }

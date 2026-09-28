@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "name": "Malecón",
+    "description": "Sistema visual de Sabor Cubano en Yucatán: guía gastronómica con fotografía protagonista, añil profundo como base de marca, guayaba como único acento y tipografía grotesca con carácter.",
+    "source_references": [
+      "Brief del producto (sin referencias visuales externas)",
+      "Fachadas de La Habana: añil, cal, persianas; luz caribeña",
+      "Skills: frontend-design, taste-skill, soft-skill, design-dna"
+    ],
+    "created_at": "2026-09-28"
+  },
+  "design_system": {
+    "color": {
+      "palette_type": "split-complementary",
+      "primary": {
+        "hex": "#12294A",
+        "role": "Añil: marca, navegación, titulares, superficies oscuras"
+      },
+      "secondary": { "hex": "#F6F4EF", "role": "Cal: superficies hundidas y bandas de sección" },
+      "accent": {
+        "hex": "#C7323F",
+        "role": "Guayaba: único acento. CTA primario, Guardar, foco de conversión"
+      },
+      "neutral": {
+        "scale": [
+          "#FCFBF9",
+          "#F6F4EF",
+          "#ECE8E0",
+          "#D9D3C8",
+          "#B3AB9D",
+          "#8A8275",
+          "#625A4E",
+          "#4A443B",
+          "#2B2822"
+        ],
+        "usage": "Escala 'arena' (cálida) para fondos, líneas y texto secundario. El texto principal usa Añil 950 (#0E1E36), no negro."
+      },
+      "semantic": {
+        "success": "#1F7A4D",
+        "warning": "#8A5A00",
+        "error": "#B42318",
+        "info": "#25508A"
+      },
+      "surface": { "background": "#FCFBF9", "card": "#FFFFFF", "elevated": "#FFFFFF" },
+      "contrast_strategy": "Oscuro sobre claro dominante; todo texto >= 4.5:1 (validado). Mamoncillo #F1C04A nunca como texto sobre claro, solo como relleno o sobre Añil."
+    },
+    "typography": {
+      "type_scale": {
+        "display": {
+          "size": "clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem)",
+          "weight": "700",
+          "line_height": "1.02",
+          "tracking": "-0.03em"
+        },
+        "heading_1": {
+          "size": "clamp(2rem, 1.5rem + 2vw, 3rem)",
+          "weight": "700",
+          "line_height": "1.08",
+          "tracking": "-0.025em"
+        },
+        "heading_2": {
+          "size": "clamp(1.5rem, 1.25rem + 1vw, 2.125rem)",
+          "weight": "650",
+          "line_height": "1.15",
+          "tracking": "-0.02em"
+        },
+        "heading_3": {
+          "size": "1.25rem",
+          "weight": "600",
+          "line_height": "1.25",
+          "tracking": "-0.01em"
+        },
+        "body": { "size": "1.0625rem", "weight": "400", "line_height": "1.6", "tracking": "0" },
+        "body_small": {
+          "size": "0.9375rem",
+          "weight": "400",
+          "line_height": "1.55",
+          "tracking": "0"
+        },
+        "caption": {
+          "size": "0.8125rem",
+          "weight": "500",
+          "line_height": "1.4",
+          "tracking": "0.005em"
+        },
+        "overline": {
+          "size": "0.8125rem",
+          "weight": "600",
+          "line_height": "1.3",
+          "tracking": "0.01em"
+        }
+      },
+      "font_families": {
+        "heading": "Bricolage Grotesque Variable",
+        "body": "Figtree Variable",
+        "mono": "ui-monospace (solo en /design-system para nombres de tokens)"
+      },
+      "font_style_notes": "Bricolage: grotesca con terminales expresivos y contraste óptico; da voz a titulares sin caer en serif 'editorial'. Figtree: geométrica-humanista muy legible para UI y cuerpo. Sin mayúsculas sostenidas para etiquetas; sentence case en todo."
+    },
+    "spacing": {
+      "base_unit": "4px",
+      "scale": ["4", "8", "12", "16", "20", "24", "32", "40", "48", "64", "80", "96", "128"],
+      "content_density": "comfortable",
+      "section_rhythm": "Secciones de landing 80-128px en desktop, 56-72px en móvil. Dentro del producto (directorio, perfil) 32-48px entre bloques."
+    },
+    "layout": {
+      "grid_system": "CSS Grid de 12 columnas en desktop, 6 en tablet, 4 en móvil",
+      "max_content_width": "1320px (lectura: 68ch)",
+      "columns": "4 / 6 / 12",
+      "gutter": "16px móvil, 24px tablet, 32px desktop",
+      "breakpoints": { "mobile": "0", "tablet": "768px", "desktop": "1024px", "large": "1440px" },
+      "alignment_tendency": "asymmetric (alineado a la izquierda; hero dividido contenido/fotografía)"
+    },
+    "shape": {
+      "border_radius": { "small": "8px", "medium": "12px", "large": "20px", "pill": "9999px" },
+      "border_usage": "subtle 1px en inputs y separadores de grupo; nunca en cada fila",
+      "divider_style": "Línea arena-200 de 1px, solo entre grupos"
+    },
+    "elevation": {
+      "shadow_style": "soft diffused, tintada en Añil",
+      "levels": {
+        "low": "0 1px 2px rgb(18 41 74 / 0.06), 0 1px 1px rgb(18 41 74 / 0.04)",
+        "medium": "0 12px 32px -12px rgb(18 41 74 / 0.18)",
+        "high": "0 28px 64px -24px rgb(18 41 74 / 0.32)"
+      },
+      "depth_cues": "overlapping layers (hero), doble bisel en piezas protagonistas, blur solo en navegación fija"
+    },
+    "iconography": {
+      "style": "Lineal, trazo fino",
+      "stroke_weight": "1.5",
+      "size_scale": ["16", "20", "24"],
+      "preferred_set": "lucide-react (requisito del brief) con strokeWidth global 1.5"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "duration_scale": { "micro": "160ms", "normal": "280ms", "macro": "640ms" },
+      "entrance_pattern": "Solo el hero orquesta una entrada (capas + texto). El resto aparece sin animación.",
+      "exit_pattern": "Fade + 8px de desplazamiento en drawers/diálogos",
+      "philosophy": "minimal functional: el movimiento responde a acciones; el parallax del hero es el único momento cinematográfico"
+    },
+    "components": {
+      "button_style": "Pastilla. Primario Guayaba con texto blanco; secundario Añil; ghost con borde arena. :active scale(0.98). CTA principal con icono en círculo anidado (button-in-button).",
+      "input_style": "Radio 12px, fondo blanco, borde arena-300, label encima siempre, foco con anillo Añil 2px + offset",
+      "card_style": "Tarjeta de restaurante = foto 4:3 con radio 20px + texto sin caja. Doble bisel solo en buscador del hero, destacados y mini card del mapa.",
+      "navigation_pattern": "Barra superior translúcida (blur) en desktop; barra inferior Inicio | Buscar | Mapa | Favoritos en móvil",
+      "modal_style": "<dialog> nativo; bottom sheet en móvil, panel lateral en desktop",
+      "list_style": "Agrupación por espacio; separadores solo entre grupos",
+      "component_notes": "Estados abierto/cerrado siempre con icono + texto, nunca solo color."
+    }
+  },
+  "design_style": {
+    "aesthetic": {
+      "mood": ["cálido", "apetitoso", "confiable", "luminoso"],
+      "visual_metaphor": "Una fachada habanera recién pintada: añil, cal y la puerta de color que invita a entrar",
+      "era_influence": "Contemporáneo, con guiños a la rotulación caribeña de mediados de siglo en la tipografía",
+      "genre": "guía gastronómica de consumo / producto de descubrimiento",
+      "personality_traits": ["anfitrión", "bien informado", "directo"],
+      "adjectives": ["fotográfico", "aireado", "preciso", "caribeño sin caricatura"]
+    },
+    "visual_language": {
+      "complexity": "moderate",
+      "ornamentation": "none",
+      "whitespace_usage": "Generoso en landing; eficiente en directorio y perfil",
+      "visual_weight_distribution": "La fotografía carga el peso; la tipografía ancla a la izquierda",
+      "focal_strategy": "single hero element por pantalla",
+      "contrast_level": "alto en texto, medio en superficies",
+      "texture_usage": "Ninguna textura artificial; la textura viene de la comida fotografiada"
+    },
+    "composition": {
+      "hierarchy_method": "scale contrast + typographic hierarchy",
+      "balance_type": "asymmetric",
+      "flow_direction": "Z en landing, F en directorio",
+      "grouping_strategy": "Proximidad y bandas de color Cal; no cajas",
+      "negative_space_role": "Separar decisiones: cada sección responde una sola pregunta del usuario"
+    },
+    "imagery": {
+      "photo_treatment": "Fotografía gastronómica real, luz natural, sin filtros ni duotonos",
+      "illustration_style": "none",
+      "graphic_elements": "Ninguno decorativo; iconos lineales solo con función",
+      "pattern_usage": "none",
+      "image_shape": "Rectángulos con radio 20px; relaciones 4:3, 3:2, 16:9 y 1:1 según contexto"
+    },
+    "interaction_feel": {
+      "feedback_style": "Inmediato y físico: press scale, toasts breves con el mismo verbo del botón",
+      "hover_behavior": "Imagen escala 1.03 dentro de su marco; botones oscurecen un tono",
+      "transition_personality": "smooth glide",
+      "loading_style": "Skeletons con la forma del contenido final",
+      "microinteraction_density": "baja"
+    },
+    "brand_voice_in_ui": {
+      "tone": "Cercano, claro, mexicano-neutral con vocabulario cubano en platillos",
+      "formality": "Tuteo",
+      "cta_style": "direct imperative",
+      "empty_state_approach": "Decir qué pasó y ofrecer la siguiente acción concreta",
+      "error_tone": "Descriptivo, sin disculpas, con opción de reintentar"
+    }
+  },
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "subtle-accent",
+      "performance_tier": "lightweight",
+      "fallback_strategy": "reduce to CSS: sin parallax con prefers-reduced-motion; intensidad 50% en móvil",
+      "primary_technology": "CSS only (scroll-driven animations) con fallback rAF + IntersectionObserver"
+    },
+    "background_effects": {
+      "type": "none",
+      "description": "Sin fondos generativos",
+      "technology": "none",
+      "params": {
+        "color_palette": [],
+        "speed": "0",
+        "density": "0",
+        "opacity": "0",
+        "blend_mode": "normal"
+      }
+    },
+    "particle_systems": {
+      "enabled": false,
+      "type": "custom",
+      "description": "No aplica",
+      "technology": "none",
+      "params": {
+        "count": "0",
+        "shape": "none",
+        "size_range": "0",
+        "movement_pattern": "none",
+        "color_behavior": "none",
+        "interaction": "none",
+        "spawn_area": "none"
+      }
+    },
+    "3d_elements": {
+      "enabled": false,
+      "type": "abstract-geometry",
+      "description": "No aplica",
+      "technology": "none",
+      "params": {
+        "renderer": "none",
+        "lighting": "none",
+        "camera": "none",
+        "materials": "none",
+        "geometry": "none",
+        "post_processing": [],
+        "interaction_model": "none"
+      }
+    },
+    "shader_effects": {
+      "enabled": false,
+      "type": "custom-GLSL",
+      "description": "No aplica",
+      "technology": "none",
+      "params": {
+        "uniforms": [],
+        "vertex_manipulation": "none",
+        "fragment_output": "none",
+        "noise_type": "perlin",
+        "distortion": "none"
+      }
+    },
+    "scroll_effects": {
+      "parallax": {
+        "enabled": true,
+        "layers": "3",
+        "depth_range": "fondo 0.35x, medio 0.15x, contenido 0x (desplazamiento relativo al scroll)",
+        "speed_curve": "linear respecto al scroll (scrubbed)"
+      },
+      "scroll_triggered_animations": {
+        "enabled": false,
+        "trigger_points": [],
+        "animation_type": "fade-up",
+        "scrub_behavior": "none"
+      },
+      "scroll_morphing": { "enabled": false, "description": "No aplica" }
+    },
+    "text_effects": {
+      "type": "none",
+      "description": "El titular del hero entra con un único fade + 12px en carga",
+      "technology": "CSS",
+      "params": {
+        "split_strategy": "by-line",
+        "animation_per_unit": "none",
+        "stagger": "0",
+        "effect_style": "none"
+      }
+    },
+    "cursor_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "Cursor nativo",
+      "params": {
+        "shape": "none",
+        "size": "0",
+        "blend_mode": "normal",
+        "trail": "none",
+        "interaction_zone": "none"
+      }
+    },
+    "image_effects": {
+      "type": "none",
+      "description": "Solo escala suave al hover dentro del marco",
+      "technology": "CSS",
+      "params": {
+        "filter_pipeline": [],
+        "hover_transform": "scale(1.03)",
+        "reveal_animation": "none",
+        "distortion_type": "none"
+      }
+    },
+    "glassmorphism_neumorphism": {
+      "enabled": true,
+      "style": "frosted-layers",
+      "params": {
+        "blur_radius": "16px",
+        "transparency": "0.82",
+        "border_treatment": "hairline blanco/10 en oscuro, añil/8 en claro",
+        "shadow_type": "low",
+        "light_source_angle": "top"
+      }
+    },
+    "canvas_drawings": {
+      "enabled": false,
+      "type": "none",
+      "description": "No aplica",
+      "technology": "none",
+      "params": {
+        "draw_method": "none",
+        "animation_loop": "none",
+        "color_scheme": "none",
+        "responsiveness": "none",
+        "interaction": "none"
+      }
+    },
+    "svg_animations": {
+      "enabled": false,
+      "type": "none",
+      "description": "No aplica",
+      "params": {
+        "animation_method": "none",
+        "path_morphing": "none",
+        "stroke_animation": "none",
+        "filter_effects": "none"
+      }
+    },
+    "composite_notes": "El único efecto cinematográfico es el parallax de 3 capas del hero, implementado solo con translate3d. Blur limitado a la barra de navegación fija y al fondo de los diálogos. Modo oscuro: base Añil 975 (#0B1626), texto #F2EFE9, acento Guayaba igual (texto blanco 5.3:1)."
+  }
+}

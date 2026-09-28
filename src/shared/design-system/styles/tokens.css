@@ -1,0 +1,256 @@
+/*
+ * Tokens del sistema "Malecón" (ver ../design-dna.json).
+ * Capa 1: paleta cruda (@theme) → utilidades como bg-anil-900.
+ * Capa 2: tokens semánticos (@theme inline → var()) que cambian con el modo oscuro.
+ * Las features deben usar SOLO la capa semántica.
+ */
+
+@font-face {
+  font-family: 'Bricolage Grotesque Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('/fonts/bricolage-grotesque-latin-wght.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Figtree Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url('/fonts/figtree-latin-wght.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Figtree Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url('/fonts/figtree-latin-wght-italic.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme static {
+  /* Reemplazamos la paleta y breakpoints por defecto de Tailwind: solo existe lo nuestro. */
+  --color-*: initial;
+  --breakpoint-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+
+  /* Añil (azul profundo) */
+  --color-anil-50: #f1f4f9;
+  --color-anil-100: #e3e9f2;
+  --color-anil-200: #c4d1e4;
+  --color-anil-300: #8fa6c8;
+  --color-anil-500: #3b5f93;
+  --color-anil-700: #25508a;
+  --color-anil-800: #1b3a66;
+  --color-anil-900: #12294a;
+  --color-anil-950: #0e1e36;
+  --color-anil-975: #0b1626;
+
+  /* Guayaba (coral, acento único) */
+  --color-guayaba-100: #fbe3e4;
+  --color-guayaba-300: #f07a82;
+  --color-guayaba-500: #d9434f;
+  --color-guayaba-600: #c7323f;
+  --color-guayaba-700: #b82d3a;
+
+  /* Mamoncillo (amarillo cálido; nunca texto sobre claro) */
+  --color-mamoncillo-100: #fdf3d7;
+  --color-mamoncillo-400: #f1c04a;
+  --color-mamoncillo-800: #7a4f00;
+
+  /* Arena (neutros cálidos) */
+  --color-arena-50: #fcfbf9;
+  --color-arena-100: #f6f4ef;
+  --color-arena-200: #ece8e0;
+  --color-arena-300: #d9d3c8;
+  --color-arena-400: #b3ab9d;
+  --color-arena-500: #8a8275;
+  --color-arena-600: #625a4e;
+  --color-arena-700: #4a443b;
+  --color-arena-800: #2b2822;
+
+  /* Palma (verde de estado "abierto") */
+  --color-palma-100: #dff1e7;
+  --color-palma-400: #5fc08e;
+  --color-palma-700: #1f7a4d;
+
+  /* Estado de error */
+  --color-coral-error-100: #fde4e1;
+  --color-coral-error-700: #b42318;
+
+  /* Tipografía */
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.03em;
+  --text-h1: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h2: clamp(1.5rem, 1.25rem + 1vw, 2.125rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.01em;
+  --text-lead: 1.1875rem;
+  --text-lead--line-height: 1.55;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.55;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.4;
+
+  /* Radios: regla documentada → controles 12, media/paneles 20, bisel exterior 28, interactivos pastilla */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Sombras tintadas en Añil */
+  --shadow-low: 0 1px 2px rgb(18 41 74 / 0.06), 0 1px 1px rgb(18 41 74 / 0.04);
+  --shadow-medium: 0 12px 32px -12px rgb(18 41 74 / 0.18);
+  --shadow-high: 0 28px 64px -24px rgb(18 41 74 / 0.32);
+
+  /* Movimiento */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Breakpoints: mobile es la base */
+  --breakpoint-tablet: 48rem;
+  --breakpoint-desktop: 64rem;
+  --breakpoint-large: 90rem;
+
+  /* Contenedor */
+  --container-page: 82.5rem;
+  --container-prose: 68ch;
+}
+
+/* Tokens semánticos (cambian por tema) */
+@theme inline {
+  --color-canvas: var(--ds-canvas);
+  --color-surface: var(--ds-surface);
+  --color-surface-sunken: var(--ds-surface-sunken);
+  --color-surface-raised: var(--ds-surface-raised);
+  --color-surface-inverse: var(--ds-surface-inverse);
+  --color-ink: var(--ds-ink);
+  --color-ink-muted: var(--ds-ink-muted);
+  --color-ink-inverse: var(--ds-ink-inverse);
+  --color-line: var(--ds-line);
+  --color-line-strong: var(--ds-line-strong);
+  --color-brand: var(--ds-brand);
+  --color-brand-hover: var(--ds-brand-hover);
+  --color-on-brand: var(--ds-on-brand);
+  --color-accent: var(--ds-accent);
+  --color-accent-hover: var(--ds-accent-hover);
+  --color-on-accent: var(--ds-on-accent);
+  --color-accent-soft: var(--ds-accent-soft);
+  --color-accent-text: var(--ds-accent-text);
+  --color-highlight: var(--ds-highlight);
+  --color-status-open: var(--ds-status-open);
+  --color-status-open-soft: var(--ds-status-open-soft);
+  --color-status-soon: var(--ds-status-soon);
+  --color-status-soon-soft: var(--ds-status-soon-soft);
+  --color-status-closed: var(--ds-status-closed);
+  --color-status-closed-soft: var(--ds-status-closed-soft);
+  --color-danger: var(--ds-danger);
+  --color-danger-soft: var(--ds-danger-soft);
+  --color-focus: var(--ds-focus);
+  --color-scrim: var(--ds-scrim);
+  --shadow-bezel: var(--ds-shadow-bezel);
+}
+
+:root {
+  color-scheme: light dark;
+
+  --ds-canvas: var(--color-arena-50);
+  --ds-surface: var(--color-white);
+  --ds-surface-sunken: var(--color-arena-100);
+  --ds-surface-raised: var(--color-white);
+  --ds-surface-inverse: var(--color-anil-900);
+  --ds-ink: var(--color-anil-950);
+  --ds-ink-muted: var(--color-arena-600);
+  --ds-ink-inverse: var(--color-arena-50);
+  --ds-line: var(--color-arena-200);
+  --ds-line-strong: var(--color-arena-300);
+  --ds-brand: var(--color-anil-900);
+  --ds-brand-hover: var(--color-anil-800);
+  --ds-on-brand: var(--color-white);
+  --ds-accent: var(--color-guayaba-600);
+  --ds-accent-hover: var(--color-guayaba-700);
+  --ds-on-accent: var(--color-white);
+  --ds-accent-soft: var(--color-guayaba-100);
+  --ds-accent-text: var(--color-guayaba-600);
+  --ds-highlight: var(--color-mamoncillo-400);
+  --ds-status-open: var(--color-palma-700);
+  --ds-status-open-soft: var(--color-palma-100);
+  --ds-status-soon: var(--color-mamoncillo-800);
+  --ds-status-soon-soft: var(--color-mamoncillo-100);
+  --ds-status-closed: var(--color-arena-600);
+  --ds-status-closed-soft: var(--color-arena-100);
+  --ds-danger: var(--color-coral-error-700);
+  --ds-danger-soft: var(--color-coral-error-100);
+  --ds-focus: var(--color-anil-700);
+  --ds-scrim: rgb(11 22 38 / 0.55);
+  --ds-shadow-bezel: inset 0 1px 0 rgb(255 255 255 / 0.6), 0 12px 32px -12px rgb(18 41 74 / 0.18);
+
+  /* Duraciones y z-index (no son namespaces de Tailwind; se usan como duration-(--dur-normal)) */
+  --dur-micro: 160ms;
+  --dur-normal: 280ms;
+  --dur-macro: 640ms;
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 30;
+  --z-nav: 40;
+  --z-overlay: 50;
+  --z-dialog: 60;
+  --z-toast: 70;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ds-canvas: var(--color-anil-975);
+    --ds-surface: #11213a;
+    --ds-surface-sunken: #0e1b30;
+    --ds-surface-raised: #172a47;
+    --ds-surface-inverse: var(--color-arena-100);
+    --ds-ink: #f2efe9;
+    --ds-ink-muted: #a8afbc;
+    --ds-ink-inverse: var(--color-anil-950);
+    --ds-line: #22375a;
+    --ds-line-strong: #33496e;
+    --ds-brand: var(--color-anil-200);
+    --ds-brand-hover: var(--color-anil-100);
+    --ds-on-brand: var(--color-anil-950);
+    --ds-accent-soft: rgb(199 50 63 / 0.18);
+    --ds-accent-text: var(--color-guayaba-300);
+    --ds-status-open: var(--color-palma-400);
+    --ds-status-open-soft: rgb(95 192 142 / 0.14);
+    --ds-status-soon: var(--color-mamoncillo-400);
+    --ds-status-soon-soft: rgb(241 192 74 / 0.14);
+    --ds-status-closed: #a8afbc;
+    --ds-status-closed-soft: rgb(168 175 188 / 0.12);
+    --ds-danger: #f39a90;
+    --ds-danger-soft: rgb(180 35 24 / 0.2);
+    --ds-focus: var(--color-anil-300);
+    --ds-scrim: rgb(3 8 16 / 0.7);
+    --ds-shadow-bezel: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 12px 32px -12px rgb(0 0 0 / 0.5);
+  }
+}
