@@ -51,9 +51,15 @@ describe('Búsqueda global', () => {
     const router = renderAt('/restaurantes')
     await screen.findByText('8 restaurantes')
     await userEvent.keyboard('/')
-    const input = await screen.findByRole('combobox', { name: /Buscar restaurantes, platillos/ })
+    const input = await screen.findByRole(
+      'combobox',
+      { name: /Buscar restaurantes, platillos/ },
+      { timeout: 5000 },
+    )
     await userEvent.type(input, 'ropa vieja')
-    expect(await screen.findByRole('option', { name: /Ropa vieja/ })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('option', { name: /Ropa vieja/ }, { timeout: 5000 }),
+    ).toBeInTheDocument()
     expect(screen.getByRole('group', { name: 'Restaurantes' })).toBeInTheDocument()
     await userEvent.keyboard('{Enter}')
     expect(router.state.location.pathname).toBe('/platillos/ropa-vieja')

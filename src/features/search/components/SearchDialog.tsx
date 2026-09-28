@@ -1,4 +1,4 @@
-import { useDeferredValue, useId, useMemo, useState } from 'react'
+import { useId, useMemo, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import { useNavigate } from 'react-router'
 import { Coffee, LayoutGrid, MapPin, Search, SearchX, Store, UtensilsCrossed } from 'lucide-react'
@@ -34,12 +34,12 @@ export function SearchDialog({
   onClose: () => void
 }) {
   const [query, setQuery] = useState(initialQuery)
-  const deferredQuery = useDeferredValue(query)
   const [active, setActive] = useState(0)
   const engine = useAsync(() => loadSearchEngine(), [])
   const navigate = useNavigate()
   const listId = useId()
-  const q = deferredQuery.trim()
+  // Índice pequeño: cálculo síncrono para que Enter nunca use resultados desfasados.
+  const q = query.trim()
 
   const groups = useMemo(() => {
     if (!q || engine.status !== 'success') return []
@@ -134,6 +134,7 @@ export function SearchDialog({
             enterKeyHint="search"
             autoComplete="off"
             autoFocus
+            data-autofocus
             value={query}
             placeholder="Ropa vieja, Mérida, cafetería…"
             onChange={(event) => {

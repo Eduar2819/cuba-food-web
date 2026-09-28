@@ -68,6 +68,8 @@ export function Dialog({
     if (!dialog) return
     if (open && !dialog.open) {
       dialog.showModal()
+      // showModal() enfoca el primer control (Cerrar); si hay un campo marcado, se prioriza.
+      dialog.querySelector<HTMLElement>('[data-autofocus]')?.focus()
       document.documentElement.style.overflow = 'hidden'
     } else if (!open && dialog.open) {
       dialog.close()

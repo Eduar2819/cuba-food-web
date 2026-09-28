@@ -6,7 +6,7 @@ export type CardVariant = 'plain' | 'outlined' | 'raised' | 'sunken' | 'bezel'
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: CardVariant
   padding?: 'none' | 'sm' | 'md' | 'lg'
-  /** Clases para el núcleo interior (solo variante bezel). */
+  /** Clases del contenido (núcleo interior en bezel; el propio contenedor en las demás). */
   innerClassName?: string
 }
 
@@ -53,7 +53,10 @@ export function Card({
     )
   }
   return (
-    <div className={cn('rounded-lg', variants[variant], paddings[padding], className)} {...rest}>
+    <div
+      className={cn('rounded-lg', variants[variant], paddings[padding], innerClassName, className)}
+      {...rest}
+    >
       {children}
     </div>
   )
