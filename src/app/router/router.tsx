@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router'
 import type { RouteObject } from 'react-router'
 import type { ComponentType } from 'react'
 import { RootLayout } from '@/app/layouts/RootLayout'
+import { NotFoundPage } from '@/app/routes/NotFoundPage'
 import { RouteErrorPage } from '@/app/routes/RouteErrorPage'
 
 /*
@@ -99,7 +100,8 @@ export const routes: RouteObject[] = [
           { path: 'contacto', lazy: page(() => import('@/app/routes/ContactPage'), 'ContactPage') },
           { path: 'creditos', lazy: page(() => import('@/app/routes/CreditsPage'), 'CreditsPage') },
           ...devRoutes,
-          { path: '*', lazy: page(() => import('@/app/routes/NotFoundPage'), 'NotFoundPage') },
+          // La 404 ya viaja en el bundle principal (la usa el errorElement).
+          { path: '*', Component: NotFoundPage },
         ],
       },
     ],
