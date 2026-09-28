@@ -15,6 +15,8 @@ export interface ImageAsset {
   photoId: string
   alt: string
   credit: ImageCredit
+  /** Archivo local servido desde /public (sin redimensionado en CDN). */
+  localSrc?: string
   /** Punto focal para object-position (CSS), p. ej. "50% 40%". */
   focus?: string
 }
@@ -40,6 +42,7 @@ export interface ImageUrlOptions {
 const CDN = 'https://images.unsplash.com'
 
 export function imageUrl(asset: ImageAsset, { width, ratio, quality = 70 }: ImageUrlOptions) {
+  if (asset.localSrc) return asset.localSrc
   const params = new URLSearchParams({
     auto: 'format', // AVIF/WebP según el navegador
     fit: 'crop',
@@ -79,7 +82,9 @@ export function responsiveImage(
   const fallbackWidth = widths[Math.min(2, widths.length - 1)] ?? largest
   return {
     src: imageUrl(asset, { width: fallbackWidth, ratio, quality }),
-    srcSet: widths.map((w) => `${imageUrl(asset, { width: w, ratio, quality })} ${w}w`).join(', '),
+    srcSet: asset.localSrc
+      ? ''
+      : widths.map((w) => `${imageUrl(asset, { width: w, ratio, quality })} ${w}w`).join(', '),
     sizes,
     alt: asset.alt,
     width: largest,

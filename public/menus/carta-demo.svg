@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" font-family="Georgia, serif">
+  <rect width="800" height="1100" fill="#12294A"/>
+  <rect x="32" y="32" width="736" height="1036" fill="none" stroke="#F1C04A" stroke-width="2"/>
+  <text x="400" y="120" fill="#F6F4EF" font-size="52" text-anchor="middle">Brisa Habanera</text>
+  <text x="400" y="165" fill="#F1C04A" font-size="22" text-anchor="middle" font-family="sans-serif">CARTA DE DEMOSTRACIÓN</text>
+  <text x="80" y="260" fill="#F1C04A" font-size="30">Cocteles</text>
+  <g fill="#F6F4EF" font-size="24" font-family="sans-serif">
+    <text x="80" y="310">Mojito clásico</text><text x="720" y="310" text-anchor="end">$110</text>
+    <text x="80" y="355">Daiquirí natural</text><text x="720" y="355" text-anchor="end">$120</text>
+    <text x="80" y="400">Cuba libre</text><text x="720" y="400" text-anchor="end">$95</text>
+    <text x="80" y="445">Mojito sin alcohol</text><text x="720" y="445" text-anchor="end">$75</text>
+  </g>
+  <text x="80" y="540" fill="#F1C04A" font-size="30">Botanas de mar</text>
+  <g fill="#F6F4EF" font-size="24" font-family="sans-serif">
+    <text x="80" y="590">Camarones enchilados</text><text x="720" y="590" text-anchor="end">$240</text>
+    <text x="80" y="635">Croquetas de pescado</text><text x="720" y="635" text-anchor="end">$130</text>
+    <text x="80" y="680">Tostones con ceviche</text><text x="720" y="680" text-anchor="end">$165</text>
+  </g>
+  <text x="400" y="1000" fill="#B3AB9D" font-size="18" text-anchor="middle" font-family="sans-serif">Precios y platillos ficticios. Solo para demostración.</text>
+</svg>

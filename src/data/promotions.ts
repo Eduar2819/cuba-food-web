@@ -1,0 +1,70 @@
+import type { Promotion } from '@/features/promotions'
+import { IMAGES } from './images'
+
+/* Promociones DEMO: vigencias y condiciones ficticias. */
+export const PROMOTIONS: Promotion[] = [
+  {
+    id: 'p-verano',
+    isDemo: true,
+    restaurantId: 'r-sabor-cuba',
+    title: 'Verano cubano',
+    description: 'Promoción vencida: se conserva para probar que no se muestra.',
+    conditions: ['Solo en terraza.'],
+    startsOn: '2026-07-01',
+    endsOn: '2026-08-31',
+    image: IMAGES.pescadoFrito,
+  },
+  {
+    id: 'p-mojitos-jueves',
+    isDemo: true,
+    restaurantId: 'r-brisa-habanera',
+    title: '2x1 en mojitos los jueves',
+    description: 'Pide un mojito clásico y el segundo va por la casa.',
+    conditions: [
+      'Solo jueves de 14:00 a 19:00.',
+      'Aplica en mojito clásico.',
+      'No acumulable con otras promociones.',
+    ],
+    startsOn: '2026-09-01',
+    endsOn: '2026-12-31',
+    weekdays: [4],
+    image: IMAGES.mojitoBarra,
+  },
+  {
+    id: 'p-cafecito',
+    isDemo: true,
+    restaurantId: 'r-cafe-mamoncillo',
+    title: 'Cafecito y pastelito por $55',
+    description: 'Un café cubano con un pastelito de guayaba recién horneado.',
+    conditions: ['Todos los días hasta agotar existencias.', 'Solo en barra o para llevar.'],
+    startsOn: '2026-08-01',
+    endsOn: '2026-10-31',
+    image: IMAGES.pastelitos,
+  },
+  {
+    id: 'p-menu-dia',
+    isDemo: true,
+    restaurantId: 'r-habana-caribe',
+    title: 'Menú del día por $189',
+    description: 'Sopa, plato fuerte con arroz, frijoles y maduros, y postre.',
+    conditions: [
+      'Martes a viernes de 13:00 a 17:00.',
+      'Plato fuerte según disponibilidad del día.',
+    ],
+    startsOn: '2026-09-15',
+    endsOn: '2026-11-30',
+    weekdays: [2, 3, 4, 5],
+    image: IMAGES.congriHoja,
+  },
+  {
+    id: 'p-delivery-octubre',
+    isDemo: true,
+    restaurantId: 'r-tostones-co',
+    title: '15% en pedidos a domicilio',
+    description: 'Descuento en pedidos por WhatsApp durante octubre.',
+    conditions: ['Pedido mínimo de $250.', 'Cobertura solo en Mérida norte y centro.'],
+    startsOn: '2026-10-01',
+    endsOn: '2026-10-31',
+    image: IMAGES.reparto,
+  },
+]
