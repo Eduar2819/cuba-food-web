@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import { SearchDialogContext } from '../hooks/searchDialogContext'
 import type { SearchDialogApi } from '../hooks/searchDialogContext'
-import { SearchDialog } from './SearchDialog'
+// El diálogo (índice + datos) se descarga al abrir la búsqueda, no con el layout.
+const SearchDialog = lazy(() => import('./SearchDialog').then((m) => ({ default: m.SearchDialog })))
 
 /** Búsqueda global: se abre desde la navbar, la barra inferior o con "/" y Ctrl/⌘+K. */
 export function SearchDialogProvider({ children }: { children: ReactNode }) {
@@ -37,7 +38,11 @@ export function SearchDialogProvider({ children }: { children: ReactNode }) {
   return (
     <SearchDialogContext value={api}>
       {children}
-      {isOpen && <SearchDialog initialQuery={initialQuery} onClose={close} />}
+      {isOpen && (
+        <Suspense fallback={null}>
+          <SearchDialog initialQuery={initialQuery} onClose={close} />
+        </Suspense>
+      )}
     </SearchDialogContext>
   )
 }
