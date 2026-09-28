@@ -30,7 +30,9 @@ describe('Directorio', () => {
 
   it('muestra el estado vacío y permite limpiar filtros', async () => {
     const router = renderAt('/restaurantes?zona=progreso&tipo=cafeteria')
-    expect(await screen.findByText('No encontramos restaurantes con estos filtros.')).toBeInTheDocument()
+    expect(
+      await screen.findByText('No encontramos restaurantes con estos filtros.'),
+    ).toBeInTheDocument()
     await userEvent.click(screen.getAllByRole('button', { name: 'Limpiar filtros' })[0]!)
     expect(await screen.findByText('8 restaurantes')).toBeInTheDocument()
     expect(router.state.location.search).toBe('')
