@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import { Heart, Menu, Search } from 'lucide-react'
-import { buttonStyles, IconButton, Logo } from '@/shared/design-system'
+import { IconButton, Logo } from '@/shared/design-system'
 import { cn } from '@/shared/lib/cn'
 import { useSearchDialog } from '@/features/search'
 import { PRIMARY_NAV } from '@/app/navigation'
@@ -30,7 +30,7 @@ export function SiteHeader() {
           <Logo />
         </Link>
 
-        <nav aria-label="Principal" className="ml-6 hidden desktop:block">
+        <nav aria-label="Principal" className="ml-4 hidden desktop:block large:ml-8">
           <ul className="flex items-center gap-1">
             {PRIMARY_NAV.map((item) => (
               <li key={item.to}>
@@ -47,7 +47,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => search.open()}
             className={cn(
-              'hidden min-h-11 items-center gap-2 rounded-full bg-surface-sunken pr-2 pl-4 text-small text-ink-muted tablet:inline-flex',
+              'hidden min-h-11 items-center gap-2 rounded-full bg-surface-sunken pr-2 pl-4 text-small text-ink-muted large:inline-flex',
               'transition-colors duration-(--dur-micro) ease-out-soft hover:bg-line hover:text-ink',
             )}
           >
@@ -61,7 +61,7 @@ export function SiteHeader() {
             icon={Search}
             label="Buscar"
             onClick={() => search.open()}
-            className="tablet:hidden"
+            className="large:hidden"
           />
           <NavLink
             to="/favoritos"
@@ -76,14 +76,6 @@ export function SiteHeader() {
           >
             <Heart aria-hidden size={20} />
           </NavLink>
-          <span className="hidden desktop:contents">
-            <Link
-              to="/para-restaurantes"
-              className={buttonStyles({ variant: 'secondary', size: 'sm' })}
-            >
-              Para restaurantes
-            </Link>
-          </span>
           <IconButton
             icon={Menu}
             label="Abrir menú"

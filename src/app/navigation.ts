@@ -12,6 +12,7 @@ export const PRIMARY_NAV: NavItem[] = [
   { to: '/mapa', label: 'Mapa' },
   { to: '/platillos', label: 'Platillos' },
   { to: '/eventos', label: 'Eventos' },
+  { to: '/para-restaurantes', label: 'Para restaurantes' },
 ]
 
 /** Menú móvil completo y pie de página. */

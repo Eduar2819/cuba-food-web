@@ -70,7 +70,7 @@ export const RESTAURANTS: Restaurant[] = [
     serviceIds: ['comer-aqui', 'para-llevar', 'reservaciones'],
     contact: { phone: '+529990000101', whatsapp: '529990000101', email: 'hola@habanacaribe.demo' },
     social: demoSocial('la-habana-del-caribe', ['instagram', 'facebook']),
-    cover: IMAGES.platoCubano,
+    cover: IMAGES.congriHoja,
     gallery: [
       {
         id: 'g1',
@@ -414,9 +414,10 @@ export const RESTAURANTS: Restaurant[] = [
     serviceIds: ['comer-aqui', 'para-llevar'],
     contact: { phone: '+529850000404', whatsapp: '529850000404' },
     social: demoSocial('el-rincon-cubano', ['facebook']),
-    cover: IMAGES.congriHoja,
+    cover: IMAGES.papasRellenas,
     gallery: [
-      { id: 'g1', image: IMAGES.congriHoja, kind: 'platillo' },
+      { id: 'g1', image: IMAGES.papasRellenas, kind: 'platillo' },
+      { id: 'g1b', image: IMAGES.congriHoja, kind: 'platillo' },
       { id: 'g2', image: IMAGES.frijolesNegros, kind: 'platillo' },
       {
         id: 'g3',
@@ -424,7 +425,6 @@ export const RESTAURANTS: Restaurant[] = [
         kind: 'lugar',
         caption: 'A dos cuadras del parque principal',
       },
-      { id: 'g4', image: IMAGES.papasRellenas, kind: 'platillo' },
     ],
     menu: {
       type: 'url',
@@ -470,11 +470,11 @@ export const RESTAURANTS: Restaurant[] = [
     serviceIds: ['comer-aqui', 'para-llevar', 'delivery'],
     contact: { phone: '+529990000505', whatsapp: '529990000505' },
     social: demoSocial('cafe-mamoncillo', ['instagram']),
-    cover: IMAGES.cafeRosa,
+    cover: IMAGES.pastelitos,
     gallery: [
-      { id: 'g1', image: IMAGES.cafeRosa, kind: 'lugar' },
+      { id: 'g1', image: IMAGES.pastelitos, kind: 'platillo', caption: 'Pastelitos de guayaba' },
       { id: 'g2', image: IMAGES.cafecito, kind: 'platillo', caption: 'Cortadito' },
-      { id: 'g3', image: IMAGES.pastelitos, kind: 'platillo' },
+      { id: 'g3', image: IMAGES.cafeRosa, kind: 'lugar' },
       { id: 'g4', image: IMAGES.barraCafe, kind: 'lugar' },
       { id: 'g5', image: IMAGES.cafeConLeche, kind: 'platillo' },
     ],

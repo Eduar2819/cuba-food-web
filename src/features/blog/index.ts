@@ -1,3 +1,5 @@
 export type * from './types'
 export { blogRepository, blogPosts } from './services/blogRepository'
 export type { BlogRepository } from './services/blogRepository'
+export { BlogHighlight } from './components/BlogHighlight'
+export { BLOG_CATEGORY_LABEL } from './services/blogFormat'

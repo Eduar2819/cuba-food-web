@@ -95,3 +95,63 @@
     transform: translate3d(0, 16px, 0);
   }
 }
+
+/*
+ * Parallax por capas. Cada capa define --parallax-depth (0 = sigue el scroll, 0.35 = va más lento).
+ * Solo transform: translate3d. Intensidad al 50% en móvil. Sin efecto con prefers-reduced-motion.
+ * Navegadores con scroll-driven animations: CSS puro. Resto: useParallax (rAF + IntersectionObserver).
+ */
+@layer components {
+  .parallax-layer {
+    --parallax-intensity: 0.5;
+    --parallax-distance: calc(var(--parallax-depth, 0) * var(--parallax-intensity) * 100svh);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+
+  @media (width >= 48rem) {
+    .parallax-layer {
+      --parallax-intensity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .parallax-layer {
+      transform: none !important;
+      will-change: auto;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .parallax-layer {
+        animation: parallax-shift linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0 100svh;
+      }
+    }
+  }
+
+  /* Entrada única y orquestada del contenido del hero (el "momento" de la página). */
+  .hero-reveal > * {
+    animation: rise-in var(--dur-macro) var(--ease-out-soft) both;
+  }
+  .hero-reveal > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .hero-reveal > :nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .hero-reveal > :nth-child(n + 4) {
+    animation-delay: 240ms;
+  }
+}
+
+@keyframes parallax-shift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, var(--parallax-distance), 0);
+  }
+}

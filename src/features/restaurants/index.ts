@@ -20,3 +20,7 @@ export {
   priceLabel,
   priceDescription,
 } from './services/catalog'
+export { RestaurantCard } from './components/RestaurantCard'
+export type { RestaurantCardProps } from './components/RestaurantCard'
+export { OpenStatusLabel } from './components/OpenStatusLabel'
+export { FeaturedRestaurants } from './components/FeaturedRestaurants'
