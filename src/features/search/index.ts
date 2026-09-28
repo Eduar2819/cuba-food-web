@@ -1,3 +1,6 @@
 export { SearchDialogProvider } from './components/SearchDialogProvider'
 export { useSearchDialog } from './hooks/searchDialogContext'
 export { SearchBox } from './components/SearchBox'
+export { createSearchIndex } from './services/searchIndex'
+export type { SearchEngine, SearchResult, SearchDocument, SearchKind } from './services/searchIndex'
+export { loadSearchEngine, buildSearchDocuments } from './services/siteSearch'
