@@ -30,7 +30,7 @@ export function OpenStatusLabel({
 }) {
   const { word, icon: Icon, className: tone } = config[status.state]
   return (
-    <p
+    <span
       className={cn(
         'flex items-start gap-1.5',
         size === 'sm' ? 'text-small' : 'text-body',
@@ -46,6 +46,6 @@ export function OpenStatusLabel({
         <span className={cn('font-semibold', tone)}>{word}</span>
         <span className="text-ink-muted"> · {detail(status)}</span>
       </span>
-    </p>
+    </span>
   )
 }

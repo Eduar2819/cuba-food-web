@@ -155,3 +155,80 @@
     transform: translate3d(0, var(--parallax-distance), 0);
   }
 }
+
+/* Mapa (Leaflet): pines propios con divIcon. Abierto = punto sólido, cerrado = anillo. */
+@layer components {
+  .sc-map {
+    font-family: var(--font-sans);
+    background: var(--color-surface-sunken);
+    z-index: 0;
+  }
+  .sc-map .leaflet-control-attribution {
+    font-size: 0.6875rem;
+    background: rgb(255 255 255 / 0.85);
+  }
+  .sc-map .leaflet-bar a {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    color: var(--color-anil-950);
+  }
+  .sc-pin-wrapper {
+    background: none;
+    border: 0;
+  }
+  .leaflet-marker-icon.sc-pin-wrapper:focus-visible {
+    outline: none;
+  }
+  .leaflet-marker-icon.sc-pin-wrapper:focus-visible .sc-pin {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+  .sc-pin {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: var(--color-anil-900);
+    box-shadow: 0 6px 14px -4px rgb(11 22 38 / 0.5);
+    border: 2px solid #fff;
+    transition: transform var(--dur-normal) var(--ease-spring);
+  }
+  .sc-pin::after {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .sc-pin--open {
+    background: var(--color-palma-700);
+  }
+  .sc-pin--closed {
+    background: var(--color-arena-500);
+  }
+  .sc-pin--closed::after {
+    background: transparent;
+    border: 2.5px solid #fff;
+  }
+  .sc-pin--selected {
+    background: var(--color-guayaba-600);
+    transform: rotate(-45deg) scale(1.25);
+  }
+  .sc-user-dot {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--color-anil-700);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 6px rgb(37 80 138 / 0.25);
+  }
+  @media (prefers-color-scheme: dark) {
+    .sc-map .leaflet-tile-pane {
+      filter: brightness(0.75) invert(1) contrast(0.9) hue-rotate(200deg) saturate(0.35);
+    }
+  }
+}

@@ -1,12 +1,17 @@
-import { Skeleton } from '@/shared/design-system'
+import { RestaurantsMap } from '@/features/map'
 import type { DirectoryItem } from '@/features/filters'
+import { useUserLocation } from '@/features/nearby'
 
-/** Vista de mapa del directorio (se implementa con MapProvider en la fase de mapa). */
-export function DirectoryMap({ items }: { items: DirectoryItem[]; now: Date }) {
+/** Vista de mapa del directorio: mismos resultados filtrados, en el mapa. */
+export function DirectoryMap({ items, now }: { items: DirectoryItem[]; now: Date }) {
+  const { location } = useUserLocation()
   return (
-    <div className="flex flex-col gap-3">
-      <Skeleton className="aspect-[4/3] w-full rounded-lg" />
-      <p className="text-small text-ink-muted">{items.length} restaurantes en el mapa</p>
-    </div>
+    <RestaurantsMap
+      restaurants={items.map((i) => i.restaurant)}
+      now={now}
+      userLocation={location}
+      label="Resultados del directorio en el mapa"
+      className="h-[70svh] min-h-[26rem] animate-[rise-in_var(--dur-normal)_var(--ease-out-soft)]"
+    />
   )
 }

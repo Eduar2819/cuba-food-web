@@ -4,6 +4,8 @@ import { BlogHighlight } from '@/features/blog'
 import { DishCravings } from '@/features/dishes'
 import { UpcomingEvents } from '@/features/events'
 import { ForRestaurantsCta } from '@/features/for-restaurants'
+import { MapPreviewSection } from '@/features/map'
+import { NearbySection } from '@/features/nearby'
 import { PromotionsHighlight } from '@/features/promotions'
 import { FeaturedRestaurants } from '@/features/restaurants'
 import { Seo } from '@/features/seo'
@@ -44,6 +46,8 @@ export function HomePage() {
       <FeaturedRestaurants now={now} />
       <DishCravings />
       <ZonesBento />
+      <MapPreviewSection now={now} />
+      <NearbySection now={now} />
       <UpcomingEvents now={now} />
       <PromotionsHighlight now={now} />
       <BlogHighlight />

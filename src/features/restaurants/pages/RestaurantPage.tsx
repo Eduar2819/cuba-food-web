@@ -17,6 +17,7 @@ import { formatPhone } from '@/shared/lib/contact'
 import { absoluteUrl } from '@/shared/lib/site'
 import { dishById } from '@/features/dishes'
 import { EventAgendaItem, eventRepository } from '@/features/events'
+import { RestaurantsMap } from '@/features/map'
 import { MenuView } from '@/features/menu'
 import { PromotionTicket, promotionRepository } from '@/features/promotions'
 import { breadcrumbJsonLd, restaurantJsonLd, Seo } from '@/features/seo'
@@ -211,6 +212,15 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
 
           <Block title="Ubicación y contacto">
             <div className="flex flex-col gap-3">
+              <RestaurantsMap
+                restaurants={[r]}
+                now={now}
+                lazyMount
+                selectedId={null}
+                onSelect={() => {}}
+                label={`Ubicación de ${r.name}`}
+                className="h-56"
+              />
               <a
                 href={links.directions}
                 target="_blank"
