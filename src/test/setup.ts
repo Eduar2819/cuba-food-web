@@ -31,3 +31,6 @@ if (!window.matchMedia) {
       dispatchEvent: () => false,
     }) as MediaQueryList
 }
+
+// jsdom no implementa scrollTo (lo usa ScrollRestoration).
+window.scrollTo = (() => {}) as typeof window.scrollTo

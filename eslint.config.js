@@ -27,7 +27,7 @@ export default defineConfig([
   // Screaming architecture: features solo se consumen por su index.ts público.
   {
     files: ['src/**/*.{ts,tsx}'],
-    ignores: ['src/shared/**'],
+    ignores: ['src/shared/**', 'src/app/router/**'],
     rules: {
       'no-restricted-imports': [
         'error',
@@ -36,6 +36,23 @@ export default defineConfig([
             {
               regex: '^@/features/[^/]+/.+',
               message: 'Importa otras features solo desde su index.ts (@/features/<feature>).',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  // El router puede importar páginas directamente (un chunk por ruta), nada más.
+  {
+    files: ['src/app/router/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '^@/features/[^/]+/(?!pages/).+',
+              message: 'El router solo importa features/<feature>/pages/* o el index.ts.',
             },
           ],
         },
