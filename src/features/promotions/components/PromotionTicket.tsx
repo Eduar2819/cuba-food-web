@@ -12,6 +12,7 @@ interface PromotionTicketProps {
   now: Date
   restaurant?: { name: string; slug: string }
   showConditions?: boolean
+  headingLevel?: 'h2' | 'h3'
 }
 
 /** Promoción en formato "ticket": foto cuadrada + datos de vigencia. */
@@ -20,6 +21,7 @@ export function PromotionTicket({
   now,
   restaurant,
   showConditions = false,
+  headingLevel: Heading = 'h3',
 }: PromotionTicketProps) {
   const status = getPromotionStatus(promotion, getZonedParts(now).isoDate)
   const days = promotionDays(promotion)
@@ -39,7 +41,7 @@ export function PromotionTicket({
           )}
           {days && <span className="text-caption font-semibold text-ink-muted">{days}</span>}
         </div>
-        <h3 className="text-h3 font-semibold text-ink">
+        <Heading className="text-h3 font-semibold text-ink">
           {restaurant ? (
             <Link
               to={`/restaurantes/${restaurant.slug}`}
@@ -50,7 +52,7 @@ export function PromotionTicket({
           ) : (
             promotion.title
           )}
-        </h3>
+        </Heading>
         <p className="text-small text-ink-muted">{promotion.description}</p>
         {showConditions && promotion.conditions.length > 0 && (
           <ul className="list-disc pl-4 text-caption text-ink-muted">

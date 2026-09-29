@@ -36,7 +36,7 @@ export function MapPage() {
         description="Ubica en el mapa los restaurantes cubanos de Mérida, Progreso y Valladolid y descubre cuáles están abiertos cerca de ti."
         path="/mapa"
       />
-      <div className="mx-auto grid max-w-(--container-page) gap-4 desktop:h-[calc(100dvh-6.5rem)] desktop:grid-cols-[23rem_1fr] desktop:grid-rows-[auto_minmax(0,1fr)]">
+      <div className="mx-auto grid max-w-(--container-page) grid-cols-[minmax(0,1fr)] gap-4 desktop:h-[calc(100dvh-6.5rem)] desktop:grid-cols-[23rem_1fr] desktop:grid-rows-[auto_minmax(0,1fr)]">
         <div className="flex flex-col gap-3 px-1 desktop:col-start-1 desktop:row-start-1">
           <h1 className="text-h1 font-bold text-ink">Mapa</h1>
           <div
@@ -74,7 +74,6 @@ export function MapPage() {
               location.status !== 'unavailable' && (
                 <Button
                   variant="subtle"
-                  size="sm"
                   leadingIcon={LocateFixed}
                   loading={location.status === 'locating'}
                   onClick={location.request}

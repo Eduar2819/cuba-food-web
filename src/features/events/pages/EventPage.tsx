@@ -52,6 +52,7 @@ export function EventPage() {
         <title>Evento no encontrado | Sabor Cubano</title>
         <EmptyState
           icon={CalendarX}
+          headingLevel="h1"
           title="No encontramos este evento."
           action={
             <Link to="/eventos" className={buttonStyles({ variant: 'secondary' })}>
@@ -117,21 +118,19 @@ export function EventPage() {
 
         <aside className="flex flex-col gap-4 desktop:sticky desktop:top-24 desktop:self-start">
           <dl className="flex flex-col gap-4 rounded-lg bg-surface-sunken p-5">
-            <div className="flex gap-3">
-              <CalendarDays aria-hidden size={20} className="mt-0.5 shrink-0 text-brand" />
-              <div>
-                <dt className="sr-only">Fecha y hora</dt>
-                <dd className="text-body font-semibold text-ink">
-                  <time dateTime={event.startsAt}>{eventWhen(event)}</time>
-                </dd>
-              </div>
+            <div>
+              <dt className="sr-only">Fecha y hora</dt>
+              <dd className="flex gap-3 text-body font-semibold text-ink">
+                <CalendarDays aria-hidden size={20} className="mt-0.5 shrink-0 text-brand" />
+                <time dateTime={event.startsAt}>{eventWhen(event)}</time>
+              </dd>
             </div>
             {restaurant && (
-              <div className="flex gap-3">
-                <MapPin aria-hidden size={20} className="mt-0.5 shrink-0 text-brand" />
-                <div>
-                  <dt className="sr-only">Lugar</dt>
-                  <dd className="text-body text-ink">
+              <div>
+                <dt className="sr-only">Lugar</dt>
+                <dd className="flex gap-3 text-body text-ink">
+                  <MapPin aria-hidden size={20} className="mt-0.5 shrink-0 text-brand" />
+                  <span>
                     <Link
                       to={`/restaurantes/${restaurant.slug}`}
                       className="font-semibold underline-offset-4 hover:underline"
@@ -139,16 +138,16 @@ export function EventPage() {
                       {restaurant.name}
                     </Link>
                     <span className="block text-small text-ink-muted">{city}</span>
-                  </dd>
-                </div>
+                  </span>
+                </dd>
               </div>
             )}
-            <div className="flex gap-3">
-              <Ticket aria-hidden size={20} className="mt-0.5 shrink-0 text-brand" />
-              <div>
-                <dt className="sr-only">Precio</dt>
-                <dd className="text-body font-semibold text-ink">{eventPrice(event)}</dd>
-              </div>
+            <div>
+              <dt className="sr-only">Precio</dt>
+              <dd className="flex gap-3 text-body font-semibold text-ink">
+                <Ticket aria-hidden size={20} className="mt-0.5 shrink-0 text-brand" />
+                {eventPrice(event)}
+              </dd>
             </div>
           </dl>
           {upcoming && (

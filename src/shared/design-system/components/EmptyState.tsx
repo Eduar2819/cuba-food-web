@@ -10,6 +10,8 @@ export interface EmptyStateProps {
   className?: string
   tone?: 'neutral' | 'danger'
   role?: 'status' | 'alert'
+  /** Nivel semántico del título (p. ej. h1 en páginas de "no encontrado"). */
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'p'
 }
 
 export function EmptyState({
@@ -20,6 +22,7 @@ export function EmptyState({
   className,
   tone = 'neutral',
   role = 'status',
+  headingLevel: Title = 'p',
 }: EmptyStateProps) {
   return (
     <div
@@ -38,7 +41,7 @@ export function EmptyState({
         <Icon aria-hidden size={24} />
       </span>
       <div className="flex max-w-prose flex-col gap-1">
-        <p className="font-display text-h3 font-semibold text-ink">{title}</p>
+        <Title className="font-display text-h3 font-semibold text-ink">{title}</Title>
         {description && <p className="text-small text-ink-muted">{description}</p>}
       </div>
       {action}

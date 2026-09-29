@@ -50,6 +50,7 @@ export function DishPage() {
         <title>Platillo no encontrado | Sabor Cubano</title>
         <EmptyState
           icon={SearchX}
+          headingLevel="h1"
           title="No encontramos este platillo."
           action={
             <Link to="/platillos" className={buttonStyles({ variant: 'secondary' })}>

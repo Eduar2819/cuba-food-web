@@ -26,7 +26,7 @@ export function SiteFooter() {
                   <li key={item.to}>
                     <Link
                       to={item.to}
-                      className="inline-flex min-h-9 items-center text-small text-ink-muted underline-offset-4 hover:text-ink hover:underline"
+                      className="inline-flex min-h-11 min-w-11 items-center text-small text-ink-muted underline-offset-4 hover:text-ink hover:underline"
                     >
                       {item.label}
                     </Link>
@@ -39,7 +39,10 @@ export function SiteFooter() {
       </div>
       <div className="container-page flex flex-col gap-2 border-t border-line py-6 text-caption text-ink-muted tablet:flex-row tablet:justify-between">
         <p>© {new Date().getFullYear()} Sabor Cubano en Yucatán</p>
-        <Link to="/creditos" className="underline-offset-4 hover:text-ink hover:underline">
+        <Link
+          to="/creditos"
+          className="inline-flex min-h-11 items-center underline-offset-4 hover:text-ink hover:underline"
+        >
           Créditos de fotografía
         </Link>
       </div>

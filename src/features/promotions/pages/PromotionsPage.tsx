@@ -56,6 +56,7 @@ export function PromotionsPage() {
                     now={now}
                     restaurant={r && { name: r.name, slug: r.slug }}
                     showConditions
+                    headingLevel="h2"
                   />
                 </li>
               )

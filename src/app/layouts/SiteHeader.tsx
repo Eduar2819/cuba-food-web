@@ -26,7 +26,11 @@ export function SiteHeader() {
           'bg-surface/85 shadow-low ring-1 ring-line backdrop-blur-lg backdrop-saturate-150',
         )}
       >
-        <Link to="/" className="rounded-full" aria-label="Sabor Cubano en Yucatán, inicio">
+        <Link
+          to="/"
+          className="inline-flex min-h-11 items-center rounded-full"
+          aria-label="Sabor Cubano en Yucatán, inicio"
+        >
           <Logo />
         </Link>
 

@@ -52,7 +52,7 @@ function CategoryItems({
                     {slug && (
                       <Link
                         to={`/platillos/${slug}`}
-                        className="inline-flex min-h-8 items-center text-caption font-semibold text-accent-text underline-offset-4 hover:underline"
+                        className="inline-flex min-h-11 items-center text-caption font-semibold text-accent-text underline-offset-4 hover:underline"
                       >
                         Qué es este platillo
                       </Link>

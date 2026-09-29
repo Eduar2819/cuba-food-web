@@ -79,6 +79,7 @@ export function BlogPostPage() {
         <title>Artículo no encontrado | Sabor Cubano</title>
         <EmptyState
           icon={FileX}
+          headingLevel="h1"
           title="No encontramos este artículo."
           action={
             <Link to="/blog" className={buttonStyles({ variant: 'secondary' })}>

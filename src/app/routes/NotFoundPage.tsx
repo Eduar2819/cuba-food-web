@@ -15,6 +15,7 @@ export function NotFoundPage({
       <Seo title="Página no encontrada" description={description} path="/404" noIndex />
       <EmptyState
         icon={MapPinOff}
+        headingLevel="h1"
         title={title}
         description={description}
         action={

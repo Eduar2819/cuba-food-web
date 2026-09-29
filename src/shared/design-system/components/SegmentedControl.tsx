@@ -59,7 +59,7 @@ export function SegmentedControl<T extends string>({
             data-value={optionValue}
             onClick={() => onChange(optionValue)}
             className={cn(
-              'inline-flex min-h-10 items-center gap-2 rounded-full px-4 text-small font-semibold',
+              'inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-small font-semibold',
               'transition-[background-color,color,box-shadow] duration-(--dur-normal) ease-out-soft',
               selected ? 'bg-surface text-ink shadow-low' : 'text-ink-muted hover:text-ink',
             )}

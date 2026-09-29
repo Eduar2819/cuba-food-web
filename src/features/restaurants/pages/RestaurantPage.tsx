@@ -288,6 +288,7 @@ export function RestaurantPage() {
             <meta name="robots" content="noindex" />
             <EmptyState
               icon={MapPinOff}
+              headingLevel="h1"
               title="No encontramos este restaurante."
               description="Puede que haya cambiado de nombre o que ya no forme parte de la guía."
               action={

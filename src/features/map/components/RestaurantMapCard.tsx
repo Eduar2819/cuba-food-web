@@ -33,7 +33,7 @@ export function RestaurantMapCard({
             icon={X}
             label="Cerrar tarjeta"
             onClick={onClose}
-            className="-mt-2 -mr-2 size-10"
+            className="-mt-2 -mr-2"
           />
         </div>
         <OpenStatusLabel status={status} className="text-caption" />

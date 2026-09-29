@@ -50,6 +50,7 @@ export function ZonePage() {
         <title>Zona no encontrada | Sabor Cubano</title>
         <EmptyState
           icon={MapPinOff}
+          headingLevel="h1"
           title="No encontramos esta zona."
           action={
             <Link to="/zonas" className={buttonStyles({ variant: 'secondary' })}>
