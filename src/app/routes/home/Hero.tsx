@@ -56,7 +56,7 @@ function Polaroid({
 
 /**
  * Hero "Collage habanero": papel cálido a la izquierda con el titular y la búsqueda; a la
- * derecha la mesa servida dentro de un arco con muesca, sol guayaba, círculo añil, hoja de
+ * derecha la mesa servida dentro de un arco, sol guayaba, círculo añil, hoja de
  * palma y polaroids con notas a mano que rompen el marco. Toda la decoración es aria-hidden;
  * el texto real queda en HTML.
  * La foto grande es el LCP: eager + fetchpriority=high + preload en index.html.
@@ -134,9 +134,9 @@ export function Hero() {
         </div>
 
         {/*
-         * Collage: la mesa servida dentro de un arco (portal habanero) con una muesca de
-         * esquinas invertidas donde se encaja la tarjeta. Sol, círculo y polaroids rompen el
-         * marco para que la composición tenga capas y no se lea como una imagen de fondo.
+         * Collage: la mesa servida dentro de un arco (portal habanero). Sol, círculo y
+         * polaroids rompen el marco para que la composición tenga capas y no se lea como una
+         * imagen de fondo.
          */}
         <div className="relative mx-2 mb-14 aspect-[4/5] tablet:mx-6 tablet:mb-16 tablet:aspect-[5/4] desktop:m-0 desktop:aspect-auto">
           {/* Detrás del arco: sol guayaba, círculo añil y contorno desplazado */}
@@ -201,31 +201,6 @@ export function Hero() {
             sizes="(min-width: 1024px) 12vw, 0px"
             className="hero-delay-4 hidden rotate-[6deg] tablet:top-[30%] tablet:-right-[3%] tablet:block tablet:w-[19%] desktop:top-[42%] desktop:-right-[4%] desktop:w-[20%]"
           />
-
-          {/* Muesca con esquinas invertidas: la tarjeta queda encajada en el arco */}
-          <div className="absolute right-0 bottom-0 rounded-tl-[1.75rem] bg-canvas pt-3 pl-3 tablet:pt-4 tablet:pl-4">
-            <span
-              aria-hidden
-              className="absolute right-0 bottom-full size-7 bg-[radial-gradient(circle_at_0_0,transparent_27.5px,var(--color-canvas)_28px)]"
-            />
-            <span
-              aria-hidden
-              className="absolute right-full bottom-0 size-7 bg-[radial-gradient(circle_at_0_0,transparent_27.5px,var(--color-canvas)_28px)]"
-            />
-            <Link
-              to="/mapa"
-              className="hero-rise hero-delay-5 group flex items-center gap-3 rounded-[1.25rem] bg-surface py-3 pr-3 pl-4 shadow-medium ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 hover:shadow-high"
-            >
-              <MapPin aria-hidden size={20} className="shrink-0 fill-accent/15 text-accent" />
-              <span className="flex flex-col pr-2">
-                <span className="text-small font-semibold text-ink">La Habana en Mérida</span>
-                <span className="text-caption text-ink-muted">Comida cubana auténtica</span>
-              </span>
-              <span className="grid size-8 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-(--dur-normal) ease-out-soft group-hover:translate-x-0.5">
-                <ArrowRight aria-hidden size={16} />
-              </span>
-            </Link>
-          </div>
         </div>
       </div>
     </section>
