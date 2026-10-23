@@ -99,7 +99,7 @@ export function MapPage() {
         />
 
         <div className="min-h-0 overflow-y-auto pb-6 desktop:col-start-1 desktop:row-start-2">
-          <p aria-live="polite" className="px-1 pb-2 text-small font-semibold text-ink">
+          <p aria-live="polite" className="px-2 pb-2 text-small font-semibold text-ink">
             {data.status === 'success' &&
               `${items.length} ${items.length === 1 ? 'lugar' : 'lugares'}${location.location ? ', del más cercano al más lejano' : ''}`}
           </p>

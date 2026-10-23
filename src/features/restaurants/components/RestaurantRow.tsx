@@ -36,7 +36,7 @@ export function RestaurantRow({
       <span className="flex min-w-0 flex-col gap-0.5">
         <span className="truncate font-display text-body font-semibold text-ink">{r.name}</span>
         <OpenStatusLabel status={status} className="text-caption" />
-        <span className="truncate text-caption text-ink-muted">
+        <span className="line-clamp-2 text-caption text-ink-muted">
           {typeLabel(r.type)} en {neighborhoodName(r.address.neighborhoodId)},{' '}
           {cityName(r.address.cityId)}
         </span>
@@ -45,8 +45,9 @@ export function RestaurantRow({
     </>
   )
   const className = cn(
-    'flex w-full items-start gap-3 rounded-lg p-2 text-left transition-colors duration-(--dur-micro)',
-    selected ? 'bg-surface-sunken ring-2 ring-accent' : 'hover:bg-surface-sunken',
+    'flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors duration-(--dur-micro)',
+    // Anillo hacia adentro: no lo recorta el contenedor con scroll ni desalinea la fila.
+    selected ? 'bg-accent-soft ring-2 ring-accent ring-inset' : 'hover:bg-surface-sunken',
   )
   return onSelect ? (
     <button type="button" onClick={onSelect} aria-pressed={selected} className={className}>
