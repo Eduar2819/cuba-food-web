@@ -28,7 +28,8 @@ function Polaroid({
     <figure
       className={cn(
         // Papel siempre claro (también en modo oscuro). Relleno fijo: en % se calcularía sobre el collage.
-        'absolute rounded-md bg-arena-50 p-2 shadow-high ring-1 ring-anil-950/8 tablet:p-2.5 desktop:p-3',
+        'hero-drop absolute rounded-md bg-arena-50 p-2 shadow-high ring-1 ring-anil-950/8 tablet:p-2.5 desktop:p-3',
+        'transition-[rotate,scale] duration-(--dur-macro) ease-spring hover:scale-[1.04] hover:rotate-0',
         caption ? 'pb-14 tablet:pb-[4.5rem] desktop:pb-20' : 'pb-2 tablet:pb-2.5 desktop:pb-3',
         className,
       )}
@@ -46,7 +47,7 @@ function Polaroid({
           {caption[0]}
           <br />
           <span className="pl-[0.6em]">{caption[1]}</span>
-          <Swoosh className="mt-0.5 w-[62%] text-anil-950" />
+          <Swoosh className="hero-draw hero-delay-5 mt-0.5 w-[62%] text-anil-950" />
         </figcaption>
       )}
     </figure>
@@ -90,7 +91,7 @@ export function Hero() {
               Descubre{' '}
               <span className="relative inline-block font-script text-[1.12em] font-normal tracking-normal text-accent-text">
                 Cuba
-                <Swoosh className="absolute -bottom-[0.12em] left-[8%] w-[92%] text-accent" />
+                <Swoosh className="hero-draw hero-delay-2 absolute -bottom-[0.12em] left-[8%] w-[92%] text-accent" />
               </span>
               <br />
               en Mérida
@@ -141,17 +142,17 @@ export function Hero() {
           {/* Detrás del arco: sol guayaba, círculo añil y contorno desplazado */}
           <div
             aria-hidden
-            className="absolute -top-[6%] -left-[3%] aspect-square w-[24%] rounded-full bg-guayaba-600 desktop:-top-[3%] desktop:-left-[6%] desktop:w-[30%]"
+            className="hero-pop hero-delay-1 absolute -top-[6%] -left-[3%] aspect-square w-[24%] rounded-full bg-guayaba-600 desktop:-top-[3%] desktop:-left-[6%] desktop:w-[30%]"
           />
           <div
             aria-hidden
-            className="absolute -bottom-[7%] -left-[4%] aspect-square w-[22%] rounded-full bg-anil-700 desktop:-bottom-[6%] desktop:-left-[8%] desktop:w-[26%]"
+            className="hero-pop hero-delay-2 absolute -bottom-[7%] -left-[4%] aspect-square w-[22%] rounded-full bg-anil-700 desktop:-bottom-[6%] desktop:-left-[8%] desktop:w-[26%]"
           />
           <div
             aria-hidden
             className={cn(
               ARCH,
-              'absolute inset-0 -translate-x-3 translate-y-3 border-2 border-accent/45 desktop:-translate-x-5 desktop:translate-y-5',
+              'hero-fade hero-delay-3 absolute inset-0 -translate-x-3 -translate-y-3 border-2 border-accent/45 desktop:-translate-x-5 desktop:-translate-y-5',
             )}
           />
 
@@ -170,21 +171,22 @@ export function Hero() {
               aria-hidden
               className="absolute inset-0 bg-[radial-gradient(70%_55%_at_75%_12%,rgb(11_22_38/0.55),transparent_70%)]"
             />
+            <div aria-hidden className="hero-curtain absolute inset-0 bg-surface-sunken" />
           </div>
 
-          <PalmFrond className="absolute -top-[2%] left-[2%] w-[24%] -rotate-[18deg] text-palma-700 drop-shadow-[0_6px_10px_rgb(11_22_38/0.25)] desktop:top-[4%] desktop:-left-[2%] desktop:w-[26%]" />
+          <PalmFrond className="hero-sway hero-delay-3 absolute -top-[2%] left-[2%] w-[24%] -rotate-[18deg] text-palma-700 drop-shadow-[0_6px_10px_rgb(11_22_38/0.25)] desktop:top-[4%] desktop:-left-[2%] desktop:w-[26%]" />
 
           {/* Nota manuscrita sobre la foto */}
           <p
             aria-hidden
-            className="absolute top-[16%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[17%] desktop:right-[12%]"
+            className="hero-pop hero-delay-4 absolute top-[16%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[17%] desktop:right-[12%]"
           >
             <span className="flex items-start gap-1">
               <Sparkle className="mt-1 size-[0.7em] -scale-x-100 text-arena-50" />
               Auténtico
             </span>
             <span>Sabor Cubano</span>
-            <Swoosh className="w-[85%] text-arena-50" />
+            <Swoosh className="hero-draw hero-delay-5 w-[85%] text-arena-50" />
           </p>
 
           {/* Polaroids que salen del marco */}
@@ -192,12 +194,12 @@ export function Hero() {
             image={mojito}
             sizes="(min-width: 1024px) 15vw, 34vw"
             caption={['El clásico', 'de la isla']}
-            className="top-[40%] -left-[1%] w-[36%] -rotate-[7deg] tablet:top-[28%] tablet:w-[24%] desktop:top-[30%] desktop:-left-[9%] desktop:w-[25%]"
+            className="hero-delay-3 top-[40%] -left-[1%] w-[36%] -rotate-[7deg] tablet:top-[28%] tablet:w-[24%] desktop:top-[30%] desktop:-left-[9%] desktop:w-[25%]"
           />
           <Polaroid
             image={street}
             sizes="(min-width: 1024px) 12vw, 0px"
-            className="hidden rotate-[6deg] tablet:top-[30%] tablet:-right-[3%] tablet:block tablet:w-[19%] desktop:top-[42%] desktop:-right-[4%] desktop:w-[20%]"
+            className="hero-delay-4 hidden rotate-[6deg] tablet:top-[30%] tablet:-right-[3%] tablet:block tablet:w-[19%] desktop:top-[42%] desktop:-right-[4%] desktop:w-[20%]"
           />
 
           {/* Muesca con esquinas invertidas: la tarjeta queda encajada en el arco */}
@@ -212,7 +214,7 @@ export function Hero() {
             />
             <Link
               to="/mapa"
-              className="group flex items-center gap-3 rounded-[1.25rem] bg-surface py-3 pr-3 pl-4 shadow-medium ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 hover:shadow-high"
+              className="hero-rise hero-delay-5 group flex items-center gap-3 rounded-[1.25rem] bg-surface py-3 pr-3 pl-4 shadow-medium ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 hover:shadow-high"
             >
               <MapPin aria-hidden size={20} className="shrink-0 fill-accent/15 text-accent" />
               <span className="flex flex-col pr-2">

@@ -27,6 +27,7 @@ export function Swoosh({ className }: { className?: string }) {
     >
       <path
         d="M4 19C52 8 118 3 196 6"
+        pathLength={1}
         stroke="currentColor"
         strokeWidth="5"
         strokeLinecap="round"

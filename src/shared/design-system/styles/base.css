@@ -276,3 +276,125 @@
     mask-repeat: repeat;
   }
 }
+
+/*
+ * Movimiento del hero "Collage habanero". Una sola coreografía al cargar (≈1.6 s) y después
+ * un vaivén muy leve en las polaroids y la palma. Solo transform/opacity (GPU).
+ * La foto LCP nunca se oculta: la "cortina" es un elemento aparte que se desliza encima.
+ * Con prefers-reduced-motion la regla global deja todo en su estado final.
+ */
+@layer components {
+  .hero-reveal > :nth-child(5) {
+    animation-delay: 320ms;
+  }
+  .hero-reveal > :nth-child(n + 6) {
+    animation-delay: 400ms;
+  }
+
+  .hero-curtain {
+    animation: curtain-up 1.1s var(--ease-spring) 120ms both;
+  }
+  .hero-pop {
+    animation: pop-in 0.9s var(--ease-spring) var(--hero-delay, 0ms) both;
+  }
+  .hero-fade {
+    animation: fade-in 0.9s var(--ease-out-soft) var(--hero-delay, 0ms) both;
+  }
+  .hero-drop {
+    animation:
+      drop-in 0.9s var(--ease-spring) both,
+      float 7s ease-in-out infinite alternate;
+    animation-delay: var(--hero-delay, 0ms), calc(var(--hero-delay, 0ms) + 0.9s);
+  }
+  .hero-rise {
+    animation: rise-in 0.8s var(--ease-out-soft) var(--hero-delay, 0ms) both;
+  }
+  .hero-sway {
+    transform-origin: 15% 90%;
+    animation:
+      sway-in 1.2s var(--ease-spring) both,
+      sway 6s ease-in-out infinite alternate;
+    animation-delay: var(--hero-delay, 0ms), calc(var(--hero-delay, 0ms) + 1.2s);
+  }
+  /* Trazo que se dibuja (usa pathLength="1" en el <path>) */
+  .hero-draw path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 0.9s var(--ease-out-soft) var(--hero-delay, 0ms) forwards;
+  }
+  .hero-delay-1 {
+    --hero-delay: 250ms;
+  }
+  .hero-delay-2 {
+    --hero-delay: 450ms;
+  }
+  .hero-delay-3 {
+    --hero-delay: 700ms;
+  }
+  .hero-delay-4 {
+    --hero-delay: 900ms;
+  }
+  .hero-delay-5 {
+    --hero-delay: 1100ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-draw path {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@keyframes curtain-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -101%, 0);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -28px, 0) rotate(-8deg) scale(0.96);
+  }
+}
+
+@keyframes float {
+  to {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+@keyframes sway-in {
+  from {
+    opacity: 0;
+    transform: rotate(-24deg) scale(0.8);
+  }
+}
+
+@keyframes sway {
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
