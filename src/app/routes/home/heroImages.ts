@@ -9,9 +9,10 @@ import { IMAGES } from '../../../data/images.ts'
 export const HERO_BACKGROUND = IMAGES.platoCubano
 export const HERO_PLATE = IMAGES.mojito
 
+/** Arco grande del hero (vertical). */
 export const HERO_BACKGROUND_OPTIONS: ResponsiveImageOptions = {
-  ratio: '3/2',
-  sizes: '100vw',
-  widths: [640, 960, 1280, 1600, 2000],
-  quality: 65,
+  ratio: '4/5',
+  sizes: '(min-width: 1024px) 28vw, 62vw',
+  widths: [400, 640, 960, 1280],
+  quality: 70,
 }

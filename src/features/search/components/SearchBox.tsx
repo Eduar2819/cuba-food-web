@@ -5,7 +5,7 @@ import { Search } from 'lucide-react'
 import { cn } from '@/shared/lib/cn'
 
 export interface SearchBoxProps {
-  /** hero: pieza protagonista con doble bisel sobre fotografía. */
+  /** hero: pieza protagonista con doble bisel sobre el fondo cálido. */
   variant?: 'hero' | 'default'
   initialQuery?: string
   placeholder?: string
@@ -34,15 +34,12 @@ export function SearchBox({
     <form
       role="search"
       onSubmit={submit}
-      className={cn(
-        hero && 'rounded-full bg-white/14 p-1.5 ring-1 ring-white/25 backdrop-blur-none',
-        className,
-      )}
+      className={cn(hero && 'rounded-full bg-surface-sunken p-1.5 ring-1 ring-line', className)}
     >
       <div
         className={cn(
           'flex items-center gap-2 rounded-full bg-surface pr-1.5 pl-5',
-          hero ? 'min-h-15 shadow-high' : 'min-h-13 ring-1 ring-line-strong',
+          hero ? 'min-h-15 shadow-medium ring-1 ring-line' : 'min-h-13 ring-1 ring-line-strong',
           'focus-within:ring-2 focus-within:ring-focus',
         )}
       >

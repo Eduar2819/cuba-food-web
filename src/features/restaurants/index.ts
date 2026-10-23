@@ -23,6 +23,5 @@ export {
 export { RestaurantCard } from './components/RestaurantCard'
 export type { RestaurantCardProps } from './components/RestaurantCard'
 export { OpenStatusLabel } from './components/OpenStatusLabel'
-export { FeaturedRestaurants } from './components/FeaturedRestaurants'
 export { contactLinks } from './services/contactLinks'
 export { RestaurantRow } from './components/RestaurantRow'

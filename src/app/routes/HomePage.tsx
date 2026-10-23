@@ -5,7 +5,6 @@ import { DishCravings } from '@/features/dishes'
 import { UpcomingEvents } from '@/features/events'
 import { MapPreviewSection } from '@/features/map'
 import { NearbySection } from '@/features/nearby'
-import { FeaturedRestaurants } from '@/features/restaurants'
 import { Seo } from '@/features/seo'
 import { Hero } from './home/Hero'
 import { HERO_BACKGROUND } from './home/heroImages'
@@ -25,7 +24,7 @@ const websiteJsonLd = {
 
 /**
  * Landing: puerta de entrada a la guía. Cada sección responde una pregunta distinta
- * y usa una composición distinta (hero en capas, asimétrico, carrusel, agenda,
+ * y usa una composición distinta (hero de portales, carrusel, mapa, agenda,
  * editorial, banda fotográfica).
  */
 export function HomePage() {
@@ -40,7 +39,6 @@ export function HomePage() {
         jsonLd={websiteJsonLd}
       />
       <Hero />
-      <FeaturedRestaurants now={now} />
       <DishCravings />
       <MapPreviewSection now={now} />
       <NearbySection now={now} />
