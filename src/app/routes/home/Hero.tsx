@@ -53,7 +53,11 @@ export function Hero() {
         <div className="hero-reveal flex w-full max-w-[39rem] min-w-0 flex-col">
           <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-small font-medium text-arena-100 desktop:mb-8">
             <span className="flex items-center gap-2">
-              <MapPin aria-hidden size={18} className="fill-guayaba-300/20 text-guayaba-300" />
+              <MapPin
+                aria-hidden
+                size={18}
+                className="fill-mamoncillo-400/20 text-mamoncillo-400"
+              />
               Guía de cocina cubana en Mérida, Yucatán
             </span>
             <span aria-hidden className="hidden h-px w-8 bg-arena-100/50 large:block" />
@@ -67,9 +71,9 @@ export function Hero() {
             className="font-display text-[clamp(2.75rem,1.4rem+4.6vw,5.25rem)] leading-[0.98] font-bold tracking-[-0.025em] text-arena-50 [text-shadow:0_2px_24px_rgb(11_22_38/0.45)]"
           >
             Descubre{' '}
-            <span className="relative inline-block font-script text-[1.12em] font-normal tracking-normal text-guayaba-300">
+            <span className="relative inline-block font-script text-[1.12em] font-normal tracking-normal text-mamoncillo-400">
               Cuba
-              <Swoosh className="hero-draw hero-delay-2 absolute -bottom-[0.12em] left-[8%] w-[92%] text-guayaba-300" />
+              <Swoosh className="hero-draw hero-delay-2 absolute -bottom-[0.12em] left-[8%] w-[92%] text-mamoncillo-400" />
             </span>
             <br />
             en Mérida
@@ -99,7 +103,7 @@ export function Hero() {
 
           <Link
             to="/restaurantes"
-            className="group mt-8 inline-flex min-h-11 items-center gap-2 self-start text-body font-semibold text-arena-50 underline decoration-guayaba-300 decoration-2 underline-offset-[7px] transition-colors duration-(--dur-micro) hover:text-guayaba-300"
+            className="group mt-8 inline-flex min-h-11 items-center gap-2 self-start text-body font-semibold text-arena-50 underline decoration-mamoncillo-400 decoration-2 underline-offset-[7px] transition-colors duration-(--dur-micro) hover:text-mamoncillo-400"
           >
             Ver el directorio completo
             <ArrowRight
