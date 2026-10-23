@@ -52,7 +52,7 @@ function Polaroid({
 
 /**
  * Hero "Collage habanero": papel cálido a la izquierda con el titular y la búsqueda; a la
- * derecha la mesa servida con papel rasgado, sol guayaba, círculo añil, hojas de palma y
+ * derecha la mesa servida con papel rasgado, sol guayaba, círculo añil, hoja de palma y
  * polaroids con notas a mano. Toda la decoración es aria-hidden; el texto real queda en HTML.
  * La foto grande es el LCP: eager + fetchpriority=high + preload en index.html.
  */
@@ -63,9 +63,6 @@ export function Hero() {
 
   return (
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
-      {/* Palma tenue sobre el papel (esquina inferior izquierda) */}
-      <PalmFrond className="absolute -bottom-10 -left-16 -z-10 w-72 rotate-[200deg] text-line-strong/50 desktop:w-96" />
-
       {/* Texto y collage dentro del mismo contenedor que el encabezado: márgenes simétricos */}
       <div className="container-page desktop:grid desktop:min-h-[min(calc(100svh-5.5rem),44rem)] desktop:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] desktop:gap-10 desktop:py-8">
         {/* Texto y búsqueda */}
