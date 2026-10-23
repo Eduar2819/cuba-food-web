@@ -232,3 +232,47 @@
     }
   }
 }
+
+/*
+ * Calidez cubana: grano de papel sobre toda la página y ornamento de losa hidráulica.
+ * El grano es fijo, no recibe eventos y queda por debajo de diálogos y toasts.
+ */
+@layer base {
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-overlay);
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    mix-blend-mode: multiply;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body::after {
+      opacity: 0.1;
+      mix-blend-mode: soft-light;
+    }
+  }
+
+  /* Palabra de acento en titulares: itálica de Fraunces ("Descubre *Cuba*"). */
+  :is(h1, h2, h3, .font-display) em {
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  /*
+   * Losa hidráulica (piso de las casas habaneras). Se pinta con currentColor vía máscara,
+   * así cada contexto elige su tono con text-*. Siempre decorativo (aria-hidden).
+   */
+  .ornament-losa {
+    background-color: currentColor;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg fill='black'%3E%3Cpath d='M24 7c2.6 4.6 2.6 9.4 0 14-2.6-4.6-2.6-9.4 0-14zM24 41c-2.6-4.6-2.6-9.4 0-14 2.6 4.6 2.6 9.4 0 14zM7 24c4.6-2.6 9.4-2.6 14 0-4.6 2.6-9.4 2.6-14 0zM41 24c-4.6 2.6-9.4 2.6-14 0 4.6-2.6 9.4-2.6 14 0z'/%3E%3Ccircle cx='24' cy='24' r='2.2'/%3E%3Cpath d='M0 0h7a7 7 0 0 1-7 7zM48 0v7a7 7 0 0 1-7-7zM48 48h-7a7 7 0 0 1 7-7zM0 48v-7a7 7 0 0 1 7 7z'/%3E%3C/g%3E%3Cpath d='M24 1.5 46.5 24 24 46.5 1.5 24z' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E");
+    mask-size: var(--losa-size, 48px) var(--losa-size, 48px);
+    mask-repeat: repeat;
+  }
+}

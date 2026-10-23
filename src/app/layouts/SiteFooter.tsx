@@ -5,9 +5,14 @@ import { SECTION_GROUPS } from '@/app/navigation'
 export function SiteFooter() {
   return (
     <footer className="mt-24 bg-surface-sunken">
-      <div className="container-page grid gap-12 py-14 desktop:grid-cols-[1.4fr_2fr] desktop:py-20">
+      {/* Franja de losa hidráulica: el "piso" de la página */}
+      <div aria-hidden className="ornament-losa h-10 text-line-strong [--losa-size:40px]" />
+      <div className="container-page grid gap-12 pt-12 pb-14 desktop:grid-cols-[1.4fr_2fr] desktop:pt-16 desktop:pb-20">
         <div className="flex max-w-sm flex-col gap-4">
           <Logo />
+          <p className="font-display text-h3 font-medium text-ink">
+            La cocina cubana de Mérida, <em className="text-accent-text">en un solo lugar</em>.
+          </p>
           <p className="text-small text-ink-muted">
             Guía informativa de los restaurantes cubanos en Mérida: sus platillos, redes sociales y
             ubicación.

@@ -17,7 +17,7 @@ calificaciones: el sitio solo informa.
 - React Router 7 (cada ruta es su propio chunk)
 - Tailwind CSS v4 (`@tailwindcss/vite`, tokens en `@theme`)
 - lucide-react (iconos, trazo 1.5), Leaflet + react-leaflet + OpenStreetMap (mapa, sin API key)
-- Fuentes autoalojadas: Bricolage Grotesque y Figtree (OFL), `font-display: swap` + preload
+- Fuentes autoalojadas: Fraunces (titulares) y Figtree (OFL), `font-display: swap` + preload
 - ESLint + Prettier, Vitest + Testing Library + jsdom
 
 ## Scripts
@@ -117,4 +117,4 @@ exista una API, la alternativa es SSR o ISR.
 
 Fotografías de [Unsplash](https://unsplash.com) (licencia Unsplash). La lista completa con
 autores está en `src/data/images.ts` y en la página `/creditos` del sitio. Mapas © colaboradores
-de OpenStreetMap. Fuentes: Bricolage Grotesque y Figtree (SIL Open Font License).
+de OpenStreetMap. Fuentes: Fraunces y Figtree (SIL Open Font License).

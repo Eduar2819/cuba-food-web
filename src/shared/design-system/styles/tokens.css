@@ -5,12 +5,25 @@
  * Las features deben usar SOLO la capa semántica.
  */
 
+/* Fraunces: serif suave con eje óptico (opsz). Titulares con aire editorial de La Habana vieja. */
 @font-face {
-  font-family: 'Bricolage Grotesque Variable';
+  font-family: 'Fraunces Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 200 800;
-  src: url('/fonts/bricolage-grotesque-latin-wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  src: url('/fonts/fraunces-latin-opsz.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Itálica: solo para palabras de acento (se descarga cuando se usa). */
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/fraunces-latin-opsz-italic.woff2') format('woff2-variations');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -71,16 +84,16 @@
   --color-mamoncillo-400: #f1c04a;
   --color-mamoncillo-800: #7a4f00;
 
-  /* Arena (neutros cálidos) */
-  --color-arena-50: #fcfbf9;
-  --color-arena-100: #f6f4ef;
-  --color-arena-200: #ece8e0;
-  --color-arena-300: #d9d3c8;
-  --color-arena-400: #b3ab9d;
-  --color-arena-500: #8a8275;
-  --color-arena-600: #625a4e;
-  --color-arena-700: #4a443b;
-  --color-arena-800: #2b2822;
+  /* Arena (neutros cálidos: pared encalada al sol de la tarde) */
+  --color-arena-50: #fbf7f0;
+  --color-arena-100: #f4ede1;
+  --color-arena-200: #e9dfcf;
+  --color-arena-300: #d8cab4;
+  --color-arena-400: #b5a68e;
+  --color-arena-500: #8b7d67;
+  --color-arena-600: #5f5444;
+  --color-arena-700: #483f33;
+  --color-arena-800: #2b251e;
 
   /* Palma (verde de estado "abierto") */
   --color-palma-100: #dff1e7;
@@ -92,22 +105,24 @@
   --color-coral-error-700: #b42318;
 
   /* Tipografía */
-  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
   --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* Fraunces se ve más fina a 650 que a 700; Figtree lo interpola sin problema. */
+  --font-weight-bold: 650;
 
   --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
   --text-display--line-height: 1.02;
-  --text-display--letter-spacing: -0.03em;
+  --text-display--letter-spacing: -0.022em;
   --text-h1: clamp(2rem, 1.5rem + 2vw, 3rem);
   --text-h1--line-height: 1.08;
-  --text-h1--letter-spacing: -0.025em;
+  --text-h1--letter-spacing: -0.018em;
   --text-h2: clamp(1.5rem, 1.25rem + 1vw, 2.125rem);
   --text-h2--line-height: 1.15;
-  --text-h2--letter-spacing: -0.02em;
+  --text-h2--letter-spacing: -0.012em;
   --text-h3: 1.25rem;
   --text-h3--line-height: 1.25;
-  --text-h3--letter-spacing: -0.01em;
+  --text-h3--letter-spacing: -0.005em;
   --text-lead: 1.1875rem;
   --text-lead--line-height: 1.55;
   --text-body: 1.0625rem;
@@ -180,9 +195,9 @@
   color-scheme: light dark;
 
   --ds-canvas: var(--color-arena-50);
-  --ds-surface: var(--color-white);
+  --ds-surface: #fffdf9;
   --ds-surface-sunken: var(--color-arena-100);
-  --ds-surface-raised: var(--color-white);
+  --ds-surface-raised: #fffdf9;
   --ds-surface-inverse: var(--color-anil-900);
   --ds-ink: var(--color-anil-950);
   --ds-ink-muted: var(--color-arena-600);

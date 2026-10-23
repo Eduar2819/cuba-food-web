@@ -1,13 +1,14 @@
 {
   "meta": {
-    "name": "Malecón",
-    "description": "Sistema visual de Sabor Cubano en Mérida: guía gastronómica con fotografía protagonista, añil profundo como base de marca, guayaba como único acento y tipografía grotesca con carácter.",
+    "name": "Malecón cálido",
+    "description": "Sistema visual de Sabor Cubano en Mérida: guía gastronómica con fotografía protagonista, añil profundo como base de marca, guayaba como único acento, serif suave de aire habanero, fondo de cal cálida con grano de papel y la losa hidráulica como único ornamento.",
     "source_references": [
       "Brief del producto (sin referencias visuales externas)",
       "Fachadas de La Habana: añil, cal, persianas; luz caribeña",
       "Skills: frontend-design, taste-skill, soft-skill, design-dna"
     ],
-    "created_at": "2026-09-28"
+    "created_at": "2026-09-28",
+    "updated_at": "2026-10-23"
   },
   "design_system": {
     "color": {
@@ -16,22 +17,22 @@
         "hex": "#12294A",
         "role": "Añil: marca, navegación, titulares, superficies oscuras"
       },
-      "secondary": { "hex": "#F6F4EF", "role": "Cal: superficies hundidas y bandas de sección" },
+      "secondary": { "hex": "#F4EDE1", "role": "Cal: superficies hundidas y bandas de sección" },
       "accent": {
         "hex": "#C7323F",
         "role": "Guayaba: único acento. CTA primario, Guardar, foco de conversión"
       },
       "neutral": {
         "scale": [
-          "#FCFBF9",
-          "#F6F4EF",
-          "#ECE8E0",
-          "#D9D3C8",
-          "#B3AB9D",
-          "#8A8275",
-          "#625A4E",
-          "#4A443B",
-          "#2B2822"
+          "#FBF7F0",
+          "#F4EDE1",
+          "#E9DFCF",
+          "#D8CAB4",
+          "#B5A68E",
+          "#8B7D67",
+          "#5F5444",
+          "#483F33",
+          "#2B251E"
         ],
         "usage": "Escala 'arena' (cálida) para fondos, líneas y texto secundario. El texto principal usa Añil 950 (#0E1E36), no negro."
       },
@@ -41,7 +42,7 @@
         "error": "#B42318",
         "info": "#25508A"
       },
-      "surface": { "background": "#FCFBF9", "card": "#FFFFFF", "elevated": "#FFFFFF" },
+      "surface": { "background": "#FBF7F0", "card": "#FFFDF9", "elevated": "#FFFDF9" },
       "contrast_strategy": "Oscuro sobre claro dominante; todo texto >= 4.5:1 (validado). Mamoncillo #F1C04A nunca como texto sobre claro, solo como relleno o sobre Añil."
     },
     "typography": {
@@ -91,11 +92,11 @@
         }
       },
       "font_families": {
-        "heading": "Bricolage Grotesque Variable",
+        "heading": "Fraunces Variable (eje opsz; itálica solo para la palabra de acento)",
         "body": "Figtree Variable",
         "mono": "ui-monospace (solo en /design-system para nombres de tokens)"
       },
-      "font_style_notes": "Bricolage: grotesca con terminales expresivos y contraste óptico; da voz a titulares sin caer en serif 'editorial'. Figtree: geométrica-humanista muy legible para UI y cuerpo. Sin mayúsculas sostenidas para etiquetas; sentence case en todo."
+      "font_style_notes": "Fraunces: serif suave con eje óptico, peso 650 en titulares; evoca la rotulación de La Habana vieja sin volverse retro. La itálica en guayaba marca una sola palabra por titular (\"Descubre *Cuba*\"). Figtree: geométrica-humanista muy legible para UI y cuerpo. Sin mayúsculas sostenidas para etiquetas; sentence case en todo."
     },
     "spacing": {
       "base_unit": "4px",
@@ -151,7 +152,7 @@
   "design_style": {
     "aesthetic": {
       "mood": ["cálido", "apetitoso", "confiable", "luminoso"],
-      "visual_metaphor": "Una fachada habanera recién pintada: añil, cal y la puerta de color que invita a entrar",
+      "visual_metaphor": "Una casa habanera por dentro: paredes de cal tibia, piso de losa hidráulica y la mesa servida",
       "era_influence": "Contemporáneo, con guiños a la rotulación caribeña de mediados de siglo en la tipografía",
       "genre": "guía gastronómica de consumo / producto de descubrimiento",
       "personality_traits": ["anfitrión", "bien informado", "directo"],
@@ -159,12 +160,12 @@
     },
     "visual_language": {
       "complexity": "moderate",
-      "ornamentation": "none",
+      "ornamentation": "minimal: flor de losa hidráulica (marca, eyebrow del hero, franja del pie de página)",
       "whitespace_usage": "Generoso en landing; eficiente en directorio y perfil",
       "visual_weight_distribution": "La fotografía carga el peso; la tipografía ancla a la izquierda",
       "focal_strategy": "single hero element por pantalla",
       "contrast_level": "alto en texto, medio en superficies",
-      "texture_usage": "Ninguna textura artificial; la textura viene de la comida fotografiada"
+      "texture_usage": "Grano de papel fijo y muy sutil (7% multiply) sobre toda la página; la textura principal sigue siendo la comida fotografiada"
     },
     "composition": {
       "hierarchy_method": "scale contrast + typographic hierarchy",
@@ -176,8 +177,8 @@
     "imagery": {
       "photo_treatment": "Fotografía gastronómica real, luz natural, sin filtros ni duotonos",
       "illustration_style": "none",
-      "graphic_elements": "Ninguno decorativo; iconos lineales solo con función",
-      "pattern_usage": "none",
+      "graphic_elements": "Flor de losa (TileFlower) como único ornamento; iconos lineales solo con función; glifos monocromos de redes sociales",
+      "pattern_usage": "Losa hidráulica repetida (.ornament-losa, máscara con currentColor) solo como franja de cierre",
       "image_shape": "Rectángulos con radio 20px; relaciones 4:3, 3:2, 16:9 y 1:1 según contexto"
     },
     "interaction_feel": {

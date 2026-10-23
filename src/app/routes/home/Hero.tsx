@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router'
-import { ArrowUpRight } from 'lucide-react'
-import { buttonStyles, ButtonContent, chipStyles, CubanFlag } from '@/shared/design-system'
+import { ArrowRight } from 'lucide-react'
+import { chipStyles, TileFlower } from '@/shared/design-system'
 import { useParallax } from '@/shared/hooks/useParallax'
 import { responsiveImage } from '@/shared/lib/images'
 import { directoryUrl, QUICK_FILTERS } from '@/features/filters'
@@ -71,16 +71,20 @@ export function Hero() {
         {/* Capa de contenido */}
         <div className="relative z-(--z-raised) flex w-full flex-col justify-end px-5 pt-28 pb-8 tablet:px-10 tablet:pb-12 desktop:px-14 desktop:pb-16">
           <div className="hero-reveal flex max-w-[40rem] flex-col gap-5 tablet:gap-6">
-            <h1 id="hero-title" className="text-display font-bold text-arena-50">
-              Descubre Cuba en Mérida <CubanFlag />
+            <p className="flex items-center gap-3 text-small font-medium tracking-[0.02em] text-arena-100">
+              <TileFlower className="size-5 text-mamoncillo-400" />
+              Guía de cocina cubana en Mérida, Yucatán
+            </p>
+            <h1 id="hero-title" className="text-display font-semibold text-arena-50">
+              Descubre <em className="text-guayaba-300">Cuba</em> en Mérida
             </h1>
-            <p className="max-w-[38rem] text-lead text-arena-100">
-              Encuentra restaurantes, sabores y experiencias cubanas cerca de ti.
+            <p className="max-w-[34rem] text-lead text-arena-100">
+              Restaurantes cubanos de la ciudad con sus platillos, redes sociales y cómo llegar.
             </p>
             <SearchBox variant="hero" />
             <nav aria-label="Accesos rápidos" className="-mx-5 tablet:mx-0">
               <ul className="scrollbar-none flex gap-2 overflow-x-auto px-5 tablet:flex-wrap tablet:px-0">
-                {QUICK_FILTERS.map(({ id, label, icon: Icon, filters }) => (
+                {QUICK_FILTERS.slice(0, 4).map(({ id, label, icon: Icon, filters }) => (
                   <li key={id} className="shrink-0">
                     <Link to={directoryUrl(filters)} className={chipStyles({ tone: 'onPhoto' })}>
                       <Icon aria-hidden size={16} />
@@ -90,13 +94,17 @@ export function Hero() {
                 ))}
               </ul>
             </nav>
-            <div>
-              <Link to="/restaurantes" className={buttonStyles({ size: 'lg', withIsland: true })}>
-                <ButtonContent size="lg" trailingIcon={ArrowUpRight}>
-                  Explorar restaurantes
-                </ButtonContent>
-              </Link>
-            </div>
+            <Link
+              to="/restaurantes"
+              className="group inline-flex min-h-11 items-center gap-2 self-start text-body font-semibold text-arena-50 underline decoration-arena-50/40 decoration-1 underline-offset-[6px] transition-colors duration-(--dur-micro) hover:decoration-arena-50"
+            >
+              Ver el directorio completo
+              <ArrowRight
+                aria-hidden
+                size={18}
+                className="transition-transform duration-(--dur-normal) ease-out-soft group-hover:translate-x-1"
+              />
+            </Link>
           </div>
         </div>
       </div>

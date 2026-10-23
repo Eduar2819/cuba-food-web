@@ -187,7 +187,7 @@ export function DesignSystemPage() {
 
       <Section id="tipografia" title="Tipografía">
         <p className="text-small text-ink-muted">
-          Bricolage Grotesque (titulares) · Figtree (UI y cuerpo). Autoalojadas, font-display: swap.
+          Fraunces (titulares) · Figtree (UI y cuerpo). Autoalojadas, font-display: swap.
         </p>
         <div className="flex flex-col gap-5">
           {typeScale.map(([token, classes, sample]) => (

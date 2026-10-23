@@ -40,7 +40,14 @@ describe('Perfil del restaurante', () => {
 
     // Menú estructurado por pestañas.
     await userEvent.click(screen.getByRole('tab', { name: 'Platos fuertes' }))
-    expect(screen.getByText('Ropa vieja')).toBeInTheDocument()
+    expect(within(screen.getByRole('tabpanel')).getByText('Ropa vieja')).toBeInTheDocument()
+
+    // Platillos de la casa enlazan a su ficha cultural.
+    const dishes = screen.getByRole('region', { name: 'Platillos de la casa' })
+    expect(within(dishes).getByRole('link', { name: /Ropa vieja/ })).toHaveAttribute(
+      'href',
+      '/platillos/ropa-vieja',
+    )
 
     // "Todo lo que necesitas saber" solo muestra datos confirmados.
     expect(screen.getByText('Sin estacionamiento')).toBeInTheDocument()

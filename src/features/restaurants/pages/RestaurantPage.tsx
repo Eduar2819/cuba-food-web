@@ -21,6 +21,7 @@ import { MenuView } from '@/features/menu'
 import { breadcrumbJsonLd, restaurantJsonLd, Seo } from '@/features/seo'
 import { cityName, neighborhoodName } from '@/features/zones'
 import { MobileActionBar, RestaurantActions } from '../components/RestaurantActions'
+import { HouseDishes } from '../components/HouseDishes'
 import { OpenStatusLabel } from '../components/OpenStatusLabel'
 import { RestaurantFacts } from '../components/RestaurantFacts'
 import { RestaurantGallery } from '../components/RestaurantGallery'
@@ -151,6 +152,12 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
             <p className="max-w-prose text-body text-ink">{r.description}</p>
           </Block>
 
+          {r.dishIds.length > 0 && (
+            <Block id="platillos" title="Platillos de la casa">
+              <HouseDishes dishIds={r.dishIds} />
+            </Block>
+          )}
+
           <Block id="menu" title="Menú">
             <MenuView menu={r.menu} restaurantName={r.name} dishSlug={(id) => dishById(id)?.slug} />
           </Block>
@@ -221,7 +228,7 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
           </Block>
 
           {r.social.length > 0 && (
-            <Block title="Síguelo">
+            <Block title="Redes sociales">
               <SocialLinks profiles={r.social} />
             </Block>
           )}
