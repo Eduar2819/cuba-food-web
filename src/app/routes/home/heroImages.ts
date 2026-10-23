@@ -13,7 +13,7 @@ export const HERO_STREET = IMAGES.habanaCalle
 /** Foto grande del collage: mitad derecha en desktop, bloque 4:3 en móvil. */
 export const HERO_BACKGROUND_OPTIONS: ResponsiveImageOptions = {
   ratio: '1/1',
-  sizes: '(min-width: 1024px) 54vw, 100vw',
+  sizes: '(min-width: 1320px) 680px, (min-width: 1024px) 52vw, 100vw',
   widths: [640, 960, 1280, 1600],
   quality: 68,
 }

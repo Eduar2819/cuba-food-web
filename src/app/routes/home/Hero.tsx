@@ -66,9 +66,10 @@ export function Hero() {
       {/* Palma tenue sobre el papel (esquina inferior izquierda) */}
       <PalmFrond className="absolute -bottom-10 -left-16 -z-10 w-72 rotate-[200deg] text-line-strong/50 desktop:w-96" />
 
-      <div className="desktop:grid desktop:min-h-[min(calc(100svh-5.5rem),46rem)] desktop:grid-cols-[48%_52%]">
+      {/* Texto y collage dentro del mismo contenedor que el encabezado: márgenes simétricos */}
+      <div className="container-page desktop:grid desktop:min-h-[min(calc(100svh-5.5rem),44rem)] desktop:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] desktop:gap-10 desktop:py-8">
         {/* Texto y búsqueda */}
-        <div className="relative z-(--z-raised) flex items-center px-4 pt-8 pb-12 tablet:px-6 desktop:py-16 desktop:pr-0 desktop:pl-[max(2rem,calc((100vw-var(--container-page))/2+2rem))]">
+        <div className="relative z-(--z-raised) flex items-center pt-8 pb-12 desktop:py-8">
           <div className="hero-reveal flex w-full max-w-[38rem] min-w-0 flex-col gap-6">
             <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-small font-medium text-ink-muted">
               <span className="flex items-center gap-2">
@@ -101,7 +102,7 @@ export function Hero() {
             <SearchBox variant="hero" className="max-w-[36rem]" />
 
             <nav aria-label="Accesos rápidos" className="-mx-4 tablet:mx-0">
-              <ul className="scrollbar-none flex gap-2.5 overflow-x-auto px-4 py-1 tablet:flex-wrap tablet:px-0">
+              <ul className="scrollbar-none flex gap-2 overflow-x-auto px-4 py-1 tablet:flex-wrap tablet:px-0">
                 {QUICK_FILTERS.slice(0, 4).map(({ id, label, icon: Icon, filters }) => (
                   <li key={id} className="shrink-0">
                     <Link
@@ -131,8 +132,8 @@ export function Hero() {
         </div>
 
         {/* Collage: la mesa servida */}
-        <div className="relative mx-4 mt-10 mb-10 aspect-[4/3] tablet:mx-6 tablet:mt-14 desktop:m-0 desktop:aspect-auto">
-          <div className="absolute inset-0 overflow-hidden rounded-xl desktop:rounded-none">
+        <div className="relative mt-2 mb-10 aspect-[4/3] tablet:mt-6 desktop:m-0 desktop:aspect-auto">
+          <div className="absolute inset-0 overflow-hidden rounded-xl desktop:rounded-l-none">
             <img
               {...main}
               alt={main.alt}
@@ -146,19 +147,18 @@ export function Hero() {
               aria-hidden
               className="absolute inset-0 bg-[radial-gradient(70%_55%_at_75%_10%,rgb(11_22_38/0.55),transparent_70%)]"
             />
+            {/* Sol guayaba arriba y círculo añil abajo, recortados por el marco de la foto */}
+            <div
+              aria-hidden
+              className="absolute -top-[16%] left-[12%] aspect-square w-[26%] rounded-full bg-guayaba-600 desktop:-top-[14%] desktop:left-[14%] desktop:w-[28%]"
+            />
+            <div
+              aria-hidden
+              className="absolute -bottom-[20%] left-[32%] aspect-square w-[34%] rounded-full bg-anil-700 desktop:-bottom-[22%]"
+            />
             {/* Papel rasgado sobre el borde izquierdo de la foto */}
             <TornEdge className="absolute inset-y-0 -left-px hidden h-full w-10 text-canvas drop-shadow-[3px_0_4px_rgb(43_37_30/0.18)] desktop:block" />
           </div>
-
-          {/* Sol guayaba arriba y círculo añil abajo, por delante del borde */}
-          <div
-            aria-hidden
-            className="absolute -top-[7%] left-[10%] aspect-square w-[20%] rounded-full bg-guayaba-600 desktop:-top-[18%] desktop:left-[12%] desktop:w-[28%]"
-          />
-          <div
-            aria-hidden
-            className="absolute -bottom-[16%] left-[30%] aspect-square w-[34%] rounded-full bg-anil-700 desktop:-bottom-[24%]"
-          />
 
           <PalmFrond className="absolute top-[6%] left-0 w-[26%] -rotate-[20deg] text-palma-700 drop-shadow-[0_6px_10px_rgb(11_22_38/0.25)] desktop:-left-[6%] desktop:w-[28%]" />
 
