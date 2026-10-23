@@ -6,7 +6,10 @@ import { responsiveImage } from '@/shared/lib/images'
 import { directoryUrl, QUICK_FILTERS } from '@/features/filters'
 import { SearchBox } from '@/features/search'
 import { HERO_BACKGROUND, HERO_BACKGROUND_OPTIONS, HERO_PLATE, HERO_STREET } from './heroImages'
-import { PalmFrond, Sparkle, Swoosh, TornEdge } from './HeroArt'
+import { PalmFrond, Sparkle, Swoosh } from './HeroArt'
+
+/** Arco de medio punto (portal habanero): radio circular según el ancho disponible. */
+const ARCH = 'rounded-t-[9rem] rounded-b-xl tablet:rounded-t-[15rem] desktop:rounded-t-[999px]'
 
 /** Foto tipo polaroid con nota manuscrita opcional. */
 function Polaroid({
@@ -52,8 +55,9 @@ function Polaroid({
 
 /**
  * Hero "Collage habanero": papel cálido a la izquierda con el titular y la búsqueda; a la
- * derecha la mesa servida con papel rasgado, sol guayaba, círculo añil, hoja de palma y
- * polaroids con notas a mano. Toda la decoración es aria-hidden; el texto real queda en HTML.
+ * derecha la mesa servida dentro de un arco con muesca, sol guayaba, círculo añil, hoja de
+ * palma y polaroids con notas a mano que rompen el marco. Toda la decoración es aria-hidden;
+ * el texto real queda en HTML.
  * La foto grande es el LCP: eager + fetchpriority=high + preload en index.html.
  */
 export function Hero() {
@@ -128,9 +132,31 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Collage: la mesa servida */}
-        <div className="relative mb-14 aspect-[4/3] tablet:mb-16 desktop:m-0 desktop:aspect-auto">
-          <div className="absolute inset-0 overflow-hidden rounded-xl desktop:rounded-l-none">
+        {/*
+         * Collage: la mesa servida dentro de un arco (portal habanero) con una muesca de
+         * esquinas invertidas donde se encaja la tarjeta. Sol, círculo y polaroids rompen el
+         * marco para que la composición tenga capas y no se lea como una imagen de fondo.
+         */}
+        <div className="relative mx-2 mb-14 aspect-[4/5] tablet:mx-6 tablet:mb-16 tablet:aspect-[5/4] desktop:m-0 desktop:aspect-auto">
+          {/* Detrás del arco: sol guayaba, círculo añil y contorno desplazado */}
+          <div
+            aria-hidden
+            className="absolute -top-[6%] -left-[3%] aspect-square w-[24%] rounded-full bg-guayaba-600 desktop:-top-[3%] desktop:-left-[6%] desktop:w-[30%]"
+          />
+          <div
+            aria-hidden
+            className="absolute -bottom-[7%] -left-[4%] aspect-square w-[22%] rounded-full bg-anil-700 desktop:-bottom-[6%] desktop:-left-[8%] desktop:w-[26%]"
+          />
+          <div
+            aria-hidden
+            className={cn(
+              ARCH,
+              'absolute inset-0 -translate-x-3 translate-y-3 border-2 border-accent/45 desktop:-translate-x-5 desktop:translate-y-5',
+            )}
+          />
+
+          {/* El arco con la foto */}
+          <div className={cn(ARCH, 'absolute inset-0 overflow-hidden shadow-high')}>
             <img
               {...main}
               alt={main.alt}
@@ -139,30 +165,19 @@ export function Hero() {
               decoding="sync"
               className="size-full object-cover"
             />
-            {/* Velo cálido arriba a la derecha para la nota manuscrita */}
+            {/* Velo arriba a la derecha para la nota manuscrita */}
             <div
               aria-hidden
-              className="absolute inset-0 bg-[radial-gradient(70%_55%_at_75%_10%,rgb(11_22_38/0.55),transparent_70%)]"
+              className="absolute inset-0 bg-[radial-gradient(70%_55%_at_75%_12%,rgb(11_22_38/0.55),transparent_70%)]"
             />
-            {/* Sol guayaba arriba y círculo añil abajo, recortados por el marco de la foto */}
-            <div
-              aria-hidden
-              className="absolute -top-[16%] left-[12%] aspect-square w-[26%] rounded-full bg-guayaba-600 desktop:-top-[14%] desktop:left-[14%] desktop:w-[28%]"
-            />
-            <div
-              aria-hidden
-              className="absolute -bottom-[20%] left-[32%] aspect-square w-[34%] rounded-full bg-anil-700 desktop:-bottom-[22%]"
-            />
-            {/* Papel rasgado sobre el borde izquierdo de la foto */}
-            <TornEdge className="absolute inset-y-0 -left-px hidden h-full w-10 text-canvas drop-shadow-[3px_0_4px_rgb(43_37_30/0.18)] desktop:block" />
           </div>
 
-          <PalmFrond className="absolute top-[6%] left-0 w-[26%] -rotate-[20deg] text-palma-700 drop-shadow-[0_6px_10px_rgb(11_22_38/0.25)] desktop:-left-[6%] desktop:w-[28%]" />
+          <PalmFrond className="absolute -top-[2%] left-[2%] w-[24%] -rotate-[18deg] text-palma-700 drop-shadow-[0_6px_10px_rgb(11_22_38/0.25)] desktop:top-[4%] desktop:-left-[2%] desktop:w-[26%]" />
 
           {/* Nota manuscrita sobre la foto */}
           <p
             aria-hidden
-            className="absolute top-[9%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[11%] desktop:right-[12%]"
+            className="absolute top-[16%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[17%] desktop:right-[12%]"
           >
             <span className="flex items-start gap-1">
               <Sparkle className="mt-1 size-[0.7em] -scale-x-100 text-arena-50" />
@@ -172,32 +187,43 @@ export function Hero() {
             <Swoosh className="w-[85%] text-arena-50" />
           </p>
 
+          {/* Polaroids que salen del marco */}
           <Polaroid
             image={mojito}
-            sizes="(min-width: 1024px) 14vw, 34vw"
+            sizes="(min-width: 1024px) 15vw, 34vw"
             caption={['El clásico', 'de la isla']}
-            className="top-[22%] left-[4%] w-[30%] -rotate-[7deg] tablet:w-[24%] desktop:top-[28%] desktop:left-[7%] desktop:w-[23%]"
+            className="top-[40%] -left-[1%] w-[36%] -rotate-[7deg] tablet:top-[28%] tablet:w-[24%] desktop:top-[30%] desktop:-left-[9%] desktop:w-[25%]"
           />
           <Polaroid
             image={street}
-            sizes="(min-width: 1024px) 11vw, 0px"
-            className="hidden rotate-[5deg] tablet:top-[44%] tablet:left-[44%] tablet:block tablet:w-[19%] desktop:top-[46%] desktop:left-[42%] desktop:w-[18%]"
+            sizes="(min-width: 1024px) 12vw, 0px"
+            className="hidden rotate-[6deg] tablet:top-[30%] tablet:-right-[3%] tablet:block tablet:w-[19%] desktop:top-[42%] desktop:-right-[4%] desktop:w-[20%]"
           />
 
-          {/* Tarjeta: lleva al mapa */}
-          <Link
-            to="/mapa"
-            className="group absolute right-[4%] -bottom-[7%] flex items-center gap-3 rounded-lg bg-surface py-3 pr-3 pl-4 shadow-high ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 desktop:right-[5%] desktop:bottom-[7%]"
-          >
-            <MapPin aria-hidden size={20} className="shrink-0 fill-accent/15 text-accent" />
-            <span className="flex flex-col pr-2">
-              <span className="text-small font-semibold text-ink">La Habana en Mérida</span>
-              <span className="text-caption text-ink-muted">Comida cubana auténtica</span>
-            </span>
-            <span className="grid size-8 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-(--dur-normal) ease-out-soft group-hover:translate-x-0.5">
-              <ArrowRight aria-hidden size={16} />
-            </span>
-          </Link>
+          {/* Muesca con esquinas invertidas: la tarjeta queda encajada en el arco */}
+          <div className="absolute right-0 bottom-0 rounded-tl-[1.75rem] bg-canvas pt-3 pl-3 tablet:pt-4 tablet:pl-4">
+            <span
+              aria-hidden
+              className="absolute right-0 bottom-full size-7 bg-[radial-gradient(circle_at_0_0,transparent_27.5px,var(--color-canvas)_28px)]"
+            />
+            <span
+              aria-hidden
+              className="absolute right-full bottom-0 size-7 bg-[radial-gradient(circle_at_0_0,transparent_27.5px,var(--color-canvas)_28px)]"
+            />
+            <Link
+              to="/mapa"
+              className="group flex items-center gap-3 rounded-[1.25rem] bg-surface py-3 pr-3 pl-4 shadow-medium ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 hover:shadow-high"
+            >
+              <MapPin aria-hidden size={20} className="shrink-0 fill-accent/15 text-accent" />
+              <span className="flex flex-col pr-2">
+                <span className="text-small font-semibold text-ink">La Habana en Mérida</span>
+                <span className="text-caption text-ink-muted">Comida cubana auténtica</span>
+              </span>
+              <span className="grid size-8 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-(--dur-normal) ease-out-soft group-hover:translate-x-0.5">
+                <ArrowRight aria-hidden size={16} />
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

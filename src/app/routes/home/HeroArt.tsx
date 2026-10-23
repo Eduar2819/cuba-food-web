@@ -16,23 +16,6 @@ export function PalmFrond({ className }: { className?: string }) {
   )
 }
 
-const TORN =
-  'M0 0H14 0L14 0L20.4 30.6L30 48.4L21.2 72L30.6 99.5L29.1 123.3L32 148.7L22.2 167.1L29.4 193.8L29 208.8L34.3 231.2L16.7 259.7L34.3 283L28.2 309.4L34.1 333.8L22.2 364.1L32.4 384.1L17.4 404.1L23.4 423.5L34.6 442.8L30 466.8L15.3 496.6L26.3 515.5L23.3 538.7L34 556.2L22 571.2L28.6 591.4L25.3 622L22.9 639L22 658.1L21.3 679.7L27.5 703.3L33.9 721.5L33 743.7L28 769.2L25.1 792.4L34.7 818.8L29.6 840L26.9 858.5L21.3 878.8L31.5 899.9L16.4 929.7L15.7 958.4L17.4 979.7L35.9 995.1L27.9 1000H0Z'
-
-/** Borde de papel rasgado (vertical). El relleno va a la izquierda con el color del fondo. */
-export function TornEdge({ className }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden
-      viewBox="0 0 40 1000"
-      preserveAspectRatio="none"
-      className={cn('pointer-events-none', className)}
-    >
-      <path d={TORN} fill="currentColor" />
-    </svg>
-  )
-}
-
 /** Trazo de pincel para subrayar a mano. */
 export function Swoosh({ className }: { className?: string }) {
   return (
