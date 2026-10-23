@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router'
-import { Search } from 'lucide-react'
+import { ArrowRight, Search } from 'lucide-react'
 import { cn } from '@/shared/lib/cn'
 
 export interface SearchBoxProps {
@@ -31,15 +31,11 @@ export function SearchBox({
   }
 
   return (
-    <form
-      role="search"
-      onSubmit={submit}
-      className={cn(hero && 'rounded-full bg-surface-sunken p-1.5 ring-1 ring-line', className)}
-    >
+    <form role="search" onSubmit={submit} className={className}>
       <div
         className={cn(
           'flex items-center gap-2 rounded-full bg-surface pr-1.5 pl-5',
-          hero ? 'min-h-15 shadow-medium ring-1 ring-line' : 'min-h-13 ring-1 ring-line-strong',
+          hero ? 'min-h-16 pr-2 shadow-high ring-1 ring-line' : 'min-h-13 ring-1 ring-line-strong',
           'focus-within:ring-2 focus-within:ring-focus',
         )}
       >
@@ -62,10 +58,11 @@ export function SearchBox({
           className={cn(
             'inline-flex min-h-11 shrink-0 items-center rounded-full bg-accent px-5 text-small font-semibold text-on-accent',
             'transition-[background-color,transform] duration-(--dur-micro) ease-out-soft hover:bg-accent-hover active:scale-[0.98]',
-            hero && 'min-h-12',
+            hero && 'min-h-12 gap-2 px-6',
           )}
         >
           Buscar
+          {hero && <ArrowRight aria-hidden size={18} />}
         </button>
       </div>
     </form>

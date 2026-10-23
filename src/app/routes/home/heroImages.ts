@@ -8,11 +8,12 @@ import { IMAGES } from '../../../data/images.ts'
  */
 export const HERO_BACKGROUND = IMAGES.platoCubano
 export const HERO_PLATE = IMAGES.mojito
+export const HERO_STREET = IMAGES.habanaCalle
 
-/** Arco grande del hero (vertical). */
+/** Foto grande del collage: mitad derecha en desktop, bloque 4:3 en móvil. */
 export const HERO_BACKGROUND_OPTIONS: ResponsiveImageOptions = {
-  ratio: '4/5',
-  sizes: '(min-width: 1024px) 28vw, 62vw',
-  widths: [400, 640, 960, 1280],
-  quality: 70,
+  ratio: '1/1',
+  sizes: '(min-width: 1024px) 54vw, 100vw',
+  widths: [640, 960, 1280, 1600],
+  quality: 68,
 }
