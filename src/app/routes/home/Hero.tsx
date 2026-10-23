@@ -2,77 +2,47 @@ import { Link } from 'react-router'
 import { ArrowRight, MapPin } from 'lucide-react'
 import { chipStyles } from '@/shared/design-system'
 import { cn } from '@/shared/lib/cn'
-import { responsiveImage } from '@/shared/lib/images'
 import { directoryUrl, QUICK_FILTERS } from '@/features/filters'
 import { SearchBox } from '@/features/search'
-import { HERO_BACKGROUND, HERO_BACKGROUND_OPTIONS, HERO_PLATE, HERO_STREET } from './heroImages'
-import { PalmFrond, Sparkle, Swoosh } from './HeroArt'
-
-/** Arco de medio punto (portal habanero): radio circular según el ancho disponible. */
-const ARCH = 'rounded-t-[9rem] rounded-b-xl tablet:rounded-t-[15rem] desktop:rounded-t-[999px]'
-
-/** Foto tipo polaroid con nota manuscrita opcional. */
-function Polaroid({
-  image,
-  sizes,
-  caption,
-  className,
-}: {
-  image: ReturnType<typeof responsiveImage>
-  sizes: string
-  /** Nota manuscrita en dos líneas. */
-  caption?: [string, string]
-  className?: string
-}) {
-  return (
-    <figure
-      className={cn(
-        // Papel siempre claro (también en modo oscuro). Relleno fijo: en % se calcularía sobre el collage.
-        'hero-drop absolute rounded-md bg-arena-50 p-2 shadow-high ring-1 ring-anil-950/8 tablet:p-2.5 desktop:p-3',
-        'transition-[rotate,scale] duration-(--dur-macro) ease-spring hover:scale-[1.04] hover:rotate-0',
-        caption ? 'pb-14 tablet:pb-[4.5rem] desktop:pb-20' : 'pb-2 tablet:pb-2.5 desktop:pb-3',
-        className,
-      )}
-    >
-      <img
-        {...image}
-        sizes={sizes}
-        alt={image.alt}
-        loading="eager"
-        decoding="async"
-        className="aspect-[4/5] w-full rounded-sm object-cover"
-      />
-      {caption && (
-        <figcaption className="absolute right-3 bottom-2 left-4 -rotate-6 font-script text-[clamp(1rem,0.65rem+0.85vw,1.5rem)] leading-[1.05] text-anil-950">
-          {caption[0]}
-          <br />
-          <span className="pl-[0.6em]">{caption[1]}</span>
-          <Swoosh className="hero-draw hero-delay-5 mt-0.5 w-[62%] text-anil-950" />
-        </figcaption>
-      )}
-    </figure>
-  )
-}
+import { HERO_IMAGE } from './heroImages'
+import { Swoosh } from './HeroArt'
 
 /**
- * Hero "Collage habanero": papel cálido a la izquierda con el titular y la búsqueda; a la
- * derecha la mesa servida dentro de un arco, sol guayaba, círculo añil, hoja de
- * palma y polaroids con notas a mano que rompen el marco. Toda la decoración es aria-hidden;
- * el texto real queda en HTML.
- * La foto grande es el LCP: eager + fetchpriority=high + preload en index.html.
+ * Hero con la ilustración de La Habana como fondo, dentro de un marco alineado al encabezado
+ * (la imagen mide 1672px: a sangre completa se vería borrosa en pantallas anchas).
+ * La imagen se funde con el papel crema del lado del texto: arriba en móvil, a la izquierda
+ * en desktop. Es decorativa (alt vacío) y es el LCP: eager + fetchpriority=high + preload.
  */
 export function Hero() {
-  const main = responsiveImage(HERO_BACKGROUND, HERO_BACKGROUND_OPTIONS)
-  const mojito = responsiveImage(HERO_PLATE, { ratio: '4/5', widths: [320, 480, 640] })
-  const street = responsiveImage(HERO_STREET, { ratio: '4/5', widths: [320, 480] })
-
   return (
-    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
-      {/* Texto y collage dentro del mismo contenedor que el encabezado: márgenes simétricos */}
-      <div className="container-page desktop:grid desktop:min-h-[min(calc(100svh-5.5rem),50rem)] desktop:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] desktop:gap-12 desktop:pt-10 desktop:pb-16 large:gap-20 large:pt-14 large:pb-20">
-        {/* Texto y búsqueda */}
-        <div className="relative z-(--z-raised) flex items-center pt-10 pb-14 tablet:pt-14 desktop:py-6">
-          <div className="hero-reveal flex w-full max-w-[38rem] min-w-0 flex-col">
+    <section aria-labelledby="hero-title" className="container-page pt-3 pb-6 desktop:pt-4">
+      <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-canvas ring-1 ring-line desktop:min-h-[min(calc(100svh-6.5rem),46rem)] desktop:rounded-[2.25rem]">
+        {/* Fondo: ilustración (zoom lento al cargar) */}
+        <img
+          src={HERO_IMAGE.src}
+          srcSet={HERO_IMAGE.srcSet}
+          sizes={HERO_IMAGE.sizes}
+          width={HERO_IMAGE.width}
+          height={HERO_IMAGE.height}
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
+          className="hero-zoom absolute inset-x-0 top-0 -z-10 h-[19rem] w-full object-cover object-[72%_50%] tablet:h-[26rem] desktop:inset-0 desktop:h-full desktop:object-[80%_50%]"
+        />
+        {/* Fusión con el papel: hacia abajo en móvil, hacia la izquierda en desktop */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,transparent_0,transparent_8rem,var(--color-canvas)_16.5rem)] tablet:bg-[linear-gradient(to_bottom,transparent_0,transparent_12rem,var(--color-canvas)_21.5rem)] desktop:bg-[linear-gradient(to_right,var(--color-canvas)_0%,color-mix(in_oklab,var(--color-canvas)_94%,transparent)_34%,color-mix(in_oklab,var(--color-canvas)_55%,transparent)_50%,transparent_68%)]"
+        />
+        {/* Marco interior fino: acabado de lámina enmarcada */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-2.5 rounded-[1.4rem] border border-arena-50/45 desktop:inset-3.5 desktop:rounded-[1.85rem]"
+        />
+
+        <div className="flex h-full items-center px-5 pt-[17rem] pb-10 tablet:px-10 tablet:pt-[22rem] tablet:pb-12 desktop:min-h-[inherit] desktop:px-14 desktop:py-16 large:px-16">
+          <div className="hero-reveal flex w-full max-w-[39rem] min-w-0 flex-col">
             <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-small font-medium text-ink-muted desktop:mb-8">
               <span className="flex items-center gap-2">
                 <MapPin aria-hidden size={18} className="fill-accent/15 text-accent" />
@@ -131,76 +101,6 @@ export function Hero() {
               />
             </Link>
           </div>
-        </div>
-
-        {/*
-         * Collage: la mesa servida dentro de un arco (portal habanero). Sol, círculo y
-         * polaroids rompen el marco para que la composición tenga capas y no se lea como una
-         * imagen de fondo.
-         */}
-        <div className="relative mx-2 mb-14 aspect-[4/5] tablet:mx-6 tablet:mb-16 tablet:aspect-[5/4] desktop:m-0 desktop:aspect-auto">
-          {/* Detrás del arco: sol guayaba, círculo añil y contorno desplazado */}
-          <div
-            aria-hidden
-            className="hero-pop hero-delay-1 absolute -top-[6%] -left-[3%] aspect-square w-[24%] rounded-full bg-guayaba-600 desktop:-top-[3%] desktop:-left-[6%] desktop:w-[30%]"
-          />
-          <div
-            aria-hidden
-            className="hero-pop hero-delay-2 absolute -bottom-[7%] -left-[4%] aspect-square w-[22%] rounded-full bg-anil-700 desktop:-bottom-[6%] desktop:-left-[8%] desktop:w-[26%]"
-          />
-          <div
-            aria-hidden
-            className={cn(
-              ARCH,
-              'hero-fade hero-delay-3 absolute inset-0 -translate-x-3 -translate-y-3 border-2 border-accent/45 desktop:-translate-x-5 desktop:-translate-y-5',
-            )}
-          />
-
-          {/* El arco con la foto */}
-          <div className={cn(ARCH, 'absolute inset-0 overflow-hidden shadow-high')}>
-            <img
-              {...main}
-              alt={main.alt}
-              loading="eager"
-              fetchPriority="high"
-              decoding="sync"
-              className="size-full object-cover"
-            />
-            {/* Velo arriba a la derecha para la nota manuscrita */}
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-[radial-gradient(70%_55%_at_75%_12%,rgb(11_22_38/0.55),transparent_70%)]"
-            />
-            <div aria-hidden className="hero-curtain absolute inset-0 bg-surface-sunken" />
-          </div>
-
-          <PalmFrond className="hero-sway hero-delay-3 absolute -top-[2%] left-[2%] w-[24%] -rotate-[18deg] text-palma-700 drop-shadow-[0_6px_10px_rgb(11_22_38/0.25)] desktop:top-[4%] desktop:-left-[2%] desktop:w-[26%]" />
-
-          {/* Nota manuscrita sobre la foto */}
-          <p
-            aria-hidden
-            className="hero-pop hero-delay-4 absolute top-[16%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[17%] desktop:right-[12%]"
-          >
-            <span className="flex items-start gap-1">
-              <Sparkle className="mt-1 size-[0.7em] -scale-x-100 text-arena-50" />
-              Auténtico
-            </span>
-            <span>Sabor Cubano</span>
-            <Swoosh className="hero-draw hero-delay-5 w-[85%] text-arena-50" />
-          </p>
-
-          {/* Polaroids que salen del marco */}
-          <Polaroid
-            image={mojito}
-            sizes="(min-width: 1024px) 15vw, 34vw"
-            caption={['El clásico', 'de la isla']}
-            className="hero-delay-3 top-[40%] -left-[1%] w-[36%] -rotate-[7deg] tablet:top-[28%] tablet:w-[24%] desktop:top-[30%] desktop:-left-[9%] desktop:w-[25%]"
-          />
-          <Polaroid
-            image={street}
-            sizes="(min-width: 1024px) 12vw, 0px"
-            className="hero-delay-4 hidden rotate-[6deg] tablet:top-[30%] tablet:-right-[3%] tablet:block tablet:w-[19%] desktop:top-[42%] desktop:-right-[4%] desktop:w-[20%]"
-          />
         </div>
       </div>
     </section>
