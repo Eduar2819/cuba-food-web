@@ -18,8 +18,8 @@ const widths = [640, 960, 1280, 1672] as const
 export const HERO_IMAGE = {
   src: '/images/hero-cuba-1280.webp',
   srcSet: widths.map((w) => `/images/hero-cuba-${w}.webp ${w}w`).join(', '),
-  // El marco nunca supera el contenedor de la página (82.5rem menos el margen interior).
-  sizes: '(min-width: 1320px) 1256px, calc(100vw - 2rem)',
+  // A sangre completa. En móvil el recorte vertical necesita más píxeles de alto que de ancho.
+  sizes: '(max-width: 767px) 200vw, 100vw',
   width: 1672,
   height: 941,
 }
