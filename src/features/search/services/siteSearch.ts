@@ -92,23 +92,14 @@ export function buildSearchDocuments(corpus: SearchCorpus): SearchDocument[] {
   ]
 
   const zones: SearchDocument[] = [
-    ...corpus.cities.map((c) => ({
-      id: `zona:${c.id}`,
-      kind: 'zona' as const,
-      title: c.name,
-      subtitle: `Ciudad, ${c.state}`,
-      href: `/zonas/${c.slug}`,
-      image: c.image,
-      fields: [{ text: `${c.name} ${c.state}`, weight: 5 }],
-    })),
     ...corpus.neighborhoods.map((n) => {
       const city = corpus.cities.find((c) => c.id === n.cityId)
       return {
         id: `zona:${n.id}`,
         kind: 'zona' as const,
         title: n.name,
-        subtitle: `Zona de ${city?.name ?? ''}`,
-        href: directoryUrl({ q: n.name, zona: city?.slug ?? null }),
+        subtitle: `Colonia de ${city?.name ?? ''}`,
+        href: directoryUrl({ zona: n.slug }),
         fields: [
           { text: n.name, weight: 5 },
           { text: city?.name ?? '', weight: 1 },

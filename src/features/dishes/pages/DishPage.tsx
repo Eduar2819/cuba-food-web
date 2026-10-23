@@ -68,8 +68,8 @@ export function DishPage() {
   return (
     <div className="container-page pt-6 pb-10">
       <Seo
-        title={`${dish.name}: qué es y dónde comerlo en Yucatán`}
-        description={`${dish.summary} Restaurantes cubanos en Yucatán que sirven ${dish.name.toLowerCase()}.`}
+        title={`${dish.name}: qué es y dónde comerlo en Mérida`}
+        description={`${dish.summary} Restaurantes cubanos en Mérida que sirven ${dish.name.toLowerCase()}.`}
         path={path}
         image={dish.image}
         jsonLd={breadcrumbJsonLd([

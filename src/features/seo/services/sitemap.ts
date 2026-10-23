@@ -2,7 +2,6 @@ import { BLOG_POSTS } from '@/data/blog'
 import { DISHES } from '@/data/dishes'
 import { EVENTS } from '@/data/events'
 import { RESTAURANTS } from '@/data/restaurants'
-import { CITIES } from '@/data/zones'
 
 export interface SitemapEntry {
   path: string
@@ -19,10 +18,7 @@ const STATIC: SitemapEntry[] = [
   { path: '/mapa', changefreq: 'weekly', priority: 0.7 },
   { path: '/platillos', changefreq: 'weekly', priority: 0.8 },
   { path: '/eventos', changefreq: 'daily', priority: 0.7 },
-  { path: '/promociones', changefreq: 'daily', priority: 0.7 },
-  { path: '/zonas', changefreq: 'monthly', priority: 0.6 },
   { path: '/blog', changefreq: 'weekly', priority: 0.6 },
-  { path: '/para-restaurantes', changefreq: 'monthly', priority: 0.5 },
   { path: '/contacto', changefreq: 'monthly', priority: 0.3 },
 ]
 
@@ -45,11 +41,6 @@ export function sitemapEntries(now: Date = new Date()): SitemapEntry[] {
       path: `/eventos/${e.slug}`,
       changefreq: 'weekly' as const,
       priority: 0.5,
-    })),
-    ...CITIES.map((c) => ({
-      path: `/zonas/${c.slug}`,
-      changefreq: 'weekly' as const,
-      priority: 0.6,
     })),
     ...BLOG_POSTS.map((p) => ({
       path: `/blog/${p.slug}`,

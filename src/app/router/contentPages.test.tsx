@@ -27,19 +27,17 @@ describe('Platillos', () => {
   })
 })
 
-describe('Zonas', () => {
-  it('ficha de ciudad con sus restaurantes', async () => {
-    renderAt('/zonas/progreso')
-    expect(await screen.findByRole('heading', { level: 1, name: 'Progreso' })).toBeInTheDocument()
-    expect(screen.getByText('2 restaurantes en Progreso')).toBeInTheDocument()
-  })
-})
-
 describe('Eventos', () => {
+  // Fecha fija: el evento debe seguir siendo futuro para mostrar el calendario.
+  beforeEach(() =>
+    vi.useFakeTimers({ now: new Date('2026-09-28T12:00:00-06:00'), toFake: ['Date'] }),
+  )
+  afterEach(() => vi.useRealTimers())
+
   it('evento con fecha, lugar y archivo de calendario', async () => {
     renderAt('/eventos/clase-de-salsa-casino')
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Clase de salsa casino frente al mar' }),
+      await screen.findByRole('heading', { level: 1, name: 'Clase de salsa casino' }),
     ).toBeInTheDocument()
     const ics = screen.getByRole('link', { name: 'Agregar a mi calendario' })
     expect(ics).toHaveAttribute('download', 'clase-de-salsa-casino.ics')
@@ -68,23 +66,17 @@ describe('Favoritos', () => {
   it('vacío invita a explorar; con datos lista los guardados', async () => {
     renderAt('/favoritos')
     expect(await screen.findByText('Aún no guardas restaurantes.')).toBeInTheDocument()
-    await favoritesStore.add('r-sabor-cuba')
+    await favoritesStore.add('r-tostones-co')
     expect(await screen.findByText('1 restaurante guardado')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Sabor de Cuba' })).toBeInTheDocument()
-    await favoritesStore.remove('r-sabor-cuba')
+    expect(screen.getByRole('link', { name: 'Tostones & Co.' })).toBeInTheDocument()
+    await favoritesStore.remove('r-tostones-co')
   })
 })
 
-describe('Para restaurantes y contacto', () => {
-  it('muestra los tres planes y el contacto valida antes de enviar', async () => {
-    renderAt('/para-restaurantes')
-    expect(await screen.findByRole('heading', { name: 'Básico' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Destacado' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Premium' })).toBeInTheDocument()
-    await userEvent.click(screen.getByRole('link', { name: 'Elegir Destacado' }))
-
+describe('Contacto', () => {
+  it('valida antes de enviar', async () => {
+    renderAt('/contacto')
     expect(await screen.findByRole('heading', { level: 1, name: 'Contacto' })).toBeInTheDocument()
-    expect(screen.getByText('Plan elegido: Destacado')).toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', { name: 'Enviar mensaje' }))
     expect(screen.getByLabelText('Nombre')).toHaveAccessibleDescription('Escribe tu nombre.')
     expect(screen.getByLabelText('Nombre')).toHaveFocus()

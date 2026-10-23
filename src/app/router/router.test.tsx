@@ -28,19 +28,11 @@ describe('router', () => {
     expect(await screen.findByText('No encontramos esta página.')).toBeInTheDocument()
   })
 
-  it.each([
-    '/',
-    '/mapa',
-    '/platillos',
-    '/eventos',
-    '/promociones',
-    '/zonas',
-    '/blog',
-    '/favoritos',
-    '/para-restaurantes',
-    '/contacto',
-  ])('la ruta %s carga', async (path) => {
-    renderAt(path)
-    expect(await screen.findByRole('heading', { level: 1 })).toBeInTheDocument()
-  })
+  it.each(['/', '/mapa', '/platillos', '/eventos', '/blog', '/favoritos', '/contacto'])(
+    'la ruta %s carga',
+    async (path) => {
+      renderAt(path)
+      expect(await screen.findByRole('heading', { level: 1 })).toBeInTheDocument()
+    },
+  )
 })

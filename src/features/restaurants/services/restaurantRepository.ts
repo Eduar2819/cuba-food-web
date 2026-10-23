@@ -1,7 +1,6 @@
 import { RESTAURANTS } from '@/data/restaurants'
-import { REVIEWS } from '@/data/reviews'
 import { mockResponse } from '@/shared/lib/mockApi'
-import type { Restaurant, Review } from '../types'
+import type { Restaurant } from '../types'
 
 /**
  * Contrato de acceso a restaurantes. La UI solo conoce esta interfaz:
@@ -14,7 +13,6 @@ export interface RestaurantRepository {
   getFeatured(): Promise<Restaurant[]>
   getByCity(cityId: string): Promise<Restaurant[]>
   getByDish(dishId: string): Promise<Restaurant[]>
-  getReviews(restaurantId: string): Promise<Review[]>
 }
 
 export const restaurantRepository: RestaurantRepository = {
@@ -24,6 +22,4 @@ export const restaurantRepository: RestaurantRepository = {
   getFeatured: () => mockResponse(RESTAURANTS.filter((r) => r.featured)),
   getByCity: (cityId) => mockResponse(RESTAURANTS.filter((r) => r.address.cityId === cityId)),
   getByDish: (dishId) => mockResponse(RESTAURANTS.filter((r) => r.dishIds.includes(dishId))),
-  getReviews: (restaurantId) =>
-    mockResponse(REVIEWS.filter((review) => review.restaurantId === restaurantId)),
 }

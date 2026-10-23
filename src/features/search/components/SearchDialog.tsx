@@ -14,10 +14,10 @@ const GROUPS: { kind: SearchKind; label: string; icon: LucideIcon; limit: number
   { kind: 'restaurante', label: 'Restaurantes', icon: Store, limit: 4 },
   { kind: 'platillo', label: 'Platillos', icon: UtensilsCrossed, limit: 4 },
   { kind: 'categoria', label: 'Categorías', icon: LayoutGrid, limit: 3 },
-  { kind: 'zona', label: 'Zonas', icon: MapPin, limit: 3 },
+  { kind: 'zona', label: 'Colonias', icon: MapPin, limit: 3 },
 ]
 
-const POPULAR = ['Ropa vieja', 'Sándwich cubano', 'Café cubano', 'Mérida', 'Progreso', 'Cafeterías']
+const POPULAR = ['Ropa vieja', 'Sándwich cubano', 'Café cubano', 'Centro', 'Cafeterías']
 
 interface Option {
   id: string
@@ -129,7 +129,7 @@ export function SearchDialog({
             aria-controls={listId}
             aria-activedescendant={options[safeActive]?.id}
             aria-autocomplete="list"
-            aria-label="Buscar restaurantes, platillos, categorías o zonas"
+            aria-label="Buscar restaurantes, platillos, categorías o colonias"
             type="search"
             enterKeyHint="search"
             autoComplete="off"
@@ -192,8 +192,8 @@ export function SearchDialog({
                   className="flex items-center gap-2 px-3 py-4 text-small text-ink-muted"
                 >
                   <SearchX aria-hidden size={18} />
-                  No encontramos “{q}”. Prueba con un platillo, como congrí, o una zona, como
-                  Progreso.
+                  No encontramos “{q}”. Prueba con un platillo, como congrí, o una colonia, como
+                  Centro.
                 </p>
               )}
               {groups.map((group) => (

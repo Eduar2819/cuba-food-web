@@ -1,22 +1,15 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { useSearchParams } from 'react-router'
 import { CircleCheck, Send } from 'lucide-react'
 import { Button, Card, EmptyState, Input, PageHeader, Select } from '@/shared/design-system'
 import { Seo } from '@/features/seo'
 
 const REASONS = [
-  { value: 'registro', label: 'Quiero registrar mi restaurante' },
+  { value: 'registro', label: 'Agregar mi restaurante a la guía' },
   { value: 'correccion', label: 'Corregir datos de un restaurante' },
   { value: 'sugerencia', label: 'Sugerir un restaurante' },
   { value: 'otro', label: 'Otro motivo' },
 ]
-
-const PLAN_LABEL: Record<string, string> = {
-  basico: 'Básico',
-  destacado: 'Destacado',
-  premium: 'Premium',
-}
 
 type Errors = Partial<Record<'name' | 'email' | 'message', string>>
 
@@ -34,8 +27,6 @@ function validate(data: FormData): Errors {
 
 /** Contacto: validación en el cliente. Prototipo sin backend: no se envía nada. */
 export function ContactPage() {
-  const [params] = useSearchParams()
-  const plan = params.get('plan') ?? ''
   const [errors, setErrors] = useState<Errors>({})
   const [sent, setSent] = useState(false)
 
@@ -55,12 +46,12 @@ export function ContactPage() {
     <div className="container-page pb-8">
       <Seo
         title="Contacto"
-        description="Escríbenos para registrar tu restaurante o corregir datos de la guía."
+        description="Escríbenos para sugerir un restaurante cubano en Mérida o corregir datos de la guía."
         path="/contacto"
       />
       <PageHeader
         title="Contacto"
-        description="Registra tu restaurante, corrige datos o sugiérenos un lugar. Te respondemos en dos días hábiles."
+        description="Sugiérenos un restaurante cubano en Mérida o corrige datos de la guía. Es un proyecto educativo y aparecer aquí no tiene costo."
       />
       <div className="max-w-2xl">
         {sent ? (
@@ -96,13 +87,7 @@ export function ContactPage() {
                 />
               </div>
               <Input label="Restaurante (opcional)" name="restaurant" autoComplete="organization" />
-              <Select
-                label="Motivo"
-                name="reason"
-                options={REASONS}
-                defaultValue={plan ? 'registro' : 'sugerencia'}
-                hint={plan ? `Plan elegido: ${PLAN_LABEL[plan] ?? plan}` : undefined}
-              />
+              <Select label="Motivo" name="reason" options={REASONS} defaultValue="sugerencia" />
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className="text-small font-semibold text-ink">
                   Mensaje
@@ -115,7 +100,6 @@ export function ContactPage() {
                   aria-invalid={errors.message ? true : undefined}
                   aria-describedby={errors.message ? 'message-error' : undefined}
                   className="w-full rounded-md bg-surface px-4 py-3 text-body text-ink ring-1 ring-line-strong ring-inset placeholder:text-ink-muted focus:ring-2 focus:ring-focus focus:outline-none aria-invalid:ring-2 aria-invalid:ring-danger"
-                  defaultValue={plan ? `Me interesa el plan ${PLAN_LABEL[plan] ?? plan}.` : ''}
                 />
                 {errors.message && (
                   <p id="message-error" className="text-caption font-medium text-danger">

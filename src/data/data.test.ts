@@ -2,7 +2,6 @@ import { BLOG_POSTS } from './blog'
 import { CUISINES, SERVICES } from './catalog'
 import { DISHES } from './dishes'
 import { EVENTS } from './events'
-import { PROMOTIONS } from './promotions'
 import { RESTAURANTS } from './restaurants'
 import { CITIES, NEIGHBORHOODS } from './zones'
 
@@ -17,16 +16,9 @@ describe('integridad de los datos demo', () => {
     }
   })
 
-  it('incluye los 4 restaurantes del brief', () => {
-    const names = RESTAURANTS.map((r) => r.name)
-    expect(names).toEqual(
-      expect.arrayContaining([
-        'La Habana del Caribe',
-        'Sabor de Cuba',
-        'Habana 1959',
-        'El Rincón Cubano',
-      ]),
-    )
+  it('todos los restaurantes están en Mérida', () => {
+    expect(RESTAURANTS.length).toBeGreaterThan(0)
+    RESTAURANTS.forEach((r) => expect(r.address.cityId, r.name).toBe('merida'))
   })
 
   it.each(RESTAURANTS.map((r) => [r.name, r] as const))(
@@ -68,8 +60,8 @@ describe('integridad de los datos demo', () => {
     }
   })
 
-  it('eventos y promociones apuntan a restaurantes existentes', () => {
-    ;[...EVENTS, ...PROMOTIONS].forEach((item) =>
+  it('los eventos apuntan a restaurantes existentes', () => {
+    EVENTS.forEach((item) =>
       expect(restaurantIds.has(item.restaurantId), item.restaurantId).toBe(true),
     )
   })

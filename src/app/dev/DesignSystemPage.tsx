@@ -32,7 +32,6 @@ import {
   Input,
   Lightbox,
   Photo,
-  Rating,
   Select,
   Skeleton,
   SkeletonText,
@@ -81,7 +80,7 @@ const paletteVar: Record<string, string> = {
 }
 
 const typeScale = [
-  ['display', 'font-display font-bold text-display', 'Descubre Cuba en Yucatán'],
+  ['display', 'font-display font-bold text-display', 'Descubre Cuba en Mérida'],
   ['h1', 'font-display font-bold text-h1', 'Restaurantes cubanos'],
   ['h2', 'font-display font-bold text-h2', '¿Qué se te antoja?'],
   ['h3', 'font-display font-semibold text-h3', 'Horarios de hoy'],
@@ -128,7 +127,7 @@ export function DesignSystemPage() {
         <Badge tone="demo">Solo desarrollo</Badge>
         <h1 className="text-display font-bold">Malecón</h1>
         <p className="max-w-prose text-lead text-ink-muted">
-          Tokens y componentes base de Sabor Cubano en Yucatán. Las features solo componen estas
+          Tokens y componentes base de Sabor Cubano en Mérida. Las features solo componen estas
           piezas. Fuente de verdad: <code className="font-mono text-small">design-dna.json</code>.
         </p>
         <nav aria-label="Secciones" className="flex flex-wrap gap-2 pt-2">
@@ -313,12 +312,12 @@ export function DesignSystemPage() {
           <Input label="Teléfono" error="Escribe 10 dígitos." defaultValue="999 00" />
           <Input label="Deshabilitado" disabled placeholder="No disponible" />
           <Select
-            label="Zona"
-            placeholder="Todas las zonas"
+            label="Colonia"
+            placeholder="Todas las colonias"
             options={[
-              { value: 'merida', label: 'Mérida' },
-              { value: 'progreso', label: 'Progreso' },
-              { value: 'valladolid', label: 'Valladolid' },
+              { value: 'centro', label: 'Centro' },
+              { value: 'garcia-gineres', label: 'García Ginerés' },
+              { value: 'norte', label: 'Norte' },
             ]}
           />
           <Select
@@ -377,11 +376,6 @@ export function DesignSystemPage() {
           <Badge tone="brand">Nuevo</Badge>
           <Badge>$$</Badge>
           <Badge tone="demo">Demo</Badge>
-        </Row>
-        <Row label="Rating (solo lectura, accesible como texto)">
-          <Rating value={4.5} count={12} />
-          <Rating value={3.8} size="md" />
-          <Rating value={5} showValue={false} />
         </Row>
         <Row label="Card: plain · outlined · raised · sunken · bezel (doble bisel, piezas protagonistas)">
           <div className="grid w-full gap-4 tablet:grid-cols-2 desktop:grid-cols-5">

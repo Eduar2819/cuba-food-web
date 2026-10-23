@@ -105,11 +105,6 @@ export interface RestaurantContact {
   website?: string
 }
 
-export interface Rating {
-  average: number
-  count: number
-}
-
 export interface Restaurant {
   id: string
   slug: string
@@ -133,21 +128,9 @@ export interface Restaurant {
   /** Platillos del catálogo que ofrece (para "¿Qué se te antoja?"). */
   dishIds: string[]
   facts: RestaurantFacts
-  rating?: Rating
   /** 0-100, señal de popularidad para ordenar. */
   popularity: number
   featured: boolean
   /** YYYY-MM-DD */
   createdAt: string
-}
-
-export interface Review {
-  id: string
-  restaurantId: string
-  author: string
-  rating: number
-  text: string
-  /** YYYY-MM-DD */
-  date: string
-  isDemo: boolean
 }

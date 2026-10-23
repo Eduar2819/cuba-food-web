@@ -72,7 +72,7 @@ export function Hero() {
         <div className="relative z-(--z-raised) flex w-full flex-col justify-end px-5 pt-28 pb-8 tablet:px-10 tablet:pb-12 desktop:px-14 desktop:pb-16">
           <div className="hero-reveal flex max-w-[40rem] flex-col gap-5 tablet:gap-6">
             <h1 id="hero-title" className="text-display font-bold text-arena-50">
-              Descubre Cuba en Yucatán <CubanFlag />
+              Descubre Cuba en Mérida <CubanFlag />
             </h1>
             <p className="max-w-[38rem] text-lead text-arena-100">
               Encuentra restaurantes, sabores y experiencias cubanas cerca de ti.

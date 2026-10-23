@@ -16,7 +16,7 @@ export interface SearchBoxProps {
 export function SearchBox({
   variant = 'default',
   initialQuery = '',
-  placeholder = 'Restaurante, platillo, zona o ciudad',
+  placeholder = 'Restaurante, platillo o colonia',
   className,
 }: SearchBoxProps) {
   const [query, setQuery] = useState(initialQuery)
@@ -48,7 +48,7 @@ export function SearchBox({
       >
         <Search aria-hidden size={20} className="shrink-0 text-ink-muted" />
         <label htmlFor={inputId} className="sr-only">
-          Buscar restaurantes, platillos o zonas
+          Buscar restaurantes, platillos o colonias
         </label>
         <input
           id={inputId}

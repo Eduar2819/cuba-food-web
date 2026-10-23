@@ -11,5 +11,5 @@ export function distanceLabel(km: number): string {
   return `${formatDistance(km)} · ${time} ${mode === 'walk' ? 'a pie' : 'en auto'}`
 }
 
-/** A partir de esta distancia avisamos que el usuario parece estar lejos de Yucatán. */
+/** A partir de esta distancia avisamos que el usuario parece estar lejos de Mérida. */
 export const FAR_AWAY_KM = 80

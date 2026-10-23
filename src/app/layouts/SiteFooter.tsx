@@ -9,12 +9,12 @@ export function SiteFooter() {
         <div className="flex max-w-sm flex-col gap-4">
           <Logo />
           <p className="text-small text-ink-muted">
-            La guía de la gastronomía cubana en Yucatán: restaurantes, platillos, eventos y
-            promociones en Mérida, Progreso y Valladolid.
+            Guía informativa de los restaurantes cubanos en Mérida: sus platillos, redes sociales y
+            ubicación.
           </p>
           <p className="text-caption text-ink-muted">
-            Prototipo conceptual. Restaurantes, direcciones, teléfonos, horarios y calificaciones
-            son datos de demostración.
+            Proyecto educativo sin fines comerciales. Restaurantes, direcciones, teléfonos y
+            horarios son datos de demostración.
           </p>
         </div>
         <nav aria-label="Pie de página" className="grid grid-cols-2 gap-8 tablet:grid-cols-3">
@@ -38,7 +38,7 @@ export function SiteFooter() {
         </nav>
       </div>
       <div className="container-page flex flex-col gap-2 border-t border-line py-6 text-caption text-ink-muted tablet:flex-row tablet:justify-between">
-        <p>© {new Date().getFullYear()} Sabor Cubano en Yucatán</p>
+        <p>© {new Date().getFullYear()} Sabor Cubano en Mérida</p>
         <Link
           to="/creditos"
           className="inline-flex min-h-11 items-center underline-offset-4 hover:text-ink hover:underline"

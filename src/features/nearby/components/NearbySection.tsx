@@ -47,7 +47,7 @@ export function NearbySection({ now }: { now: Date }) {
         <div className="flex flex-col gap-4">
           {farAway && (
             <p className="text-small text-ink-muted">
-              Parece que estás lejos de Yucatán: te mostramos los más cercanos a ti.
+              Parece que estás lejos de Mérida: te mostramos los más cercanos a ti.
             </p>
           )}
           <ul className="grid gap-x-6 gap-y-2 tablet:grid-cols-2">

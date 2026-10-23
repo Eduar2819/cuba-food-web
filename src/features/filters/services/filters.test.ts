@@ -22,12 +22,12 @@ describe('query params', () => {
   it('ida y vuelta sin perder información', () => {
     const filters = f({
       q: 'ropa vieja',
-      zona: 'merida',
+      zona: 'centro',
       abierto: true,
       tipos: ['restaurante', 'cafeteria'],
       servicios: ['delivery'],
       precios: [2, 1],
-      orden: 'rating',
+      orden: 'populares',
       vista: 'mapa',
     })
     const parsed = parseFilters(serializeFilters(filters))
@@ -44,19 +44,17 @@ describe('query params', () => {
   })
 
   it('cuenta filtros activos (sin búsqueda, orden ni vista)', () => {
-    expect(countActiveFilters(f({ q: 'x', orden: 'rating', tipos: ['bar'], abierto: true }))).toBe(
-      2,
-    )
+    expect(
+      countActiveFilters(f({ q: 'x', orden: 'populares', tipos: ['bar'], abierto: true })),
+    ).toBe(2)
   })
 })
 
 describe('applyFilters', () => {
-  it('filtra por zona, tipo, servicio y precio', () => {
-    expect(names({ zona: 'progreso' })).toEqual(
-      expect.arrayContaining(['Sabor de Cuba', 'Brisa Habanera']),
-    )
-    expect(names({ zona: 'progreso' })).toHaveLength(2)
-    expect(names({ tipos: ['cafeteria'] }).sort()).toEqual(['Café Mamoncillo', 'Casa Trinidad'])
+  it('filtra por colonia, tipo, servicio y precio', () => {
+    expect(names({ zona: 'garcia-gineres' })).toEqual(['Habana 1959'])
+    expect(names({ zona: 'no-existe' })).toEqual([])
+    expect(names({ tipos: ['cafeteria'] })).toEqual(['Café Mamoncillo'])
     expect(names({ servicios: ['delivery'], precios: [1] }).sort()).toEqual([
       'Café Mamoncillo',
       'Tostones & Co.',
@@ -67,45 +65,39 @@ describe('applyFilters', () => {
     const open = names({ abierto: true })
     expect(open).toContain('Café Mamoncillo')
     expect(open).not.toContain('La Habana del Caribe') // cierra los lunes
-    expect(open).not.toContain('El Rincón Cubano') // cierre temporal
   })
 
-  it('ordena por calificación y por popularidad', () => {
-    expect(names({ orden: 'rating' })[0]).toBe('Habana 1959')
+  it('ordena por popularidad', () => {
     expect(names({ orden: 'populares' })[0]).toBe('Café Mamoncillo')
   })
 
   it('ordena por distancia con ubicación; sin ubicación cae a relevancia', () => {
-    const valladolid = { lat: 20.6897, lng: -88.2015 }
+    const norte = { lat: 21.0199, lng: -89.589 }
     const byDistance = applyFilters(RESTAURANTS, f({ orden: 'distancia' }), {
       now,
-      origin: valladolid,
+      origin: norte,
     })
-    expect(byDistance.slice(0, 2).map((i) => i.restaurant.address.cityId)).toEqual([
-      'valladolid',
-      'valladolid',
-    ])
+    expect(byDistance[0]?.restaurant.name).toBe('Café Mamoncillo')
     expect(byDistance[0]?.distanceKm).toBeLessThan(1)
     expect(names({ orden: 'distancia' })).toEqual(names({}))
   })
 
   it('con búsqueda solo deja coincidencias y ordena por puntuación', () => {
     const scores = new Map([
-      ['r-sabor-cuba', 5],
+      ['r-tostones-co', 5],
       ['r-habana-caribe', 9],
     ])
     expect(names({ q: 'x' }, { searchScores: scores })).toEqual([
       'La Habana del Caribe',
-      'Sabor de Cuba',
+      'Tostones & Co.',
     ])
   })
 
   it('conteos por faceta respetan los demás filtros', () => {
     const counts = facetCounts(RESTAURANTS, f({ tipos: ['cafeteria'] }), { now }, 'zona', [
-      'merida',
-      'progreso',
-      'valladolid',
+      'centro',
+      'norte',
     ])
-    expect(Object.fromEntries(counts)).toEqual({ merida: 1, progreso: 0, valladolid: 1 })
+    expect(Object.fromEntries(counts)).toEqual({ centro: 0, norte: 1 })
   })
 })

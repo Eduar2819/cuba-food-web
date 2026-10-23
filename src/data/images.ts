@@ -100,13 +100,6 @@ export const IMAGES = {
     'mia_dj',
     'un-plato-de-comida-en-una-mesa-9Ol0uTDT-TU',
   ),
-  langosta: img(
-    'photo-1687144171995-e5d148fdfbad',
-    'Langosta roja entera servida en plato blanco',
-    'Dmitry Spravko',
-    'kaprion',
-    'una-langosta-esta-en-un-plato-blanco-sobre-una-mesa-rc8qeceUV3U',
-  ),
   camaronesAjillo: img(
     'photo-1625943553852-781c6dd46faa',
     'Camarones al ajillo con albahaca en cazuela negra',
@@ -164,13 +157,6 @@ export const IMAGES = {
     'mayear2019',
     'manojo-de-guayaba7-McnMX5QwRII',
   ),
-  churros: img(
-    'photo-1615915848347-5ad361d3e9fd',
-    'Churros en forma de corazón sobre plato blanco',
-    'Félix Girault',
-    'felishks',
-    'pan-moreno-en-un-plato-de-ceramica-blanca-F_eguwdnmNo',
-  ),
   mojito: img(
     'photo-1653542772393-71ffa417b1c4',
     'Mojito con hojas de hierbabuena, lima y hielo',
@@ -198,13 +184,6 @@ export const IMAGES = {
     'Nathan Dumlao',
     'nate_dumlao',
     'taza-de-ceramica-blanca-con-liquido-marron-dAYJfrtVjh0',
-  ),
-  cocteles: img(
-    'photo-1646821198838-c0b050b1e896',
-    'Dos cócteles tropicales en la barra de un bar junto a la alberca',
-    'SJ',
-    'uxsj_ph',
-    'dos-bebidas-sentadas-encima-de-una-mesa-una-al-lado-de-la-otra-q1Uzhilkd04',
   ),
   // Mesas y ambientes
   mesaCompartida: img(
@@ -327,27 +306,6 @@ export const IMAGES = {
     'matthanns',
     'un-grupo-de-personas-sentadas-en-un-banco-frente-a-un-edificio-rosa-bu6WeMdvOjM',
     '50% 40%',
-  ),
-  valladolid: img(
-    'photo-1695385246289-2e7d2ab5e16b',
-    'Calle de casas de colores con papel picado en Valladolid',
-    'Loris Boulinguez',
-    'cli_k',
-    'una-calle-bordeada-de-coloridos-edificios-y-banderas-9AFMVXjp5ik',
-  ),
-  valladolidIglesia: img(
-    'photo-1601480235415-fdb2f5f5cab2',
-    'Iglesia de San Servacio entre palmeras en Valladolid',
-    'Rafael Cisneros Méndez',
-    'ralppie',
-    'personas-caminando-por-la-calle-cerca-de-un-edificio-de-hormigon-marron-durante-el-dia-0CDWfkBi-Eg',
-  ),
-  progreso: img(
-    'photo-1581329223402-842c5290e1f5',
-    'Palapas de palma frente al mar en una playa de Yucatán',
-    'Chris-Håvard Berge',
-    'chberge',
-    'cabana-de-nipa-de-madera-marron-en-la-playa-durante-el-dia-FZBUzRUbN-o',
   ),
 } satisfies Record<string, ImageAsset>
 

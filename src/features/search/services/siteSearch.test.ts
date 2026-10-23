@@ -34,15 +34,15 @@ describe('búsqueda global', () => {
     expect(restaurants).not.toContain('Café Mamoncillo')
   })
 
-  it('"Mérida" y "merida" son equivalentes y devuelven la zona', () => {
-    expect(titles('Mérida')).toEqual(titles('merida'))
-    expect(titles('MERIDA', { kinds: ['zona'] })[0]).toBe('Mérida')
+  it('"Ginerés" y "gineres" son equivalentes y devuelven la colonia', () => {
+    expect(titles('Ginerés')).toEqual(titles('gineres'))
+    expect(titles('GINERES', { kinds: ['zona'] })[0]).toBe('García Ginerés')
   })
 
   it('"cafetería" sin acento encuentra la categoría y las cafeterías', () => {
     expect(titles('cafeteria', { kinds: ['categoria'] })).toContain('Cafeterías')
     const places = titles('cafetería', { kinds: ['restaurante'] })
-    expect(places).toEqual(expect.arrayContaining(['Café Mamoncillo', 'Casa Trinidad']))
+    expect(places).toContain('Café Mamoncillo')
   })
 
   it('sinónimos: "moros y cristianos" lleva al congrí; "medianoche" al sándwich', () => {
@@ -56,8 +56,8 @@ describe('búsqueda global', () => {
   })
 
   it('todas las palabras deben coincidir (AND)', () => {
-    expect(titles('sandwich progreso', { kinds: ['restaurante'] })).toEqual([])
-    expect(titles('camarones progreso', { kinds: ['restaurante'] })).toContain('Sabor de Cuba')
+    expect(titles('sandwich gineres', { kinds: ['restaurante'] })).toEqual([])
+    expect(titles('sandwich montejo', { kinds: ['restaurante'] })).toContain('Tostones & Co.')
   })
 
   it('consulta vacía o de puras palabras vacías no devuelve nada', () => {

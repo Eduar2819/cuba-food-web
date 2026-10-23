@@ -43,12 +43,12 @@ export function BlogPage() {
     <div className="container-page pb-8">
       <Seo
         title="Blog: guía cultural de la cocina cubana"
-        description="Historias y guías sobre la comida cubana en Yucatán: sándwich cubano, ropa vieja, congrí y más."
+        description="Historias y guías sobre la comida cubana en Mérida: sándwich cubano, ropa vieja, congrí y más."
         path="/blog"
       />
       <PageHeader
         title="Guía cultural"
-        description="Historias detrás de los platillos cubanos y guías para disfrutarlos en Yucatán."
+        description="Historias detrás de los platillos cubanos y guías para disfrutarlos en Mérida."
       />
       {posts.status === 'loading' && (
         <div aria-hidden className="grid gap-8 desktop:grid-cols-3">

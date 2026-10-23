@@ -12,7 +12,7 @@ export const PRIMARY_NAV: NavItem[] = [
   { to: '/mapa', label: 'Mapa' },
   { to: '/platillos', label: 'Platillos' },
   { to: '/eventos', label: 'Eventos' },
-  { to: '/para-restaurantes', label: 'Para restaurantes' },
+  { to: '/blog', label: 'Blog' },
 ]
 
 /** Menú móvil completo y pie de página. */
@@ -23,24 +23,19 @@ export const SECTION_GROUPS: { title: string; items: NavItem[] }[] = [
       { to: '/restaurantes', label: 'Restaurantes' },
       { to: '/mapa', label: 'Mapa' },
       { to: '/platillos', label: 'Platillos' },
-      { to: '/zonas', label: 'Zonas' },
     ],
   },
   {
     title: 'Descubre',
     items: [
       { to: '/eventos', label: 'Eventos' },
-      { to: '/promociones', label: 'Promociones' },
       { to: '/blog', label: 'Blog' },
       { to: '/favoritos', label: 'Favoritos' },
     ],
   },
   {
-    title: 'Para negocios',
-    items: [
-      { to: '/para-restaurantes', label: 'Para restaurantes' },
-      { to: '/contacto', label: 'Contacto' },
-    ],
+    title: 'Proyecto',
+    items: [{ to: '/contacto', label: 'Contacto' }],
   },
 ]
 

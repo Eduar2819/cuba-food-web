@@ -28,7 +28,7 @@ import type { SortOption } from '@/features/filters'
 import { distanceLabel, LocationPrompt, useUserLocation } from '@/features/nearby'
 import { loadSearchEngine } from '@/features/search'
 import { Seo } from '@/features/seo'
-import { cities } from '@/features/zones'
+import { neighborhoods } from '@/features/zones'
 import { RestaurantCard } from '../components/RestaurantCard'
 import { restaurantTypes, services } from '../services/catalog'
 import { restaurantRepository } from '../services/restaurantRepository'
@@ -68,7 +68,7 @@ function DirectorySearch({ q, onSearch }: { q: string; onSearch: (q: string) => 
         hideLabel
         type="search"
         leadingIcon={Search}
-        placeholder="Restaurante, platillo, zona o ciudad"
+        placeholder="Restaurante, platillo o colonia"
         value={text}
         onChange={(event) => setText(event.target.value)}
         enterKeyHint="search"
@@ -125,7 +125,7 @@ export function DirectoryPage() {
         filters,
         ctx,
         'zona',
-        cities.map((c) => c.slug),
+        neighborhoods.map((n) => n.slug),
       ),
       tipos: facetCounts(
         all,
@@ -161,13 +161,13 @@ export function DirectoryPage() {
   return (
     <div className="container-page pb-8">
       <Seo
-        title="Restaurantes cubanos en Yucatán"
-        description="Directorio de restaurantes, cafeterías y bares cubanos en Mérida, Progreso y Valladolid. Filtra por zona, horario, servicios y precio."
+        title="Restaurantes cubanos en Mérida"
+        description="Directorio de restaurantes, cafeterías y bares cubanos en Mérida. Filtra por colonia, horario, servicios y precio."
         path="/restaurantes"
       />
       <PageHeader
-        title="Restaurantes cubanos en Yucatán"
-        description="Filtra por zona, horario y servicios. Todo lo que ves aquí es un directorio de demostración."
+        title="Restaurantes cubanos en Mérida"
+        description="Filtra por colonia, horario y servicios. Todo lo que ves aquí es un directorio de demostración."
       />
 
       <div className="grid gap-10 desktop:grid-cols-[16.5rem_1fr] desktop:gap-12">
@@ -233,8 +233,8 @@ export function DirectoryPage() {
               title="No encontramos restaurantes con estos filtros."
               description={
                 filters.q
-                  ? 'Prueba con otra palabra, por ejemplo un platillo como "congrí" o una zona como "Progreso".'
-                  : 'Quita algún filtro o prueba en otra zona.'
+                  ? 'Prueba con otra palabra, por ejemplo un platillo como "congrí" o una colonia como "Centro".'
+                  : 'Quita algún filtro o prueba en otra colonia.'
               }
               action={
                 <Button

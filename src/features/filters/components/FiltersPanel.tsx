@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Checkbox, Chip } from '@/shared/design-system'
 import { priceLevels, restaurantTypes, services } from '@/features/restaurants'
 import type { PriceLevel, RestaurantType } from '@/features/restaurants'
-import { cities } from '@/features/zones'
+import { neighborhoods } from '@/features/zones'
 import type { DirectoryFilters } from '../services/filterParams'
 
 export interface FiltersPanelProps {
@@ -36,10 +36,10 @@ const countLabel = (n: number | undefined) =>
 export function FiltersPanel({ filters, onChange, onToggle, counts }: FiltersPanelProps) {
   return (
     <div className="flex flex-col gap-8">
-      <Group title="Zona">
+      <Group title="Colonia">
         <div
           role="radiogroup"
-          aria-label="Zona"
+          aria-label="Colonia"
           className="flex flex-wrap gap-2"
           onKeyDown={(event) => {
             if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(event.key)) return
@@ -58,7 +58,7 @@ export function FiltersPanel({ filters, onChange, onToggle, counts }: FiltersPan
         >
           {[
             { slug: null, name: 'Todas' },
-            ...cities.map((c) => ({ slug: c.slug, name: c.name })),
+            ...neighborhoods.map((n) => ({ slug: n.slug, name: n.name })),
           ].map((zone) => {
             const selected = filters.zona === zone.slug
             const count = zone.slug ? counts.zona.get(zone.slug) : undefined

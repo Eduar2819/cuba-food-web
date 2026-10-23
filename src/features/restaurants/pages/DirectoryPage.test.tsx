@@ -17,9 +17,9 @@ function renderAt(path: string) {
 describe('Directorio', () => {
   it('lee los filtros de la URL y muestra el contador', async () => {
     renderAt('/restaurantes?tipo=cafeteria')
-    expect(await screen.findByText('2 restaurantes')).toBeInTheDocument()
+    expect(await screen.findByText('1 restaurante')).toBeInTheDocument()
     const list = screen.getAllByRole('list').find((l) => within(l).queryAllByRole('article').length)
-    expect(within(list!).getAllByRole('article')).toHaveLength(2)
+    expect(within(list!).getAllByRole('article')).toHaveLength(1)
     expect(screen.getByRole('button', { name: 'Quitar filtro: Cafetería' })).toBeInTheDocument()
   })
 
@@ -29,27 +29,27 @@ describe('Directorio', () => {
   })
 
   it('muestra el estado vacío y permite limpiar filtros', async () => {
-    const router = renderAt('/restaurantes?zona=progreso&tipo=cafeteria')
+    const router = renderAt('/restaurantes?zona=centro&tipo=cafeteria')
     expect(
       await screen.findByText('No encontramos restaurantes con estos filtros.'),
     ).toBeInTheDocument()
     await userEvent.click(screen.getAllByRole('button', { name: 'Limpiar filtros' })[0]!)
-    expect(await screen.findByText('8 restaurantes')).toBeInTheDocument()
+    expect(await screen.findByText('4 restaurantes')).toBeInTheDocument()
     expect(router.state.location.search).toBe('')
   })
 
   it('cambiar el orden actualiza la URL', async () => {
     const router = renderAt('/restaurantes')
-    await screen.findByText('8 restaurantes')
-    await userEvent.selectOptions(screen.getByLabelText('Ordenar por'), 'rating')
-    expect(router.state.location.search).toBe('?orden=rating')
+    await screen.findByText('4 restaurantes')
+    await userEvent.selectOptions(screen.getByLabelText('Ordenar por'), 'populares')
+    expect(router.state.location.search).toBe('?orden=populares')
   })
 })
 
 describe('Búsqueda global', () => {
   it('muestra resultados agrupados y navega con el teclado', async () => {
     const router = renderAt('/restaurantes')
-    await screen.findByText('8 restaurantes')
+    await screen.findByText('4 restaurantes')
     await userEvent.keyboard('/')
     const input = await screen.findByRole(
       'combobox',

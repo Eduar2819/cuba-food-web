@@ -32,8 +32,8 @@ export function MapPage() {
   return (
     <div className="px-3 pt-4 tablet:px-4 desktop:px-6">
       <Seo
-        title="Mapa de restaurantes cubanos en Yucatán"
-        description="Ubica en el mapa los restaurantes cubanos de Mérida, Progreso y Valladolid y descubre cuáles están abiertos cerca de ti."
+        title="Mapa de restaurantes cubanos en Mérida"
+        description="Ubica en el mapa los restaurantes cubanos de Mérida y descubre cuáles están abiertos cerca de ti."
         path="/mapa"
       />
       <div className="mx-auto grid max-w-(--container-page) grid-cols-[minmax(0,1fr)] gap-4 desktop:h-[calc(100dvh-6.5rem)] desktop:grid-cols-[23rem_1fr] desktop:grid-rows-[auto_minmax(0,1fr)]">

@@ -15,8 +15,7 @@ const DAY_NAMES: Record<Weekday, string> = {
 }
 
 /**
- * Schema.org Restaurant. Nota: al ser datos demo NO se publica aggregateRating
- * (Google penaliza calificaciones que no provienen de reseñas reales).
+ * Schema.org Restaurant. El sitio no maneja calificaciones, así que no se publica aggregateRating.
  */
 export function restaurantJsonLd(r: Restaurant, cityName: string, neighborhoodName: string) {
   return {

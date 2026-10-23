@@ -1,10 +1,13 @@
-# Sabor Cubano en Yucatán
+# Sabor Cubano en Mérida
 
-Directorio gastronómico de restaurantes cubanos en Yucatán: guía, buscador, mapa y guía cultural.
-"Descubre Cuba en Yucatán".
+Guía informativa de los restaurantes cubanos en Mérida, Yucatán: cada restaurante con sus
+platillos, redes sociales y ubicación. "Descubre Cuba en Mérida".
 
-> **Prototipo conceptual con datos demo.** Todos los restaurantes, direcciones, teléfonos,
-> horarios, calificaciones, redes, eventos y promociones son ficticios y están marcados con
+**Proyecto educativo, sin fines comerciales.** No hay planes de pago, promociones ni
+calificaciones: el sitio solo informa.
+
+> **Datos demo.** Todos los restaurantes, direcciones, teléfonos, horarios, redes y eventos
+> son ficticios y están marcados con
 > `isDemo: true` (teléfonos `999 000 …`, redes en `example.com`, direcciones "Calle Demo").
 > No corresponden a negocios reales. Las fotos son de stock e ilustrativas.
 
@@ -43,9 +46,9 @@ src/
     filters/        # filtros del directorio ↔ query params
     map/            # MapAdapter (abstracción) + implementación Leaflet
     dishes/         # "¿Qué se te antoja?", /platillos
-    zones/          # ciudades y colonias
+    zones/          # Mérida y sus colonias (filtro "colonia" del directorio)
     nearby/         # geolocalización + distancia (Cerca de ti)
-    events/  promotions/  blog/  favorites/  for-restaurants/
+    events/  blog/  favorites/
     seo/            # <Seo>, JSON-LD, sitemap
   shared/
     design-system/  # tokens, estilos base y primitivas (ver /design-system en dev)
@@ -63,7 +66,7 @@ Reglas verificadas por ESLint (`no-restricted-imports`):
 - Excepción: `app/router` importa `features/*/pages/*` directamente (un chunk por ruta).
 
 La lógica de negocio es pura y está probada: `getOpenStatus`, filtros y orden, índice de
-búsqueda, vigencia de promociones, sitemap, JSON-LD, distancia (Haversine).
+búsqueda, sitemap, JSON-LD, distancia (Haversine).
 
 ## Datos y contratos para producción
 
@@ -85,8 +88,8 @@ búsqueda, vigencia de promociones, sitemap, JSON-LD, distancia (Haversine).
 
 - Metadatos por página con las etiquetas nativas de React 19 (`<title>`, `<meta>`,
   `<link rel="canonical">`): title, description, Open Graph y Twitter/X cards.
-- JSON-LD: `Restaurant` en cada perfil (sin `aggregateRating`, porque las calificaciones son
-  demo), `Event`, `Article`, `BreadcrumbList` y `WebSite` con `SearchAction`.
+- JSON-LD: `Restaurant` en cada perfil (sin `aggregateRating`: el sitio no tiene
+  calificaciones), `Event`, `Article`, `BreadcrumbList` y `WebSite` con `SearchAction`.
 - `sitemap.xml` y `robots.txt` se generan en el build a partir de los datos.
 
 ### Limitación de una SPA y propuesta
@@ -97,7 +100,7 @@ sociales (WhatsApp, Facebook, X) **no** lo ejecutan, así que al compartir un re
 verían los metadatos genéricos de `index.html`.
 
 Propuesta (no implementada, pendiente de aprobación): **prerender en build** de las rutas
-públicas (inicio, directorio, perfiles, platillos, zonas, eventos y blog) usando los mismos
+públicas (inicio, directorio, perfiles, platillos, eventos y blog) usando los mismos
 datos del sitemap, por ejemplo con el modo de prerender de React Router o un paso de SSG.
 Así cada URL tendría su HTML con metadatos y JSON-LD sin cambiar la arquitectura. Cuando
 exista una API, la alternativa es SSR o ISR.

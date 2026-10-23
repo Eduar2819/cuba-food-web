@@ -1,6 +1,6 @@
 import { X } from 'lucide-react'
 import { priceLabel, restaurantTypes, serviceLabel } from '@/features/restaurants'
-import { cities } from '@/features/zones'
+import { neighborhoods } from '@/features/zones'
 import type { DirectoryFilters } from '../services/filterParams'
 import { countActiveFilters } from '../services/filterParams'
 
@@ -24,7 +24,7 @@ export function ActiveFilters({ filters: f, onChange, onClear }: ActiveFiltersPr
       ? [
           {
             key: 'zona',
-            label: cities.find((c) => c.slug === f.zona)?.name ?? f.zona,
+            label: neighborhoods.find((n) => n.slug === f.zona)?.name ?? f.zona,
             remove: { zona: null },
           },
         ]

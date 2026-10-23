@@ -14,7 +14,7 @@ export function Logo({ className, compact = false }: { className?: string; compa
       {!compact && (
         <span className="font-display text-[1.1875rem] leading-none font-bold tracking-[-0.02em] text-ink">
           Sabor Cubano
-          <span className="sr-only"> en Yucatán</span>
+          <span className="sr-only"> en Mérida</span>
         </span>
       )}
     </span>

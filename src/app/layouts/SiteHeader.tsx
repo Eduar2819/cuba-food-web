@@ -29,7 +29,7 @@ export function SiteHeader() {
         <Link
           to="/"
           className="inline-flex min-h-11 items-center rounded-full"
-          aria-label="Sabor Cubano en Yucatán, inicio"
+          aria-label="Sabor Cubano en Mérida, inicio"
         >
           <Logo />
         </Link>

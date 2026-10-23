@@ -1,12 +1,12 @@
 import { Link } from 'react-router'
 import { X } from 'lucide-react'
-import { buttonStyles, Card, IconButton, Photo, Rating } from '@/shared/design-system'
+import { buttonStyles, Card, IconButton, Photo } from '@/shared/design-system'
 import { responsiveImage } from '@/shared/lib/images'
 import { getOpenStatus, OpenStatusLabel, typeLabel } from '@/features/restaurants'
 import type { Restaurant } from '@/features/restaurants'
 import { cityName, neighborhoodName } from '@/features/zones'
 
-/** Mini card al elegir un marcador: nombre, estado, rating, zona y CTA. */
+/** Mini card al elegir un marcador: nombre, estado, zona y CTA. */
 export function RestaurantMapCard({
   restaurant: r,
   now,
@@ -29,12 +29,7 @@ export function RestaurantMapCard({
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex items-start justify-between gap-2">
           <p className="truncate font-display text-h3 font-semibold text-ink">{r.name}</p>
-          <IconButton
-            icon={X}
-            label="Cerrar tarjeta"
-            onClick={onClose}
-            className="-mt-2 -mr-2"
-          />
+          <IconButton icon={X} label="Cerrar tarjeta" onClick={onClose} className="-mt-2 -mr-2" />
         </div>
         <OpenStatusLabel status={status} className="text-caption" />
         <p className="truncate text-caption text-ink-muted">
@@ -42,8 +37,7 @@ export function RestaurantMapCard({
           {cityName(r.address.cityId)}
           {distance && ` · ${distance}`}
         </p>
-        <div className="mt-1 flex items-center justify-between gap-2">
-          {r.rating ? <Rating value={r.rating.average} /> : <span />}
+        <div className="mt-1 flex justify-end">
           <Link to={`/restaurantes/${r.slug}`} className={buttonStyles({ size: 'sm' })}>
             Ver restaurante
           </Link>

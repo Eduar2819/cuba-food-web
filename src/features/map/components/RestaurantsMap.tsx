@@ -8,7 +8,7 @@ import type { Restaurant } from '@/features/restaurants'
 import { distanceLabel } from '@/features/nearby'
 import { MapView } from './MapView'
 import { RestaurantMapCard } from './RestaurantMapCard'
-import { toMarkers, YUCATAN_CENTER } from '../services/markers'
+import { toMarkers, MERIDA_CENTER } from '../services/markers'
 
 interface RestaurantsMapProps {
   restaurants: Restaurant[]
@@ -49,8 +49,8 @@ export function RestaurantsMap({
       {!lazyMount || visible ? (
         <MapView
           markers={markers}
-          center={YUCATAN_CENTER}
-          zoom={9}
+          center={MERIDA_CENTER}
+          zoom={12}
           selectedId={selectedId}
           onSelect={select}
           userLocation={userLocation}

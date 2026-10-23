@@ -1,12 +1,12 @@
 import type { PriceLevel, RestaurantType } from '@/features/restaurants'
 
-export type SortOption = 'relevancia' | 'distancia' | 'rating' | 'populares'
+export type SortOption = 'relevancia' | 'distancia' | 'populares'
 export type DirectoryView = 'lista' | 'mapa'
 
 /** Estado del directorio. Se sincroniza 1:1 con los query params (compartible y con historial). */
 export interface DirectoryFilters {
   q: string
-  /** slug de ciudad */
+  /** slug de colonia (todas en Mérida) */
   zona: string | null
   abierto: boolean
   tipos: RestaurantType[]
@@ -30,7 +30,6 @@ export const DEFAULT_FILTERS: DirectoryFilters = {
 export const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: 'relevancia', label: 'Relevancia' },
   { value: 'distancia', label: 'Distancia' },
-  { value: 'rating', label: 'Mejor calificados' },
   { value: 'populares', label: 'Más populares' },
 ]
 

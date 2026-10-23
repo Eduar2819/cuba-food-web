@@ -1,6 +1,6 @@
 import { getOpenStatus } from '@/features/restaurants'
 import type { Restaurant } from '@/features/restaurants'
-import { cities } from '@/features/zones'
+import { neighborhoods } from '@/features/zones'
 import { haversineKm } from '@/shared/lib/geo'
 import type { Location } from '@/shared/lib/geo'
 import type { DirectoryFilters } from './filterParams'
@@ -18,12 +18,12 @@ export interface DirectoryItem {
   distanceKm?: number
 }
 
-const cityIdBySlug = new Map(cities.map((c) => [c.slug, c.id]))
+const neighborhoodIdBySlug = new Map(neighborhoods.map((n) => [n.slug, n.id]))
 
 /** Filtra sin ordenar. Función pura: la usan el directorio y los conteos por faceta. */
 export function matchesFilters(r: Restaurant, f: DirectoryFilters, ctx: FilterContext): boolean {
   if (f.q && ctx.searchScores && !ctx.searchScores.has(r.id)) return false
-  if (f.zona && r.address.cityId !== cityIdBySlug.get(f.zona)) return false
+  if (f.zona && r.address.neighborhoodId !== neighborhoodIdBySlug.get(f.zona)) return false
   if (f.tipos.length && !f.tipos.includes(r.type)) return false
   if (f.servicios.length && !f.servicios.every((s) => r.serviceIds.includes(s))) return false
   if (f.precios.length && !f.precios.includes(r.priceLevel)) return false
@@ -65,9 +65,6 @@ export function applyFilters(
       a.distanceKm !== undefined && b.distanceKm !== undefined
         ? a.distanceKm - b.distanceKm
         : relevance(a, b),
-    rating: (a, b) =>
-      (b.restaurant.rating?.average ?? -1) - (a.restaurant.rating?.average ?? -1) ||
-      (b.restaurant.rating?.count ?? 0) - (a.restaurant.rating?.count ?? 0),
     populares: (a, b) => b.restaurant.popularity - a.restaurant.popularity,
   }
 

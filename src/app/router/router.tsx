@@ -66,21 +66,6 @@ export const routes: RouteObject[] = [
             path: 'eventos/:slug',
             lazy: page(() => import('@/features/events/pages/EventPage'), 'EventPage'),
           },
-          {
-            path: 'promociones',
-            lazy: page(
-              () => import('@/features/promotions/pages/PromotionsPage'),
-              'PromotionsPage',
-            ),
-          },
-          {
-            path: 'zonas',
-            lazy: page(() => import('@/features/zones/pages/ZonesPage'), 'ZonesPage'),
-          },
-          {
-            path: 'zonas/:slug',
-            lazy: page(() => import('@/features/zones/pages/ZonePage'), 'ZonePage'),
-          },
           { path: 'blog', lazy: page(() => import('@/features/blog/pages/BlogPage'), 'BlogPage') },
           {
             path: 'blog/:slug',
@@ -89,13 +74,6 @@ export const routes: RouteObject[] = [
           {
             path: 'favoritos',
             lazy: page(() => import('@/features/favorites/pages/FavoritesPage'), 'FavoritesPage'),
-          },
-          {
-            path: 'para-restaurantes',
-            lazy: page(
-              () => import('@/features/for-restaurants/pages/ForRestaurantsPage'),
-              'ForRestaurantsPage',
-            ),
           },
           { path: 'contacto', lazy: page(() => import('@/app/routes/ContactPage'), 'ContactPage') },
           { path: 'creditos', lazy: page(() => import('@/app/routes/CreditsPage'), 'CreditsPage') },

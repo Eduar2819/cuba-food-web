@@ -25,8 +25,8 @@ export function EventsPage() {
   return (
     <div className="container-page pb-8">
       <Seo
-        title="Eventos cubanos en Yucatán"
-        description="Son en vivo, clases de salsa, degustaciones y talleres en restaurantes cubanos de Mérida, Progreso y Valladolid."
+        title="Eventos cubanos en Mérida"
+        description="Son en vivo, clases de salsa, degustaciones y talleres en restaurantes cubanos de Mérida."
         path="/eventos"
       />
       <PageHeader

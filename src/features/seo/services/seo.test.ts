@@ -10,7 +10,7 @@ describe('sitemap y robots', () => {
     expect(paths).toContain('/')
     expect(paths).toContain('/restaurantes/habana-1959')
     expect(paths).toContain('/platillos/congri')
-    expect(paths).toContain('/zonas/merida')
+    expect(paths.some((p) => p.startsWith('/zonas') || p === '/promociones')).toBe(false)
     expect(paths).toContain('/blog/cocina-cubana-y-yucateca')
     expect(paths).toContain('/eventos/noche-de-son')
     expect(paths).not.toContain('/eventos/tarde-de-domino')

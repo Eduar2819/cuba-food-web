@@ -7,7 +7,6 @@ import {
   buttonStyles,
   EmptyState,
   ErrorState,
-  Rating,
   Skeleton,
   SkeletonText,
 } from '@/shared/design-system'
@@ -19,9 +18,8 @@ import { dishById } from '@/features/dishes'
 import { EventAgendaItem, eventRepository } from '@/features/events'
 import { RestaurantsMap } from '@/features/map'
 import { MenuView } from '@/features/menu'
-import { PromotionTicket, promotionRepository } from '@/features/promotions'
 import { breadcrumbJsonLd, restaurantJsonLd, Seo } from '@/features/seo'
-import { cityName, cities, neighborhoodName } from '@/features/zones'
+import { cityName, neighborhoodName } from '@/features/zones'
 import { MobileActionBar, RestaurantActions } from '../components/RestaurantActions'
 import { OpenStatusLabel } from '../components/OpenStatusLabel'
 import { RestaurantFacts } from '../components/RestaurantFacts'
@@ -68,17 +66,8 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
   const status = getOpenStatus(r.schedule, r.specialSchedules, now)
   const city = cityName(r.address.cityId)
   const neighborhood = neighborhoodName(r.address.neighborhoodId)
-  const citySlug = cities.find((c) => c.id === r.address.cityId)?.slug ?? ''
-  const extras = useAsync(
-    () =>
-      Promise.all([
-        promotionRepository.getByRestaurant(r.id, now),
-        eventRepository.getByRestaurant(r.id, now),
-      ]),
-
-    [r.id],
-  )
-  const [promotions = [], events = []] = extras.data ?? []
+  const extras = useAsync(() => eventRepository.getByRestaurant(r.id, now), [r.id])
+  const events = extras.data ?? []
   const links = contactLinks(r)
   const path = `/restaurantes/${r.slug}`
 
@@ -94,7 +83,6 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
           restaurantJsonLd(r, city, neighborhood),
           breadcrumbJsonLd([
             { name: 'Restaurantes', path: '/restaurantes' },
-            { name: city, path: `/zonas/${citySlug}` },
             { name: r.name, path },
           ]),
         ]}
@@ -108,14 +96,6 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
               link: (
                 <Link to="/restaurantes" className="hover:text-ink hover:underline">
                   Restaurantes
-                </Link>
-              ),
-            },
-            {
-              label: city,
-              link: (
-                <Link to={`/zonas/${citySlug}`} className="hover:text-ink hover:underline">
-                  {city}
                 </Link>
               ),
             },
@@ -148,12 +128,9 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
               {status.specialLabel && (
                 <p className="pl-6 text-small text-ink-muted">Aviso: {status.specialLabel}.</p>
               )}
-              <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-body text-ink-muted">
-                {r.rating && <Rating value={r.rating.average} count={r.rating.count} size="md" />}
-                <span>
-                  <span className="font-semibold text-ink">{priceLabel(r.priceLevel)}</span>{' '}
-                  {priceDescription(r.priceLevel).toLowerCase()}
-                </span>
+              <p className="text-body text-ink-muted">
+                <span className="font-semibold text-ink">{priceLabel(r.priceLevel)}</span>{' '}
+                {priceDescription(r.priceLevel).toLowerCase()}
               </p>
               <p className="flex items-start gap-1.5 text-body text-ink-muted">
                 <MapPin aria-hidden size={18} className="mt-1 shrink-0" />
@@ -181,16 +158,6 @@ function RestaurantProfile({ restaurant: r, now }: { restaurant: Restaurant; now
           <Block title="Todo lo que necesitas saber">
             <RestaurantFacts facts={r.facts} serviceIds={r.serviceIds} />
           </Block>
-
-          {promotions.length > 0 && (
-            <Block title="Promociones">
-              <div className="grid gap-4">
-                {promotions.map((p) => (
-                  <PromotionTicket key={p.id} promotion={p} now={now} showConditions />
-                ))}
-              </div>
-            </Block>
-          )}
 
           {events.length > 0 && (
             <Block title="Próximos eventos">

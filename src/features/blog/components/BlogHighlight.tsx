@@ -14,7 +14,7 @@ export function BlogHighlight() {
   return (
     <Section
       title="Guía cultural"
-      description="Historias detrás de los platillos y guías para comer cubano en Yucatán."
+      description="Historias detrás de los platillos y guías para comer cubano en Mérida."
       action={
         <Link to="/blog" className={textLinkClass}>
           Leer el blog

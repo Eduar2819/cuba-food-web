@@ -3,8 +3,8 @@ import { getOpenStatus } from '@/features/restaurants'
 import type { Restaurant } from '@/features/restaurants'
 import type { MapMarker } from '../types'
 
-/** Centro de Yucatán (cubre Mérida, Progreso y Valladolid). */
-export const YUCATAN_CENTER: Location = { lat: 20.95, lng: -89.05 }
+/** Centro de Mérida. */
+export const MERIDA_CENTER: Location = { lat: 20.9754, lng: -89.6169 }
 
 export function toMarkers(restaurants: Restaurant[], now: Date): MapMarker[] {
   return restaurants.map((r) => ({

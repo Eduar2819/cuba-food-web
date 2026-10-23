@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { Badge, Photo, Rating } from '@/shared/design-system'
+import { Badge, Photo } from '@/shared/design-system'
 import type { PhotoRatio } from '@/shared/design-system'
 import { cn } from '@/shared/lib/cn'
 import { responsiveImage } from '@/shared/lib/images'
@@ -49,19 +49,14 @@ export function RestaurantCard({
         />
       </div>
       <div className="flex flex-col gap-1.5">
-        <div className="flex items-start justify-between gap-3">
-          <Heading
-            className={cn('font-semibold text-ink', size === 'large' ? 'text-h2' : 'text-h3')}
+        <Heading className={cn('font-semibold text-ink', size === 'large' ? 'text-h2' : 'text-h3')}>
+          <Link
+            to={`/restaurantes/${r.slug}`}
+            className="rounded-sm after:absolute after:inset-0 after:content-[''] focus-visible:outline-offset-4"
           >
-            <Link
-              to={`/restaurantes/${r.slug}`}
-              className="rounded-sm after:absolute after:inset-0 after:content-[''] focus-visible:outline-offset-4"
-            >
-              {r.name}
-            </Link>
-          </Heading>
-          {r.rating && <Rating value={r.rating.average} className="mt-1 shrink-0" />}
-        </div>
+            {r.name}
+          </Link>
+        </Heading>
         {size === 'large' && <p className="max-w-prose text-body text-ink-muted">{r.tagline}</p>}
         <OpenStatusLabel status={status} />
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-ink-muted">

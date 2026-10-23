@@ -26,7 +26,7 @@ export function DishesPage() {
     <div className="container-page pb-8">
       <Seo
         title="Platillos cubanos: qué pedir y dónde"
-        description="Ropa vieja, sándwich cubano, congrí, tostones, café cubano y más: qué es cada platillo y en qué restaurantes de Yucatán lo sirven."
+        description="Ropa vieja, sándwich cubano, congrí, tostones, café cubano y más: qué es cada platillo y en qué restaurantes de Mérida lo sirven."
         path="/platillos"
       />
       <PageHeader

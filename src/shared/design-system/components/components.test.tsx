@@ -7,7 +7,6 @@ import { Chip } from './Chip'
 import { Dialog } from './Dialog'
 import { IconButton } from './IconButton'
 import { Input } from './Input'
-import { Rating } from './Rating'
 import { Tabs } from './Tabs'
 import { ToastProvider } from './ToastProvider'
 import { useToast } from './toastContext'
@@ -61,18 +60,6 @@ describe('Input', () => {
     const input = screen.getByLabelText('Teléfono')
     expect(input).toHaveAttribute('aria-invalid', 'true')
     expect(input).toHaveAccessibleDescription('Escribe 10 dígitos.')
-  })
-})
-
-describe('Rating', () => {
-  it('se anuncia como texto', () => {
-    render(<Rating value={4.5} count={12} />)
-    expect(screen.getByRole('img', { name: '4.5 de 5 (12 reseñas)' })).toBeInTheDocument()
-  })
-
-  it('limita el valor al máximo', () => {
-    render(<Rating value={7} />)
-    expect(screen.getByRole('img', { name: '5.0 de 5' })).toBeInTheDocument()
   })
 })
 

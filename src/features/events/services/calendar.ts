@@ -12,7 +12,7 @@ export function eventToICS(event: Event, location: string, url: string): string 
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Sabor Cubano en Yucatan//ES',
+    'PRODID:-//Sabor Cubano en Merida//ES',
     'BEGIN:VEVENT',
     `UID:${event.id}@sabor-cubano`,
     `DTSTAMP:${toICSDate(new Date().toISOString())}`,
