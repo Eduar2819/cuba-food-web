@@ -64,11 +64,11 @@ export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
       {/* Texto y collage dentro del mismo contenedor que el encabezado: márgenes simétricos */}
-      <div className="container-page desktop:grid desktop:min-h-[min(calc(100svh-5.5rem),44rem)] desktop:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] desktop:gap-10 desktop:py-8">
+      <div className="container-page desktop:grid desktop:min-h-[min(calc(100svh-5.5rem),50rem)] desktop:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] desktop:gap-12 desktop:pt-10 desktop:pb-16 large:gap-20 large:pt-14 large:pb-20">
         {/* Texto y búsqueda */}
-        <div className="relative z-(--z-raised) flex items-center pt-8 pb-12 desktop:py-8">
-          <div className="hero-reveal flex w-full max-w-[38rem] min-w-0 flex-col gap-6">
-            <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-small font-medium text-ink-muted">
+        <div className="relative z-(--z-raised) flex items-center pt-10 pb-14 tablet:pt-14 desktop:py-6">
+          <div className="hero-reveal flex w-full max-w-[38rem] min-w-0 flex-col">
+            <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-small font-medium text-ink-muted desktop:mb-8">
               <span className="flex items-center gap-2">
                 <MapPin aria-hidden size={18} className="fill-accent/15 text-accent" />
                 Guía de cocina cubana en Mérida, Yucatán
@@ -92,14 +92,14 @@ export function Hero() {
               en Mérida
             </h1>
 
-            <p className="max-w-[32rem] text-lead text-ink-muted">
+            <p className="mt-6 max-w-[32rem] text-lead text-ink-muted desktop:mt-8">
               Los restaurantes cubanos de la ciudad con sus platillos, redes sociales y cómo llegar.
             </p>
 
-            <SearchBox variant="hero" className="max-w-[36rem]" />
+            <SearchBox variant="hero" className="mt-9 max-w-[36rem] desktop:mt-12" />
 
-            <nav aria-label="Accesos rápidos" className="-mx-4 tablet:mx-0">
-              <ul className="scrollbar-none flex gap-2 overflow-x-auto px-4 py-1 tablet:flex-wrap tablet:px-0">
+            <nav aria-label="Accesos rápidos" className="-mx-4 mt-5 tablet:mx-0">
+              <ul className="scrollbar-none flex gap-2 overflow-x-auto px-4 py-1 tablet:flex-wrap tablet:gap-2.5 tablet:px-0">
                 {QUICK_FILTERS.slice(0, 4).map(({ id, label, icon: Icon, filters }) => (
                   <li key={id} className="shrink-0">
                     <Link
@@ -116,7 +116,7 @@ export function Hero() {
 
             <Link
               to="/restaurantes"
-              className="group inline-flex min-h-11 items-center gap-2 self-start text-body font-semibold text-ink underline decoration-accent decoration-2 underline-offset-[7px] transition-colors duration-(--dur-micro) hover:text-accent-text"
+              className="group mt-8 inline-flex min-h-11 items-center gap-2 self-start text-body font-semibold text-ink underline decoration-accent decoration-2 underline-offset-[7px] transition-colors duration-(--dur-micro) hover:text-accent-text"
             >
               Ver el directorio completo
               <ArrowRight
@@ -129,7 +129,7 @@ export function Hero() {
         </div>
 
         {/* Collage: la mesa servida */}
-        <div className="relative mt-2 mb-10 aspect-[4/3] tablet:mt-6 desktop:m-0 desktop:aspect-auto">
+        <div className="relative mb-14 aspect-[4/3] tablet:mb-16 desktop:m-0 desktop:aspect-auto">
           <div className="absolute inset-0 overflow-hidden rounded-xl desktop:rounded-l-none">
             <img
               {...main}
@@ -162,7 +162,7 @@ export function Hero() {
           {/* Nota manuscrita sobre la foto */}
           <p
             aria-hidden
-            className="absolute top-[9%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[14%] desktop:right-[22%]"
+            className="absolute top-[9%] right-[8%] flex -rotate-12 flex-col items-end font-script text-[clamp(1.5rem,0.9rem+1.8vw,2.6rem)] leading-[0.95] text-arena-50 [text-shadow:0_2px_12px_rgb(11_22_38/0.6)] desktop:top-[11%] desktop:right-[12%]"
           >
             <span className="flex items-start gap-1">
               <Sparkle className="mt-1 size-[0.7em] -scale-x-100 text-arena-50" />
@@ -176,18 +176,18 @@ export function Hero() {
             image={mojito}
             sizes="(min-width: 1024px) 14vw, 34vw"
             caption={['El clásico', 'de la isla']}
-            className="top-[24%] left-[3%] w-[30%] -rotate-[7deg] tablet:w-[24%] desktop:top-[30%] desktop:left-[7%] desktop:w-[24%]"
+            className="top-[22%] left-[4%] w-[30%] -rotate-[7deg] tablet:w-[24%] desktop:top-[28%] desktop:left-[7%] desktop:w-[23%]"
           />
           <Polaroid
             image={street}
             sizes="(min-width: 1024px) 11vw, 0px"
-            className="hidden rotate-[5deg] tablet:top-[52%] tablet:left-[48%] tablet:block tablet:w-[21%] desktop:top-[60%] desktop:left-[50%] desktop:w-[19%]"
+            className="hidden rotate-[5deg] tablet:top-[44%] tablet:left-[44%] tablet:block tablet:w-[19%] desktop:top-[46%] desktop:left-[42%] desktop:w-[18%]"
           />
 
           {/* Tarjeta: lleva al mapa */}
           <Link
             to="/mapa"
-            className="group absolute right-[3%] -bottom-[6%] flex items-center gap-3 rounded-lg bg-surface py-3 pr-3 pl-4 shadow-high ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 desktop:right-[4%] desktop:bottom-[18%]"
+            className="group absolute right-[4%] -bottom-[7%] flex items-center gap-3 rounded-lg bg-surface py-3 pr-3 pl-4 shadow-high ring-1 ring-line transition-[box-shadow,transform] duration-(--dur-normal) ease-out-soft hover:-translate-y-0.5 desktop:right-[5%] desktop:bottom-[7%]"
           >
             <MapPin aria-hidden size={20} className="shrink-0 fill-accent/15 text-accent" />
             <span className="flex flex-col pr-2">
