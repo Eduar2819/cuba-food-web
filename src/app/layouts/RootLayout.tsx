@@ -51,7 +51,7 @@ export function RootLayout() {
       </main>
       <SiteFooter />
       {/* Espacio para la barra inferior en móvil */}
-      <div aria-hidden className="h-[calc(4.5rem+env(safe-area-inset-bottom))] desktop:hidden" />
+      <div aria-hidden className="h-[calc(5.5rem+env(safe-area-inset-bottom))] desktop:hidden" />
       <MobileTabBar />
       <ScrollRestoration />
     </SearchDialogProvider>

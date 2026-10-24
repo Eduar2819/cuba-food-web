@@ -46,7 +46,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         className={cn(
           'pointer-events-none fixed inset-x-0 z-(--z-toast) flex flex-col items-center gap-2 px-4',
           // En móvil queda por encima de la barra inferior.
-          'bottom-[calc(5rem+env(safe-area-inset-bottom))] desktop:bottom-8',
+          'bottom-[calc(5.75rem+env(safe-area-inset-bottom))] desktop:bottom-8',
         )}
       >
         {items.map((item) => (

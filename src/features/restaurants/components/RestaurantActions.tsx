@@ -147,7 +147,7 @@ export function MobileActionBar({ restaurant: r }: { restaurant: Restaurant }) {
 
       <nav
         aria-label={`Acciones rápidas de ${r.name}`}
-        className="fixed right-4 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-(--z-sticky) flex flex-col items-end gap-3"
+        className="fixed right-4 bottom-[calc(5.75rem+env(safe-area-inset-bottom))] z-(--z-sticky) flex flex-col items-end gap-3"
       >
         <ul id={menuId} ref={listRef} hidden={!open} className="flex flex-col items-end gap-2.5">
           {actions.map(({ key, icon: Icon, label, href, external, onClick, active }, i) => {

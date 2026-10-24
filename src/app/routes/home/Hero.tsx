@@ -21,7 +21,7 @@ export function Hero() {
     <section
       aria-labelledby="hero-title"
       style={{ marginTop: `-${HEADER}` }}
-      className="relative isolate flex min-h-[calc(100svh-4.5rem)] overflow-hidden bg-anil-975 desktop:min-h-svh"
+      className="relative isolate flex min-h-[calc(100svh-5.5rem)] overflow-hidden bg-anil-975 desktop:min-h-svh"
     >
       {/* Fondo: ilustración (zoom lento al cargar) */}
       <img
