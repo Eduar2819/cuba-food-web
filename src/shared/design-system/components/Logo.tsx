@@ -14,7 +14,7 @@ export function Logo({ className, compact = false }: { className?: string; compa
         <circle cx="24" cy="24" r="3.2" className="fill-mamoncillo-400" />
       </svg>
       {!compact && (
-        <span className="font-display text-[1.25rem] leading-none font-semibold tracking-[-0.01em] text-ink">
+        <span className="font-display text-[1.125rem] leading-none font-semibold tracking-[-0.01em] whitespace-nowrap text-ink min-[360px]:text-[1.25rem]">
           Sabor Cubano
           <span className="sr-only"> en Mérida</span>
         </span>

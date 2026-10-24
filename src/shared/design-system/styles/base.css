@@ -167,11 +167,20 @@
     font-size: 0.6875rem;
     background: rgb(255 255 255 / 0.85);
   }
-  .sc-map .leaflet-bar a {
+  .sc-map.leaflet-container .leaflet-bar a {
     width: 36px;
     height: 36px;
     line-height: 36px;
     color: var(--color-anil-950);
+  }
+  /* En pantallas táctiles el zoom cumple el área mínima de 44px. */
+  @media (pointer: coarse) {
+    .sc-map.leaflet-container .leaflet-bar a {
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 20px;
+    }
   }
   .sc-pin-wrapper {
     background: none;

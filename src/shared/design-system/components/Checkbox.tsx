@@ -34,8 +34,11 @@ export function Checkbox({ label, description, id: idProp, className, ...rest }:
           className="pointer-events-none absolute text-on-brand opacity-0 peer-checked:opacity-100"
         />
       </span>
-      {/* Área clicable ampliada: la etiqueta cubre la fila completa (>= 44px). */}
-      <label htmlFor={id} className="flex min-h-7 cursor-pointer flex-col">
+      {/* Área clicable ampliada: la etiqueta cubre la fila completa, casilla incluida (>= 44px). */}
+      <label
+        htmlFor={id}
+        className="relative flex min-h-7 flex-1 cursor-pointer flex-col after:absolute after:-inset-y-2.5 after:right-0 after:-left-9"
+      >
         <span className="text-small font-medium text-ink">{label}</span>
         {description && (
           <span id={`${id}-desc`} className="text-caption text-ink-muted">

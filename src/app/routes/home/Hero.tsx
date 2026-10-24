@@ -68,7 +68,7 @@ export function Hero() {
 
           <h1
             id="hero-title"
-            className="font-display text-[clamp(2.75rem,1.4rem+4.6vw,5.25rem)] leading-[0.98] font-bold tracking-[-0.025em] text-arena-50 [text-shadow:0_2px_24px_rgb(11_22_38/0.45)]"
+            className="font-display text-[clamp(2.5rem,min(1.4rem+4.6vw,10svh),5.25rem)] leading-[0.98] font-bold tracking-[-0.025em] text-arena-50 [text-shadow:0_2px_24px_rgb(11_22_38/0.45)]"
           >
             Descubre{' '}
             <span className="relative inline-block font-script text-[1.12em] font-normal tracking-normal text-mamoncillo-400">
@@ -83,7 +83,11 @@ export function Hero() {
             Los restaurantes cubanos de la ciudad con sus platillos, redes sociales y cómo llegar.
           </p>
 
-          <SearchBox variant="hero" className="mt-9 max-w-[36rem] desktop:mt-12" />
+          <SearchBox
+            variant="hero"
+            placeholder="¿Qué se te antoja?"
+            className="mt-9 max-w-[36rem] desktop:mt-12"
+          />
 
           <nav aria-label="Accesos rápidos" className="-mx-4 mt-5 tablet:mx-0">
             <ul className="scrollbar-none flex gap-2 overflow-x-auto px-4 py-1 tablet:flex-wrap tablet:gap-2.5 tablet:px-0">

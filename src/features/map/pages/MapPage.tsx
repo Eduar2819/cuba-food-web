@@ -7,7 +7,7 @@ import { applyFilters, useDirectoryFilters } from '@/features/filters'
 import { distanceLabel, useUserLocation } from '@/features/nearby'
 import { restaurantRepository, RestaurantRow } from '@/features/restaurants'
 import { Seo } from '@/features/seo'
-import { cities } from '@/features/zones'
+import { neighborhoods } from '@/features/zones'
 import { RestaurantsMap } from '../components/RestaurantsMap'
 
 export function MapPage() {
@@ -41,12 +41,12 @@ export function MapPage() {
           <h1 className="text-h1 font-bold text-ink">Mapa</h1>
           <div
             role="radiogroup"
-            aria-label="Zona"
+            aria-label="Colonia"
             className="-mx-1 scrollbar-none flex gap-2 overflow-x-auto px-1"
           >
             {[
               { slug: null, name: 'Todas' },
-              ...cities.map((c) => ({ slug: c.slug, name: c.name })),
+              ...neighborhoods.map((n) => ({ slug: n.slug, name: n.name })),
             ].map((zone) => (
               <Chip
                 key={zone.slug ?? 'todas'}

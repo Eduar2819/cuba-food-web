@@ -104,7 +104,7 @@ export function DishPage() {
           {category && (
             <Link
               to={`/platillos#${category.slug}`}
-              className="self-start text-small font-semibold text-accent-text underline-offset-4 hover:underline"
+              className="inline-flex min-h-11 items-center self-start text-small font-semibold text-accent-text underline-offset-4 hover:underline"
             >
               {category.name}
             </Link>

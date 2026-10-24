@@ -42,7 +42,7 @@ export function SiteFooter() {
           ))}
         </nav>
       </div>
-      <div className="container-page flex flex-col gap-2 border-t border-line py-6 text-caption text-ink-muted tablet:flex-row tablet:justify-between">
+      <div className="container-page flex flex-col gap-1 border-t border-line py-4 text-caption text-ink-muted tablet:flex-row tablet:items-center tablet:justify-between tablet:py-5">
         <p>© {new Date().getFullYear()} Sabor Cubano en Mérida</p>
         <Link
           to="/creditos"
