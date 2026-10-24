@@ -332,3 +332,17 @@
     stroke-dashoffset: 0;
   }
 }
+
+/* Opciones del botón flotante "+": suben en cascada (la más cercana al botón primero). */
+@layer components {
+  .fab-item {
+    animation: fab-in var(--dur-normal) var(--ease-spring) both;
+  }
+}
+
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.92);
+  }
+}

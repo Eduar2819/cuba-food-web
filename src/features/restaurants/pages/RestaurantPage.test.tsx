@@ -74,3 +74,23 @@ describe('Perfil del restaurante', () => {
     expect(await screen.findByText('No encontramos este restaurante.')).toBeInTheDocument()
   })
 })
+
+describe('Acciones rápidas (botón +)', () => {
+  it('despliega las opciones, cierra con Escape y devuelve el foco', async () => {
+    renderAt('/restaurantes/la-habana-del-caribe')
+    const trigger = await screen.findByRole('button', { name: 'Abrir acciones rápidas' })
+    expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('link', { name: 'Ver menú' })).not.toBeInTheDocument()
+
+    await userEvent.click(trigger)
+    expect(trigger).toHaveAttribute('aria-expanded', 'true')
+    expect(trigger).toHaveAccessibleName('Cerrar acciones rápidas')
+    const menu = screen.getByRole('link', { name: 'Ver menú' })
+    expect(menu).toHaveAttribute('href', '#menu')
+    expect(screen.getAllByRole('button', { name: 'Guardar' }).length).toBeGreaterThan(0)
+
+    await userEvent.keyboard('{Escape}')
+    expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    expect(trigger).toHaveFocus()
+  })
+})
